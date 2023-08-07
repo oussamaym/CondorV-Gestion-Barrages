@@ -1,0 +1,22 @@
+.login-container{
+    margin: auto;
+    width: 50%;
+    padding: 2vh;
+    background-color: #d1f4c2;;
+    border-radius: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+
+}
+.barrage-page{
+    height: 100vh;
+    width: 100%;
+    background-color: #d1f4c2;
+}
+#scnt{
+    border-radius: 12px;
+    background-color: #7ba428;
+    color: #fff;
+}

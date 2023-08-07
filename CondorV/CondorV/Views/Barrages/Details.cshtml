@@ -1,0 +1,78 @@
+﻿@model CondorV.Models.BD.Barrage
+
+@{
+    ViewData["Title"] = "Details";
+}
+
+<h1>Details</h1>
+
+<div>
+    <h4>Barrage</h4>
+    <hr />
+    <dl class="row">
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Nom)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Nom)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Localisation)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Localisation)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Capacite)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Capacite)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.VillePlusProche)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.VillePlusProche)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.HauteurBarr)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.HauteurBarr)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.DistVillePlusProche)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.DistVillePlusProche)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.CodeRetNormal)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.CodeRetNormal)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.DateMiseEnServ)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.DateMiseEnServ)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.LaRetenue)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.LaRetenue)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Agence)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Agence.Nom)
+        </dd>
+    </dl>
+</div>
+<div>
+    <a asp-action="Edit" asp-route-id="@Model?.Id">Edit</a> |
+    <a asp-action="Index">Back to List</a>
+</div>

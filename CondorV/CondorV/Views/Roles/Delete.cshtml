@@ -1,0 +1,63 @@
+﻿@model CondorV.Models.BD.Role
+
+@{
+    ViewData["Title"] = "Delete";
+}
+
+<h1>Delete</h1>
+
+<h3>Are you sure you want to delete this?</h3>
+<div>
+    <h4>Role</h4>
+    <hr />
+    <dl class="row">
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Designation)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Designation)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.ControleTotal)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.ControleTotal)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.AucunDroit)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.AucunDroit)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Creer)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Creer)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Modifier)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Modifier)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Supprimer)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Supprimer)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Lecture)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Lecture)
+        </dd>
+    </dl>
+    
+    <form asp-action="Delete">
+        <input type="hidden" asp-for="Id" />
+        <input type="submit" value="Delete" class="btn btn-danger" /> |
+        <a asp-action="Index">Back to List</a>
+    </form>
+</div>

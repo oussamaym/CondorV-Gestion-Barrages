@@ -1,0 +1,79 @@
+﻿@model CondorV.Models.BD.Utilisateur
+
+@{
+    ViewData["Title"] = "Edit";
+}
+
+<h1>Edit</h1>
+
+<h4>Utilisateur</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Edit">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <input type="hidden" asp-for="Id" />
+            <div class="form-group">
+                <label asp-for="Nom" class="control-label"></label>
+                <input asp-for="Nom" class="form-control" />
+                <span asp-validation-for="Nom" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Prenom" class="control-label"></label>
+                <input asp-for="Prenom" class="form-control" />
+                <span asp-validation-for="Prenom" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="UserName" class="control-label"></label>
+                <input asp-for="UserName" class="form-control" />
+                <span asp-validation-for="UserName" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Email" class="control-label"></label>
+                <input asp-for="Email" class="form-control" />
+                <span asp-validation-for="Email" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Password" class="control-label"></label>
+                <input asp-for="Password" class="form-control" />
+                <span asp-validation-for="Password" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="DateCreation" class="control-label"></label>
+                <input asp-for="DateCreation" class="form-control" />
+                <span asp-validation-for="DateCreation" class="text-danger"></span>
+            </div>
+            <div class="form-group form-check">
+                <label class="form-check-label">
+                    <input class="form-check-input" asp-for="EstActive" /> @Html.DisplayNameFor(model => model.EstActive)
+                </label>
+            </div>
+            <div class="form-group">
+                <label asp-for="RoleId" class="control-label"></label>
+                <select asp-for="RoleId" class="form-control" asp-items="ViewBag.RoleId"></select>
+                <span asp-validation-for="RoleId" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="BarrageId" class="control-label"></label>
+                <select asp-for="BarrageId" class="form-control" asp-items="ViewBag.BarrageId"></select>
+                <span asp-validation-for="BarrageId" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="AgenceId" class="control-label"></label>
+                <select asp-for="AgenceId" class="form-control" asp-items="ViewBag.AgenceId"></select>
+                <span asp-validation-for="AgenceId" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Save" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

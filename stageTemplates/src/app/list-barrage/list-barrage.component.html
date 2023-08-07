@@ -1,0 +1,34 @@
+<div class="barrage-page">
+    <div class="login-container">
+        <table class="table table-bordered">
+            <thead class="table-dark">
+                <tr>
+                    <th>Barrages</th>
+                    <th>Localisation</th>
+                    <th>Capacite</th>
+                    <th>Hauteur sur Fondation(m)</th>
+                    <th>Ville Plus Proche</th>
+                    <th>Date mise en service</th>
+                    <th>Code de la retenue(mm3)</th>
+                    <th>Authentification</th>
+                </tr>
+            </thead>
+            <tbody class="table-group-divider">
+                <tr *ngFor="let barrage of barrages">
+                    <td><b>{{ barrage.nom }}</b></td>
+                    <td><b>{{ barrage.localisation }}</b></td>
+                    <td><b>{{ barrage.capacite }}</b></td>
+                    <td><b>{{ barrage.hauteurBarr }}</b></td>
+                    <td><b>{{ barrage.villePlusProche }}</b></td>
+                    <td><b>{{ barrage.dateMiseEnServ }}</b></td>
+                    <td><b>{{ barrage.laRetenue }}</b></td>
+                    <td>
+                        <button class="btn btn-outline-success">
+                            Se Connecter
+                        </button>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>

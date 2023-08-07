@@ -1,0 +1,84 @@
+﻿@model CondorV.Models.BD.Barrage
+
+@{
+    ViewData["Title"] = "Create";
+}
+
+<h1>Create</h1>
+
+<h4>Barrage</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Create">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="Nom" class="control-label"></label>
+                <input asp-for="Nom" class="form-control" />
+                <span asp-validation-for="Nom" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Localisation" class="control-label"></label>
+                <select asp-for="Localisation" class="form-control">
+                    <option value="">-- Sélectionner Localisation --</option>
+                    @foreach (var value in Enum.GetValues(typeof(CondorV.Models.BD.LocalisationBarr)))
+                    {
+                        <option value="@value">@value</option>
+                    }
+                </select>
+                <span asp-validation-for="Localisation" class="text-danger"></span>
+            </div>
+
+            <div class="form-group">
+                <label asp-for="Capacite" class="control-label"></label>
+                <input asp-for="Capacite" class="form-control" />
+                <span asp-validation-for="Capacite" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="VillePlusProche" class="control-label">Ville Plus Proche</label>
+                <input asp-for="VillePlusProche" class="form-control" />
+                <span asp-validation-for="VillePlusProche" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="HauteurBarr" class="control-label">Hauteur en m</label>
+                <input asp-for="HauteurBarr" class="form-control" />
+                <span asp-validation-for="HauteurBarr" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="DistVillePlusProche" class="control-label">Distance Ville Plus Proche</label>
+                <input asp-for="DistVillePlusProche" class="form-control" />
+                <span asp-validation-for="DistVillePlusProche" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="CodeRetNormal" class="control-label">Code Retenue Normal</label>
+                <input asp-for="CodeRetNormal" class="form-control" />
+                <span asp-validation-for="CodeRetNormal" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="DateMiseEnServ" class="control-label">Date Mise en Service</label>
+                <input asp-for="DateMiseEnServ" class="form-control" />
+                <span asp-validation-for="DateMiseEnServ" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="LaRetenue" class="control-label">La Retenue</label>
+                <input asp-for="LaRetenue" class="form-control" />
+                <span asp-validation-for="LaRetenue" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="AgenceId" class="control-label">Agence</label>
+                <select asp-for="AgenceId" class ="form-control" asp-items="ViewBag.AgenceId"></select>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Create" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

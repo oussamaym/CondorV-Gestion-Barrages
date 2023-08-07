@@ -1,0 +1,23 @@
+<div class="agence-page">
+    <div class="login-container">
+        <table class="table table-bordered">
+            <thead class="table-dark">
+                <tr>
+                    <th>Agence</th>
+                    <th>Ville</th>
+                    <th>Authentification</th>
+                </tr>
+            </thead>
+            <tbody class="table-group-divider">
+                <tr *ngFor="let agence of agences">
+                    <td><b>{{ agence.nom }}</b></td>
+                    <td><b>{{ agence.ville }}</b></td>
+                    <td>
+                        <button class="btn btn-outline-success" (click)="nav(agence.id)">
+                            Acceder
+                        </button>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
