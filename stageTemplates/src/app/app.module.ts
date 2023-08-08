@@ -15,6 +15,8 @@ import { ListAgenceComponent } from './list-agence/list-agence.component';
 import { ListBarrageComponent } from './list-barrage/list-barrage.component';
 import { HttpClientModule } from '@angular/common/http';
 import { FormsModule } from '@angular/forms';
+import { CrudUserComponent } from './crud-user/crud-user.component';
+import { SearchComponent } from './search/search.component';
 
 
 @NgModule({
@@ -22,7 +24,9 @@ import { FormsModule } from '@angular/forms';
     AppComponent,
     LoginComponent,
     ListAgenceComponent,
-    ListBarrageComponent
+    ListBarrageComponent,
+    CrudUserComponent,
+    SearchComponent
   ],
   imports: [
     BrowserModule,
