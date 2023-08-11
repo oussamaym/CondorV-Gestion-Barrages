@@ -1,0 +1,23 @@
+<div class="sidenav" [ngClass]="collapsed ? 'sidenav-collapsed' : ''">
+    <div class="logo-container">
+        <button class="logo" (click)="toggleCollapse()"><img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAB4AAAAeCAYAAAA7MK6iAAAACXBIWXMAAAsTAAALEwEAmpwYAAABz0lEQVR4nO3VT6hNURTH8Q8eikcyeGWkXlH+vMFTZtff/J8woEiZSCjFlMwIPcpARjKS9KYGChmYiJigTCSZECJKBs/1p13r1e507rnnPBR1V63BXXud3/futddem5717B+zmWhhG3ZgJeb+LdhkbMcdfMPPEn+KY5jzp6CLcK8DrMyfYMbvQtfiUyb6BqM4g0t4hHa2fi12PAubolKNbRm+huAH7EVfSd6uyDmPSXEk77Lyr2gCTaV6GR+/xpKIT81y+rEVF3A9oEfwo1D6Ng7VBR/PPtwcsQS5neUMx/oXzIvSFqE5vNUNmsr5Pj64FbGlGIvYZezHs/h9OirxvEvT3ewG3pAl74vYaIVgOoY9Nbp9DNOqwOey5AWYgs8VgkNR9t1YiPkYxGocxNW4+wk8vQr8MBNNDTTQZSd3Y9fD0URHSzQf4EoVdHZ2L9vRqYMNhkfyGyW6rdhER9tSEBkfBt8bgA+bgI0URNaVlL+br58I+H5B5GzEDzQAr2kK7S95ed7GFOvL7m2dM240ozd2EDoV60OFB6PKTzQBn6wYd2mojD8cr2qA0+hcVRe8M8beixJ/jMWRl7r8YsTTA/KxxNOfW95k1z3r2f9tvwC2GfrOHIBdmwAAAABJRU5ErkJggg=="></button>
+        <div class="logo-text" *ngIf="collapsed">CondorX</div>
+        <button class="btn-close" *ngIf="collapsed" (click)="closeSidenav()">
+            <i class="fal fas-times close-icon"></i>
+        </button>
+
+    </div>
+    <ul class="sidenav-nav">
+        <h4 *ngIf="collapsed" style="color: #fff;">Mr. Abdelhadi</h4>
+        <br>
+        <li class="sidenav-nav-item" *ngFor="let data of navData">
+            <a  class="sidenav-nav-link" [routerLink]="[data.routelink]"
+                routerLinkActive="active"
+                [routerLinkActiveOptions]="{exact: true}"
+            >
+                <i class="sidenav-link-icon" [class]="data.icon"></i>
+                <span class="sidenav-link-text" *ngIf="collapsed">{{data.label}}</span>
+            </a>
+        </li>
+    </ul>
+</div>
