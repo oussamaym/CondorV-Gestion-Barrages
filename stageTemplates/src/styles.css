@@ -5,4 +5,15 @@ body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }*/
 
 
 
-@import "~../node_modules/bootstrap/dist/css/bootstrap.min.css"
+@import "~../node_modules/bootstrap/dist/css/bootstrap.min.css";
+@import url('https://fonts.googleapis.com/css?family=Roboto:400,500,600,700,900&display=swap');
+
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+body{
+    position: relative;
+    font-family: 'Roboto',sans-serif;
+}
