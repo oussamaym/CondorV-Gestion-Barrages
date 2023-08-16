@@ -24,6 +24,19 @@ namespace CondorV.Migrations
                 });
 
             migrationBuilder.CreateTable(
+                name: "LocalisationBarr",
+                columns: table => new
+                {
+                    Id = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    Designation = table.Column<string>(type: "nvarchar(max)", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_LocalisationBarr", x => x.Id);
+                });
+
+            migrationBuilder.CreateTable(
                 name: "Role",
                 columns: table => new
                 {
@@ -43,13 +56,14 @@ namespace CondorV.Migrations
                 });
 
             migrationBuilder.CreateTable(
-                name: "Barrage",
+                name: "Site",
                 columns: table => new
                 {
                     Id = table.Column<long>(type: "bigint", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
                     Nom = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    Localisation = table.Column<int>(type: "int", nullable: false),
+                    LocalisationBarrId = table.Column<int>(type: "int", nullable: false),
+                    Type = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     Capacite = table.Column<double>(type: "float", nullable: false),
                     VillePlusProche = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     HauteurBarr = table.Column<double>(type: "float", nullable: false),
@@ -61,12 +75,18 @@ namespace CondorV.Migrations
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_Barrage", x => x.Id);
+                    table.PrimaryKey("PK_Site", x => x.Id);
                     table.ForeignKey(
-                        name: "FK_Barrage_Agence_AgenceId",
+                        name: "FK_Site_Agence_AgenceId",
                         column: x => x.AgenceId,
                         principalTable: "Agence",
                         principalColumn: "Id");
+                    table.ForeignKey(
+                        name: "FK_Site_LocalisationBarr_LocalisationBarrId",
+                        column: x => x.LocalisationBarrId,
+                        principalTable: "LocalisationBarr",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Cascade);
                 });
 
             migrationBuilder.CreateTable(
@@ -82,7 +102,7 @@ namespace CondorV.Migrations
                     DateCreation = table.Column<DateTime>(type: "datetime2", nullable: true),
                     EstActive = table.Column<bool>(type: "bit", nullable: false),
                     RoleId = table.Column<long>(type: "bigint", nullable: false),
-                    BarrageId = table.Column<long>(type: "bigint", nullable: true),
+                    SiteId = table.Column<long>(type: "bigint", nullable: true),
                     AgenceId = table.Column<long>(type: "bigint", nullable: true)
                 },
                 constraints: table =>
@@ -94,22 +114,27 @@ namespace CondorV.Migrations
                         principalTable: "Agence",
                         principalColumn: "Id");
                     table.ForeignKey(
-                        name: "FK_Utilisateur_Barrage_BarrageId",
-                        column: x => x.BarrageId,
-                        principalTable: "Barrage",
-                        principalColumn: "Id");
-                    table.ForeignKey(
                         name: "FK_Utilisateur_Role_RoleId",
                         column: x => x.RoleId,
                         principalTable: "Role",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
+                    table.ForeignKey(
+                        name: "FK_Utilisateur_Site_SiteId",
+                        column: x => x.SiteId,
+                        principalTable: "Site",
+                        principalColumn: "Id");
                 });
 
             migrationBuilder.CreateIndex(
-                name: "IX_Barrage_AgenceId",
-                table: "Barrage",
+                name: "IX_Site_AgenceId",
+                table: "Site",
                 column: "AgenceId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_Site_LocalisationBarrId",
+                table: "Site",
+                column: "LocalisationBarrId");
 
             migrationBuilder.CreateIndex(
                 name: "IX_Utilisateur_AgenceId",
@@ -117,14 +142,14 @@ namespace CondorV.Migrations
                 column: "AgenceId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_Utilisateur_BarrageId",
-                table: "Utilisateur",
-                column: "BarrageId");
-
-            migrationBuilder.CreateIndex(
                 name: "IX_Utilisateur_RoleId",
                 table: "Utilisateur",
                 column: "RoleId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_Utilisateur_SiteId",
+                table: "Utilisateur",
+                column: "SiteId");
         }
 
         protected override void Down(MigrationBuilder migrationBuilder)
@@ -133,13 +158,16 @@ namespace CondorV.Migrations
                 name: "Utilisateur");
 
             migrationBuilder.DropTable(
-                name: "Barrage");
-
-            migrationBuilder.DropTable(
                 name: "Role");
 
             migrationBuilder.DropTable(
+                name: "Site");
+
+            migrationBuilder.DropTable(
                 name: "Agence");
+
+            migrationBuilder.DropTable(
+                name: "LocalisationBarr");
         }
     }
 }

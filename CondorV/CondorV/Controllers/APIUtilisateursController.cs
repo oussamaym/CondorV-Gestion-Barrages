@@ -7,11 +7,6 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using CondorV.Data;
 using CondorV.Models.BD;
-using Microsoft.AspNetCore.Authorization;
-using System.Data;
-using System.Security.Claims;
-using System.Net.Http;
-using System.Configuration;
 
 namespace CondorV.Controllers
 {
@@ -20,17 +15,11 @@ namespace CondorV.Controllers
     public class APIUtilisateursController : ControllerBase
     {
         private readonly CondorVContext _context;
-        private readonly IConfiguration _configuration;
-        private readonly IHttpContextAccessor _httpContext;
 
-        public APIUtilisateursController(CondorVContext context, IConfiguration configuration, IHttpContextAccessor httpContext)
+        public APIUtilisateursController(CondorVContext context)
         {
             _context = context;
-            _configuration = configuration;
-            _httpContext = httpContext;
         }
-        
-
 
         // GET: api/APIUtilisateurs
         [HttpGet]
@@ -60,6 +49,7 @@ namespace CondorV.Controllers
 
             return utilisateur;
         }
+
         // PUT: api/APIUtilisateurs/5
         // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
         [HttpPut("{id}")]

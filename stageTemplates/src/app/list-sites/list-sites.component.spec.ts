@@ -1,6 +1,6 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { ListBarrageComponent } from './list-barrage.component';
+import { ListBarrageComponent } from './list-sites.component';
 
 describe('ListBarrageComponent', () => {
   let component: ListBarrageComponent;

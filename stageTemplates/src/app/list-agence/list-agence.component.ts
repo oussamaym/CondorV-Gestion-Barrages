@@ -13,7 +13,7 @@ export class ListAgenceComponent implements OnInit {
 
   constructor(private agenceService: AgenceService,private router: Router) {}
   nav(agenceId: number): void {
-    this.router.navigate(['/listBarrage', agenceId]);
+    this.router.navigate(['/listSites', agenceId]);
   }
   ngOnInit(): void {
     this.loadAgences();

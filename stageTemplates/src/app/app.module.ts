@@ -12,7 +12,7 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatCardModule } from '@angular/material/card';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { ListAgenceComponent } from './list-agence/list-agence.component';
-import { ListBarrageComponent } from './list-barrage/list-barrage.component';
+import { ListSiteComponent } from './list-sites/list-sites.component';
 import { HttpClientModule } from '@angular/common/http';
 import { FormsModule } from '@angular/forms';
 import { CrudUserComponent } from './crud-user/crud-user.component';
@@ -33,7 +33,7 @@ import { DetailUserComponent } from './detail-user/detail-user.component';
     AppComponent,
     LoginComponent,
     ListAgenceComponent,
-    ListBarrageComponent,
+    ListSiteComponent,
     CrudUserComponent,
     SearchComponent,
     BodyComponent,

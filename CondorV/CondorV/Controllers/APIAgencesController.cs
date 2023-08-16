@@ -29,10 +29,8 @@ namespace CondorV.Controllers
           {
               return NotFound();
           }
-            var agencesetbarrages = await _context.Agence
-          .Include(a => a.Barrages).Include(a => a.Utilisateurs)
-          .ToListAsync();
-            return agencesetbarrages;
+            var agences = _context.Agence.Include(s => s.Sites).Include(u => u.Utilisateurs);
+            return await _context.Agence.ToListAsync();
         }
 
         // GET: api/APIAgences/5

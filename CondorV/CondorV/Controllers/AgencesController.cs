@@ -58,20 +58,11 @@ namespace CondorV.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Create([Bind("Id,Nom,Ville")] Agence agence)
         {
-
             if (ModelState.IsValid)
             {
-                Console.WriteLine("ok");
                 _context.Add(agence);
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
-            }
-            else
-            {
-                foreach (var error in ModelState.Values.SelectMany(v => v.Errors))
-                {
-                    Console.WriteLine(error.ErrorMessage);
-                }
             }
             return View(agence);
         }

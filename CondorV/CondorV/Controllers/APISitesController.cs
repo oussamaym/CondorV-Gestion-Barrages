@@ -12,55 +12,56 @@ namespace CondorV.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    public class APIBarragesController : ControllerBase
+    public class APISitesController : ControllerBase
     {
         private readonly CondorVContext _context;
 
-        public APIBarragesController(CondorVContext context)
+        public APISitesController(CondorVContext context)
         {
             _context = context;
         }
 
-        // GET: api/APIBarrages
+        // GET: api/APISites
         [HttpGet]
-        public async Task<ActionResult<IEnumerable<Barrage>>> GetBarrage()
+        public async Task<ActionResult<IEnumerable<Site>>> GetSite()
         {
-          if (_context.Barrage == null)
+          if (_context.Site == null)
           {
               return NotFound();
           }
-            return await _context.Barrage.ToListAsync();
+            var sites = _context.Site.Include(u => u.Utilisateurs).Include(a => a.Agence).Include(l => l.LocalisationBarr);
+            return await sites.ToListAsync();
         }
 
-        // GET: api/APIBarrages/5
+        // GET: api/APISites/5
         [HttpGet("{id}")]
-        public async Task<ActionResult<Barrage>> GetBarrage(long id)
+        public async Task<ActionResult<Site>> GetSite(long id)
         {
-          if (_context.Barrage == null)
+          if (_context.Site == null)
           {
               return NotFound();
           }
-            var barrage = await _context.Barrage.FindAsync(id);
+            var site = await _context.Site.FindAsync(id);
 
-            if (barrage == null)
+            if (site == null)
             {
                 return NotFound();
             }
 
-            return barrage;
+            return site;
         }
 
-        // PUT: api/APIBarrages/5
+        // PUT: api/APISites/5
         // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
         [HttpPut("{id}")]
-        public async Task<IActionResult> PutBarrage(long id, Barrage barrage)
+        public async Task<IActionResult> PutSite(long id, Site site)
         {
-            if (id != barrage.Id)
+            if (id != site.Id)
             {
                 return BadRequest();
             }
 
-            _context.Entry(barrage).State = EntityState.Modified;
+            _context.Entry(site).State = EntityState.Modified;
 
             try
             {
@@ -68,7 +69,7 @@ namespace CondorV.Controllers
             }
             catch (DbUpdateConcurrencyException)
             {
-                if (!BarrageExists(id))
+                if (!SiteExists(id))
                 {
                     return NotFound();
                 }
@@ -81,44 +82,44 @@ namespace CondorV.Controllers
             return NoContent();
         }
 
-        // POST: api/APIBarrages
+        // POST: api/APISites
         // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
         [HttpPost]
-        public async Task<ActionResult<Barrage>> PostBarrage(Barrage barrage)
+        public async Task<ActionResult<Site>> PostSite(Site site)
         {
-          if (_context.Barrage == null)
+          if (_context.Site == null)
           {
-              return Problem("Entity set 'CondorVContext.Barrage'  is null.");
+              return Problem("Entity set 'CondorVContext.Site'  is null.");
           }
-            _context.Barrage.Add(barrage);
+            _context.Site.Add(site);
             await _context.SaveChangesAsync();
 
-            return CreatedAtAction("GetBarrage", new { id = barrage.Id }, barrage);
+            return CreatedAtAction("GetSite", new { id = site.Id }, site);
         }
 
-        // DELETE: api/APIBarrages/5
+        // DELETE: api/APISites/5
         [HttpDelete("{id}")]
-        public async Task<IActionResult> DeleteBarrage(long id)
+        public async Task<IActionResult> DeleteSite(long id)
         {
-            if (_context.Barrage == null)
+            if (_context.Site == null)
             {
                 return NotFound();
             }
-            var barrage = await _context.Barrage.FindAsync(id);
-            if (barrage == null)
+            var site = await _context.Site.FindAsync(id);
+            if (site == null)
             {
                 return NotFound();
             }
 
-            _context.Barrage.Remove(barrage);
+            _context.Site.Remove(site);
             await _context.SaveChangesAsync();
 
             return NoContent();
         }
 
-        private bool BarrageExists(long id)
+        private bool SiteExists(long id)
         {
-            return (_context.Barrage?.Any(e => e.Id == id)).GetValueOrDefault();
+            return (_context.Site?.Any(e => e.Id == id)).GetValueOrDefault();
         }
     }
 }

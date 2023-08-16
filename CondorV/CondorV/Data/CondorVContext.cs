@@ -18,8 +18,13 @@ namespace CondorV.Data
 
         public DbSet<CondorV.Models.BD.Role>? Role { get; set; }
 
-        public DbSet<CondorV.Models.BD.Barrage>? Barrage { get; set; }
 
         public DbSet<CondorV.Models.BD.Agence>? Agence { get; set; }
+
+
+        public DbSet<CondorV.Models.BD.Site>? Site { get; set; }
+
+
+        public DbSet<CondorV.Models.BD.LocalisationBarr>? LocalisationBarr { get; set; }
     }
 }
