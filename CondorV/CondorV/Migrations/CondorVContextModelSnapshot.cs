@@ -17,7 +17,7 @@ namespace CondorV.Migrations
         {
 #pragma warning disable 612, 618
             modelBuilder
-                .HasAnnotation("ProductVersion", "6.0.20")
+                .HasAnnotation("ProductVersion", "6.0.21")
                 .HasAnnotation("Relational:MaxIdentifierLength", 128);
 
             SqlServerModelBuilderExtensions.UseIdentityColumns(modelBuilder, 1L, 1);
@@ -43,53 +43,21 @@ namespace CondorV.Migrations
                     b.ToTable("Agence");
                 });
 
-            modelBuilder.Entity("CondorV.Models.BD.Barrage", b =>
+            modelBuilder.Entity("CondorV.Models.BD.LocalisationBarr", b =>
                 {
-                    b.Property<long>("Id")
+                    b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("bigint");
-
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<long>("Id"), 1L, 1);
-
-                    b.Property<long?>("AgenceId")
-                        .HasColumnType("bigint");
-
-                    b.Property<double>("Capacite")
-                        .HasColumnType("float");
-
-                    b.Property<string>("CodeRetNormal")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<DateTime>("DateMiseEnServ")
-                        .HasColumnType("datetime2");
-
-                    b.Property<double>("DistVillePlusProche")
-                        .HasColumnType("float");
-
-                    b.Property<double>("HauteurBarr")
-                        .HasColumnType("float");
-
-                    b.Property<string>("LaRetenue")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<int>("Localisation")
                         .HasColumnType("int");
 
-                    b.Property<string>("Nom")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
 
-                    b.Property<string>("VillePlusProche")
+                    b.Property<string>("Designation")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.HasKey("Id");
 
-                    b.HasIndex("AgenceId");
-
-                    b.ToTable("Barrage");
+                    b.ToTable("LocalisationBarr");
                 });
 
             modelBuilder.Entity("CondorV.Models.BD.Role", b =>
@@ -127,6 +95,61 @@ namespace CondorV.Migrations
                     b.ToTable("Role");
                 });
 
+            modelBuilder.Entity("CondorV.Models.BD.Site", b =>
+                {
+                    b.Property<long>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("bigint");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<long>("Id"), 1L, 1);
+
+                    b.Property<long?>("AgenceId")
+                        .HasColumnType("bigint");
+
+                    b.Property<double>("Capacite")
+                        .HasColumnType("float");
+
+                    b.Property<string>("CodeRetNormal")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<DateTime>("DateMiseEnServ")
+                        .HasColumnType("datetime2");
+
+                    b.Property<double>("DistVillePlusProche")
+                        .HasColumnType("float");
+
+                    b.Property<double>("HauteurBarr")
+                        .HasColumnType("float");
+
+                    b.Property<string>("LaRetenue")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<int>("LocalisationBarrId")
+                        .HasColumnType("int");
+
+                    b.Property<string>("Nom")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Type")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("VillePlusProche")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("AgenceId");
+
+                    b.HasIndex("LocalisationBarrId");
+
+                    b.ToTable("Site");
+                });
+
             modelBuilder.Entity("CondorV.Models.BD.Utilisateur", b =>
                 {
                     b.Property<Guid>("Id")
@@ -134,9 +157,6 @@ namespace CondorV.Migrations
                         .HasColumnType("uniqueidentifier");
 
                     b.Property<long?>("AgenceId")
-                        .HasColumnType("bigint");
-
-                    b.Property<long?>("BarrageId")
                         .HasColumnType("bigint");
 
                     b.Property<DateTime?>("DateCreation")
@@ -163,6 +183,9 @@ namespace CondorV.Migrations
                     b.Property<long>("RoleId")
                         .HasColumnType("bigint");
 
+                    b.Property<long?>("SiteId")
+                        .HasColumnType("bigint");
+
                     b.Property<string>("UserName")
                         .IsRequired()
                         .HasColumnType("varchar(200)");
@@ -171,20 +194,28 @@ namespace CondorV.Migrations
 
                     b.HasIndex("AgenceId");
 
-                    b.HasIndex("BarrageId");
-
                     b.HasIndex("RoleId");
+
+                    b.HasIndex("SiteId");
 
                     b.ToTable("Utilisateur");
                 });
 
-            modelBuilder.Entity("CondorV.Models.BD.Barrage", b =>
+            modelBuilder.Entity("CondorV.Models.BD.Site", b =>
                 {
                     b.HasOne("CondorV.Models.BD.Agence", "Agence")
-                        .WithMany("Barrages")
+                        .WithMany("Sites")
                         .HasForeignKey("AgenceId");
 
+                    b.HasOne("CondorV.Models.BD.LocalisationBarr", "LocalisationBarr")
+                        .WithMany("Sites")
+                        .HasForeignKey("LocalisationBarrId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
                     b.Navigation("Agence");
+
+                    b.Navigation("LocalisationBarr");
                 });
 
             modelBuilder.Entity("CondorV.Models.BD.Utilisateur", b =>
@@ -193,36 +224,41 @@ namespace CondorV.Migrations
                         .WithMany("Utilisateurs")
                         .HasForeignKey("AgenceId");
 
-                    b.HasOne("CondorV.Models.BD.Barrage", "Barrage")
-                        .WithMany("Utilisateurs")
-                        .HasForeignKey("BarrageId");
-
                     b.HasOne("CondorV.Models.BD.Role", "Role")
                         .WithMany("Utilisateurs")
                         .HasForeignKey("RoleId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
+                    b.HasOne("CondorV.Models.BD.Site", "Site")
+                        .WithMany("Utilisateurs")
+                        .HasForeignKey("SiteId");
+
                     b.Navigation("Agence");
 
-                    b.Navigation("Barrage");
-
                     b.Navigation("Role");
+
+                    b.Navigation("Site");
                 });
 
             modelBuilder.Entity("CondorV.Models.BD.Agence", b =>
                 {
-                    b.Navigation("Barrages");
+                    b.Navigation("Sites");
 
                     b.Navigation("Utilisateurs");
                 });
 
-            modelBuilder.Entity("CondorV.Models.BD.Barrage", b =>
+            modelBuilder.Entity("CondorV.Models.BD.LocalisationBarr", b =>
+                {
+                    b.Navigation("Sites");
+                });
+
+            modelBuilder.Entity("CondorV.Models.BD.Role", b =>
                 {
                     b.Navigation("Utilisateurs");
                 });
 
-            modelBuilder.Entity("CondorV.Models.BD.Role", b =>
+            modelBuilder.Entity("CondorV.Models.BD.Site", b =>
                 {
                     b.Navigation("Utilisateurs");
                 });

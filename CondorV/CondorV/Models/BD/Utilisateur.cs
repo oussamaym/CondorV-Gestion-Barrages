@@ -33,10 +33,10 @@ namespace CondorV.Models.BD
         //[ForeignKey("RoleId")]
         [JsonIgnore]
         public Role? Role { get; set; }
-        //[ForeignKey("BarrageId")]
-        public long? BarrageId { get; set; }
+        //[ForeignKey("Id")]
+        public long? SiteId { get; set; }
         [JsonIgnore] 
-        public Barrage? Barrage { get; set; }
+        public Site? Site { get; set; }
         //[ForeignKey("AgenceId")]
         public long? AgenceId { get; set; }
         [JsonIgnore]

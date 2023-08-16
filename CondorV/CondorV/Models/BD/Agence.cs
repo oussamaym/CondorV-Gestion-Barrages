@@ -14,7 +14,7 @@ namespace CondorV.Models.BD
         [Column(TypeName = "varchar(20)")]
         public string Ville { get; set; }
         [JsonIgnore]
-        public ICollection<Barrage>? Barrages { get; set; }
+        public ICollection<Site>? Sites { get; set; }
         [JsonIgnore]
         public ICollection<Utilisateur>? Utilisateurs { get; set; }
 

@@ -1,4 +1,4 @@
-﻿@model IEnumerable<CondorV.Models.BD.Barrage>
+﻿@model IEnumerable<CondorV.Models.BD.Site>
 
 @{
     ViewData["Title"] = "Index";
@@ -16,7 +16,10 @@
                 @Html.DisplayNameFor(model => model.Nom)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.Localisation)
+                @Html.DisplayNameFor(model => model.LocalisationBarr)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Type)
             </th>
             <th>
                 @Html.DisplayNameFor(model => model.Capacite)
@@ -52,7 +55,10 @@
                 @Html.DisplayFor(modelItem => item.Nom)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.Localisation)
+                @Html.DisplayFor(modelItem => item.LocalisationBarr.Id)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Type)
             </td>
             <td>
                 @Html.DisplayFor(modelItem => item.Capacite)
@@ -76,7 +82,7 @@
                 @Html.DisplayFor(modelItem => item.LaRetenue)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.Agence.Nom)
+                @Html.DisplayFor(modelItem => item.Agence.Id)
             </td>
             <td>
                 <a asp-action="Edit" asp-route-id="@item.Id">Edit</a> |

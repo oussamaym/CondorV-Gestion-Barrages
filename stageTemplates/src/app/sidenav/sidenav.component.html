@@ -8,7 +8,7 @@
 
     </div>
     <ul class="sidenav-nav">
-        <h4 *ngIf="collapsed" style="color: #fff;">Mr. Abdelhadi</h4>
+        <h4 *ngIf="utilisateurconnecte && collapsed"  style="color: #fff;">{{utilisateurconnecte.nom + ' ' + utilisateurconnecte.prenom}}</h4>
         <br>
         <li class="sidenav-nav-item" *ngFor="let data of navData">
             <a  class="sidenav-nav-link" [routerLink]="[data.routelink]"

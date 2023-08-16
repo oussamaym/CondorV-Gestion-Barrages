@@ -1,4 +1,4 @@
-﻿@model CondorV.Models.BD.Barrage
+﻿@model CondorV.Models.BD.Site
 
 @{
     ViewData["Title"] = "Create";
@@ -6,7 +6,7 @@
 
 <h1>Create</h1>
 
-<h4>Barrage</h4>
+<h4>Site</h4>
 <hr />
 <div class="row">
     <div class="col-md-4">
@@ -18,54 +18,50 @@
                 <span asp-validation-for="Nom" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="Localisation" class="control-label"></label>
-                <select asp-for="Localisation" class="form-control">
-                    <option value="">-- Sélectionner Localisation --</option>
-                    @foreach (var value in Enum.GetValues(typeof(CondorV.Models.BD.LocalisationBarr)))
-                    {
-                        <option value="@value">@value</option>
-                    }
-                </select>
-                <span asp-validation-for="Localisation" class="text-danger"></span>
+                <label asp-for="LocalisationBarrId" class="control-label"></label>
+                <select asp-for="LocalisationBarrId" class ="form-control" asp-items="ViewBag.LocalisationBarrId"></select>
             </div>
-
+            <div class="form-group">
+                <label asp-for="Type" class="control-label"></label>
+                <select asp-for="Type" class="form-control" asp-items="@ViewBag.Type"></select>
+            </div>
             <div class="form-group">
                 <label asp-for="Capacite" class="control-label"></label>
                 <input asp-for="Capacite" class="form-control" />
                 <span asp-validation-for="Capacite" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="VillePlusProche" class="control-label">Ville Plus Proche</label>
+                <label asp-for="VillePlusProche" class="control-label"></label>
                 <input asp-for="VillePlusProche" class="form-control" />
                 <span asp-validation-for="VillePlusProche" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="HauteurBarr" class="control-label">Hauteur en m</label>
+                <label asp-for="HauteurBarr" class="control-label"></label>
                 <input asp-for="HauteurBarr" class="form-control" />
                 <span asp-validation-for="HauteurBarr" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="DistVillePlusProche" class="control-label">Distance Ville Plus Proche</label>
+                <label asp-for="DistVillePlusProche" class="control-label"></label>
                 <input asp-for="DistVillePlusProche" class="form-control" />
                 <span asp-validation-for="DistVillePlusProche" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="CodeRetNormal" class="control-label">Code Retenue Normal</label>
+                <label asp-for="CodeRetNormal" class="control-label"></label>
                 <input asp-for="CodeRetNormal" class="form-control" />
                 <span asp-validation-for="CodeRetNormal" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="DateMiseEnServ" class="control-label">Date Mise en Service</label>
+                <label asp-for="DateMiseEnServ" class="control-label"></label>
                 <input asp-for="DateMiseEnServ" class="form-control" />
                 <span asp-validation-for="DateMiseEnServ" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="LaRetenue" class="control-label">La Retenue</label>
+                <label asp-for="LaRetenue" class="control-label"></label>
                 <input asp-for="LaRetenue" class="form-control" />
                 <span asp-validation-for="LaRetenue" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="AgenceId" class="control-label">Agence</label>
+                <label asp-for="AgenceId" class="control-label"></label>
                 <select asp-for="AgenceId" class ="form-control" asp-items="ViewBag.AgenceId"></select>
             </div>
             <div class="form-group">

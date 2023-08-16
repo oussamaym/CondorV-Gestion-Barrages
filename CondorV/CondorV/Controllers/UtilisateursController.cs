@@ -7,6 +7,7 @@ using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using CondorV.Data;
 using CondorV.Models.BD;
+using Microsoft.Win32;
 
 namespace CondorV.Controllers
 {
@@ -22,7 +23,7 @@ namespace CondorV.Controllers
         // GET: Utilisateurs
         public async Task<IActionResult> Index()
         {
-            var condorVContext = _context.Utilisateur.Include(u => u.Agence).Include(u => u.Barrage).Include(u => u.Role);
+            var condorVContext = _context.Utilisateur.Include(u => u.Agence).Include(u => u.Role).Include(u => u.Site);
             return View(await condorVContext.ToListAsync());
         }
 
@@ -36,8 +37,8 @@ namespace CondorV.Controllers
 
             var utilisateur = await _context.Utilisateur
                 .Include(u => u.Agence)
-                .Include(u => u.Barrage)
                 .Include(u => u.Role)
+                .Include(u => u.Site)
                 .FirstOrDefaultAsync(m => m.Id == id);
             if (utilisateur == null)
             {
@@ -50,10 +51,9 @@ namespace CondorV.Controllers
         // GET: Utilisateurs/Create
         public IActionResult Create()
         {
-        
-            ViewData["AgenceId"] = new SelectList(_context.Set<Agence>(), "Id", "Nom");
-            ViewData["BarrageId"] = new SelectList(_context.Set<Barrage>(), "Id", "Nom");
-            ViewData["RoleId"] = new SelectList(_context.Set<Role>(), "Id", "Designation");
+            ViewData["AgenceId"] = new SelectList(_context.Agence, "Id", "Nom");
+            ViewData["RoleId"] = new SelectList(_context.Role, "Id", "Designation");
+            ViewData["SiteId"] = new SelectList(_context.Site, "Id", "Nom");
             return View();
         }
 
@@ -62,35 +62,19 @@ namespace CondorV.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("Id,Nom,Prenom,UserName,Email,Password,DateCreation,EstActive,RoleId,BarrageId,AgenceId")] Utilisateur utilisateur)
+        public async Task<IActionResult> Create([Bind("Id,Nom,Prenom,UserName,Email,Password,DateCreation,EstActive,RoleId,SiteId,AgenceId")] Utilisateur utilisateur)
         {
-
             if (ModelState.IsValid)
             {
-                if (utilisateur.BarrageId == 0) 
-                {
-                    utilisateur.BarrageId = null;
-                }
-                if (utilisateur.AgenceId == 0)
-                {
-                    utilisateur.AgenceId = null;
-                }
-                utilisateur.Password = BCrypt.Net.BCrypt.HashPassword(utilisateur.Password);
+                utilisateur.Id = Guid.NewGuid();
                 _context.Add(utilisateur);
+                utilisateur.Password = BCrypt.Net.BCrypt.HashPassword(utilisateur.Password);
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
             }
-            else
-            {
-                foreach (var error in ModelState.Values.SelectMany(v => v.Errors))
-                {
-                    Console.WriteLine(error.ErrorMessage);
-                }
-            }
-            var aucuneOption = new SelectListItem { Value = "0", Text = "Aucun" };
-            ViewData["AgenceId"] = new SelectList(_context.Set<Agence>(), "Id", "Nom", utilisateur.AgenceId);
-            ViewData["BarrageId"] = new SelectList(_context.Set<Barrage>(), "Id", "Nom", utilisateur.BarrageId);
-            ViewData["RoleId"] = new SelectList(_context.Set<Role>(), "Id", "Designation", utilisateur.RoleId);
+            ViewData["AgenceId"] = new SelectList(_context.Agence, "Id", "Nom", utilisateur.AgenceId);
+            ViewData["RoleId"] = new SelectList(_context.Role, "Id", "Designation", utilisateur.RoleId);
+            ViewData["SiteId"] = new SelectList(_context.Site, "Id", "Nom", utilisateur.SiteId);
             return View(utilisateur);
         }
 
@@ -107,9 +91,9 @@ namespace CondorV.Controllers
             {
                 return NotFound();
             }
-            ViewData["AgenceId"] = new SelectList(_context.Set<Agence>(), "Id", "Nom", utilisateur.AgenceId);
-            ViewData["BarrageId"] = new SelectList(_context.Set<Barrage>(), "Id", "Nom", utilisateur.BarrageId);
-            ViewData["RoleId"] = new SelectList(_context.Set<Role>(), "Id", "Designation", utilisateur.RoleId);
+            ViewData["AgenceId"] = new SelectList(_context.Agence, "Id", "Nom", utilisateur.AgenceId);
+            ViewData["RoleId"] = new SelectList(_context.Role, "Id", "Designation", utilisateur.RoleId);
+            ViewData["SiteId"] = new SelectList(_context.Site, "Id", "Nom", utilisateur.SiteId);
             return View(utilisateur);
         }
 
@@ -118,7 +102,7 @@ namespace CondorV.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(Guid id, [Bind("Id,Nom,Prenom,UserName,Email,Password,DateCreation,EstActive,RoleId,BarrageId,AgenceId")] Utilisateur utilisateur)
+        public async Task<IActionResult> Edit(Guid id, [Bind("Id,Nom,Prenom,UserName,Email,Password,DateCreation,EstActive,RoleId,SiteId,AgenceId")] Utilisateur utilisateur)
         {
             if (id != utilisateur.Id)
             {
@@ -146,9 +130,9 @@ namespace CondorV.Controllers
                 }
                 return RedirectToAction(nameof(Index));
             }
-            ViewData["AgenceId"] = new SelectList(_context.Set<Agence>(), "Id", "Nom", utilisateur.AgenceId);
-            ViewData["BarrageId"] = new SelectList(_context.Set<Barrage>(), "Id", "Nom", utilisateur.BarrageId);
-            ViewData["RoleId"] = new SelectList(_context.Set<Role>(), "Id", "Designation", utilisateur.RoleId);
+            ViewData["AgenceId"] = new SelectList(_context.Agence, "Id", "Id", utilisateur.AgenceId);
+            ViewData["RoleId"] = new SelectList(_context.Role, "Id", "Id", utilisateur.RoleId);
+            ViewData["SiteId"] = new SelectList(_context.Site, "Id", "Id", utilisateur.SiteId);
             return View(utilisateur);
         }
 
@@ -162,8 +146,8 @@ namespace CondorV.Controllers
 
             var utilisateur = await _context.Utilisateur
                 .Include(u => u.Agence)
-                .Include(u => u.Barrage)
                 .Include(u => u.Role)
+                .Include(u => u.Site)
                 .FirstOrDefaultAsync(m => m.Id == id);
             if (utilisateur == null)
             {

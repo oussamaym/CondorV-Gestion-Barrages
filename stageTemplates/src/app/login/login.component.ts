@@ -14,23 +14,20 @@ export class LoginComponent {
   constructor(private authService: AuthService, private router: Router) {}
 
   login(user : User) {
-    console.log('User object:', user);
     this.authService.login(user).subscribe(
       (response: any) => {
         // Assuming the response contains the JSON object with AccessToken and Expiration
         const token = response.accessToken;
         const expiration = response.expiration;
-        const utilisateur = response.utilisateur;
+        const utilisateurconnecte = response.utilisateurConnecte;
         const redirectUrl = response.redirectUrl;
         // Store the token in localStorage
-        localStorage.setItem('redirectUrl', JSON.stringify(utilisateur));
-        localStorage.setItem('utilisateur', JSON.stringify(utilisateur));
+        localStorage.setItem('utilisateurconnecte', JSON.stringify(utilisateurconnecte));
         localStorage.setItem('authToken', token);
- 
+        console.log('Utilisateur connecté : ', utilisateurconnecte);
         // Do something with the expiration if needed
-        console.log('Token expiration:', expiration);
          //redirect to list-agence.componenent.html
-          this.router.navigate(['/listAgence']);
+          this.router.navigate(['/listAgences']);
 
          //window.location.href = redirectUrl;
 
