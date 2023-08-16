@@ -15,7 +15,7 @@
 
 }
 .crud-spacer{
-    height: 30vh;
+    height: 12vh;
 }
 .crud-container{
     margin: auto;
@@ -36,11 +36,3 @@
 .inline-div {
     display: inline; /* or display: inline-block; */
   }
-.parent{
-    display: flex;
-    flex-wrap: wrap;
-  }
-.child{
-    flex-grow: 1;
-
-}

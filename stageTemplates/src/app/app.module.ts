@@ -23,6 +23,10 @@ import { DashboardComponent } from './dashboard/dashboard.component';
 import { ProductsComponent } from './products/products.component';
 import { StatisticsComponent } from './statistics/statistics.component';
 import { SettingsComponent } from './settings/settings.component';
+import { DetailBarrageComponent } from './detail-barrage/detail-barrage.component';
+import { AddUserDialogComponent } from './add-user-dialog/add-user-dialog.component';
+import { MatDialogModule } from '@angular/material/dialog';
+import { DetailUserComponent } from './detail-user/detail-user.component';
 
 @NgModule({
   declarations: [
@@ -37,7 +41,10 @@ import { SettingsComponent } from './settings/settings.component';
     DashboardComponent,
     ProductsComponent,
     StatisticsComponent,
-    SettingsComponent
+    SettingsComponent,
+    DetailBarrageComponent,
+    AddUserDialogComponent,
+    DetailUserComponent
   ],
   imports: [
     BrowserModule,
@@ -50,7 +57,8 @@ import { SettingsComponent } from './settings/settings.component';
     MatCardModule,
     MatToolbarModule,
     HttpClientModule,
-    FormsModule
+    FormsModule,
+    MatDialogModule 
   ],
   providers: [],
   bootstrap: [AppComponent]
