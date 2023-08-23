@@ -107,6 +107,22 @@ body {
   
   
 }
+.radio-options {
+  display: flex;
+  align-items: center;
+}
+
+.radio-option {
+  margin-right: 20px;
+  font-size: 14px;
+  margin-top : 10px;
+}
+
+.radio-option input[type="radio"] {
+  transform: scale(0.4);
+  margin-right: 5px;
+}
+
 
 /*Responsive*/
 @media screen and (max-width: 500px) {

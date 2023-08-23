@@ -1,43 +1,67 @@
 <section class="container">
-    
-    <header>
-        <h4><b>Nouveau Utilisateur</b></h4>
-    </header>
-    <form action="#" class="form">
+  <header>
+    <h4><b>Nouveau Utilisateur</b></h4>
+  </header>
+  <form action="#" class="form" #loginForm="ngForm">
+    <div class="input-box">
+      <label><b>Nom</b></label>
+      <input type="text" placeholder="Entrer le nom" required [(ngModel)]="user.nom" name="nom" />
+    </div>
+    <div class="input-box">
+      <label><b>Prenom</b></label>
+      <input type="text" placeholder="Entrer le prenom" required [(ngModel)]="user.prenom" name="prenom" />
+    </div>
+    <div class="column">
       <div class="input-box">
-        <label><b>Nom</b></label>
-        <input type="text" placeholder="Entrer le nom" required />
+        <label><b>Nom d'utilisateur</b></label>
+        <input type="text" placeholder="Entrer le Nom d'Utilisateur" required [(ngModel)]="user.userName" name="userName" />
       </div>
       <div class="input-box">
-        <label><b>Prenom</b></label>
-        <input type="text" placeholder="Entrer le prenom" required />
+        <label><b>Email</b></label>
+        <input type="text" placeholder="Entrer Email" required [(ngModel)]="user.email" name="email" />
+      </div>
+    </div>
+    <div class="input-box address">
+      <label><b>Mot de Passe</b></label>
+      <input type="password" placeholder="Entrer le Mot de Passe" required [(ngModel)]="user.password" name="password" />
+      <div class="column">
+        <div class="select-box">
+          <select  [(ngModel)]="user.roleId" name="roleId"> 
+            
+            <option *ngFor="let role of roles" [value]="role.id">{{ role.designation }}</option>
+          </select>
+        </div>
       </div>
       <div class="column">
-        <div class="input-box">
-          <label><b>Nom d'utilisateur</b></label>
-          <input type="text" placeholder="Entrer le Nom d'Utilisateur" required />
-        </div>
-        <div class="input-box">
-          <label><b>Email</b></label>
-          <input type="text" placeholder="Entrer Email" required />
-        </div>
+      <div class="select-box">
+        <select [(ngModel)]="user.siteId" name="siteId">
+          <option value="0">Tous les sites</option>
+          <option *ngFor="let site of sites" [value]="site.id">{{ site.nom }}</option>
+        </select>
       </div>
+      <div class="select-box">
+        <select [(ngModel)]="user.agenceId" name="agenceId">
+          <option value="0">Toutes les agences</option>
+          <option *ngFor="let agence of agences" [value]="agence.id">{{ agence.nom }}</option>
 
-      <div class="input-box address">
-        <label><b>Mot de Passe</b></label>
-        <input type="password" placeholder="Entrer le Mot de Passe" required />
-        
-        <div class="column">
-          <div class="select-box">
-            <select>
-              <option hidden>--- Choisir le role d'utilisateur</option>
-              <option>Admin Agence</option>
-              <option>Admin Barrage</option>
-            </select>
-          </div>
-        </div>
-
+        </select>
       </div>
-      <button class="btn btn-outline-success">Submit</button>
-    </form>
-  </section>
+    </div>
+    </div>
+    <div class="input-box">
+     
+      <div class="radio-options">
+        <label class="radio-label"><b>Etat du utilisateur :</b></label>
+        <label class="radio-option">
+          <input type="radio" [(ngModel)]="user.estActive" name="estActive" [value]="true" />
+          Actif
+        </label>
+        <label class="radio-option">
+          <input type="radio" [(ngModel)]="user.estActive" name="estActive" [value]="false" />
+          Inactif
+        </label>
+      </div>
+    </div>
+    <button (click)="ajouter(user)"class="btn btn-outline-success">Submit</button>
+  </form>
+</section>

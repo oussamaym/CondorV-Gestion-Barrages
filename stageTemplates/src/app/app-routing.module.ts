@@ -15,9 +15,11 @@ const routes: Routes = [
   {path:'listSites', component:ListSiteComponent},
   {path: 'listSites/:agenceId', component: ListSiteComponent },
   {path:'crudUser', component:CrudUserComponent},
+  { path: 'detailUser/:userId', component: DetailUserComponent },
   {path:'navside', component:SidenavComponent},
   {path:'settings', component:SettingsComponent},
   {path:'detailBarrage', component:DetailBarrageComponent},
+  {path:'detailBarrage/:siteId', component:DetailBarrageComponent},
   {path:'detailUser' , component:DetailUserComponent}
 ];
 

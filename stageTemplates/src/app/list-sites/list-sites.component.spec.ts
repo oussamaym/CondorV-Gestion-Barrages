@@ -1,16 +1,16 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { ListBarrageComponent } from './list-sites.component';
+import { ListSiteComponent } from './list-sites.component';
 
 describe('ListBarrageComponent', () => {
   let component: ListBarrageComponent;
-  let fixture: ComponentFixture<ListBarrageComponent>;
+  let fixture: ComponentFixture<ListSiteComponent>;
 
   beforeEach(() => {
     TestBed.configureTestingModule({
-      declarations: [ListBarrageComponent]
+      declarations: [ListSiteComponent]
     });
-    fixture = TestBed.createComponent(ListBarrageComponent);
+    fixture = TestBed.createComponent(ListSiteComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

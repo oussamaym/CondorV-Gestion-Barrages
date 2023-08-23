@@ -11,7 +11,6 @@ namespace CondorV.Models.BD
         public long Id { get; set; }
         public string Designation { get; set; }
         public bool ControleTotal { get; set; } = false;
-        public bool AucunDroit { get; set; }=false;
         public bool Creer { get; set; } =false;
         public bool Modifier { get; set; } =false;
         public bool Supprimer { get; set; } =false;

@@ -24,7 +24,7 @@ namespace CondorV.Models.BD
         public string LaRetenue { get; set; }
         //Table HSV
         //But de Site
-        //[JsonIgnore]
+        [JsonIgnore]
         public ICollection<Utilisateur>? Utilisateurs { get; set; }
         public long? AgenceId { get; set; }
         //[JsonIgnore]

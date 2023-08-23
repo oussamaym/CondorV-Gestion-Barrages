@@ -30,7 +30,8 @@
                     
 
                     <td>
-                        <button (click)="nav()" class="btn btn-outline-success">
+                        <button *ngIf="(utilisateurconnecte.siteId !=null && utilisateurconnecte.siteId === site.id) || (utilisateurconnecte.agenceId != null && (utilisateurconnecte.agenceId === site.agenceId && utilisateurconnecte.role.designation==='Admin AG')) || (utilisateurconnecte.role.designation === 'Admin')"
+                         (click)="nav(site.id)" class="btn btn-outline-success">
                             Se Connecter
                         </button>
                     </td>

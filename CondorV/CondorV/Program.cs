@@ -30,6 +30,25 @@ builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme).AddJw
         };
     }
     );
+builder.Services.AddAuthorization(options =>
+{
+    options.AddPolicy("ControleTotalPermission", policy =>
+        policy.RequireClaim("ControleTotalPermission", "ControleTotal"));
+
+    options.AddPolicy("AjouterPermission", policy =>
+        policy.RequireClaim("AjouterPermission", "Ajouter"));
+
+    options.AddPolicy("ModifierPermission", policy =>
+        policy.RequireClaim("ModifierPermission", "Modifier"));
+
+    options.AddPolicy("SupprimerPermission", policy =>
+        policy.RequireClaim("SuprrimerPermission", "Supprimer"));
+
+    options.AddPolicy("LecturePermission", policy =>
+        policy.RequireClaim("LecturePermission", "Lecture"));
+
+});
+
 builder.Services.AddCors(options => options.AddPolicy(name: "NgOrigins",
 policy =>
 {
@@ -50,8 +69,9 @@ app.UseStaticFiles();
 
 app.UseRouting();
 
-app.UseAuthorization();
 app.UseAuthentication();
+app.UseAuthorization();
+
 app.UseCors("NgOrigins");
 
 app.MapControllerRoute(

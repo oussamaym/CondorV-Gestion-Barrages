@@ -56,7 +56,7 @@ namespace CondorV.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("Id,Designation,ControleTotal,AucunDroit,Creer,Modifier,Supprimer,Lecture")] Role role)
+        public async Task<IActionResult> Create([Bind("Id,Designation,ControleTotal,Creer,Modifier,Supprimer,Lecture")] Role role)
         {
             if (ModelState.IsValid)
             {
@@ -88,7 +88,7 @@ namespace CondorV.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(long id, [Bind("Id,Designation,ControleTotal,AucunDroit,Creer,Modifier,Supprimer,Lecture")] Role role)
+        public async Task<IActionResult> Edit(long id, [Bind("Id,Designation,ControleTotal,Creer,Modifier,Supprimer,Lecture")] Role role)
         {
             if (id != role.Id)
             {

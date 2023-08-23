@@ -9,16 +9,16 @@
       </h3>
       <form class="login-form" #loginForm="ngForm">
         <mat-form-field appearance="outline">
-          <input  [(ngModel)]="user.Login" name="login" matInput placeholder="Nom d'utilisateur" class="custom-input">
+          <input  [(ngModel)]="authmodel.Login" name="login" matInput placeholder="Nom d'utilisateur" class="custom-input">
         </mat-form-field>
    
         <mat-form-field appearance="outline">
-          <input [(ngModel)]="user.Password" name="password" matInput type='password' placeholder="Password" class="custom-input">
+          <input [(ngModel)]="authmodel.Password" name="password" matInput type='password' placeholder="Password" class="custom-input">
         </mat-form-field>
       </form>
       <div class="buttons">
         <div class="login">
-          <button (click)="login(user)"  mat-raised-button id="scnt">Se Connecter</button>
+          <button (click)="login(authmodel)"  mat-raised-button id="scnt">Se Connecter</button>
         </div>     
       </div>
     </div>

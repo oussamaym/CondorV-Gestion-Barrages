@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
-import { User } from '../models/user';
 import { AuthService } from '../services/auth.service';
 import { Router } from '@angular/router';
+import { AuthModel } from '../models/authmodel';
 
 @Component({
   selector: 'app-login',
@@ -9,22 +9,21 @@ import { Router } from '@angular/router';
   styleUrls: ['./login.component.css']
 })
 export class LoginComponent {
-  user = new User();
+  authmodel = new AuthModel();
 
   constructor(private authService: AuthService, private router: Router) {}
 
-  login(user : User) {
-    this.authService.login(user).subscribe(
+  login(authmodel : AuthModel) {
+    this.authService.login(authmodel).subscribe(
       (response: any) => {
         // Assuming the response contains the JSON object with AccessToken and Expiration
         const token = response.accessToken;
         const expiration = response.expiration;
         const utilisateurconnecte = response.utilisateurConnecte;
-        const redirectUrl = response.redirectUrl;
+       
         // Store the token in localStorage
         localStorage.setItem('utilisateurconnecte', JSON.stringify(utilisateurconnecte));
         localStorage.setItem('authToken', token);
-        console.log('Utilisateur connecté : ', utilisateurconnecte);
         // Do something with the expiration if needed
          //redirect to list-agence.componenent.html
           this.router.navigate(['/listAgences']);

@@ -66,9 +66,17 @@ namespace CondorV.Controllers
         {
             if (ModelState.IsValid)
             {
+                if (utilisateur.SiteId == 0)
+                {
+                    utilisateur.SiteId = null;
+                }
+                if (utilisateur.AgenceId == 0)
+                {
+                    utilisateur.AgenceId = null;
+                }
                 utilisateur.Id = Guid.NewGuid();
-                _context.Add(utilisateur);
                 utilisateur.Password = BCrypt.Net.BCrypt.HashPassword(utilisateur.Password);
+                _context.Add(utilisateur);   
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
             }
@@ -113,6 +121,14 @@ namespace CondorV.Controllers
             {
                 try
                 {
+                    if (utilisateur.SiteId == 0)
+                    {
+                        utilisateur.SiteId = null;
+                    }
+                    if (utilisateur.AgenceId == 0)
+                    {
+                        utilisateur.AgenceId = null;
+                    }
                     utilisateur.Password = BCrypt.Net.BCrypt.HashPassword(utilisateur.Password);
                     _context.Update(utilisateur);
                     await _context.SaveChangesAsync();
