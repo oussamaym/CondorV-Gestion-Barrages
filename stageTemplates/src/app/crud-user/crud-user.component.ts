@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { AddUserDialogComponent } from '../add-user-dialog/add-user-dialog.component';
+import { AddRoleDialogComponent } from '../add-role-dialog/add-role-dialog.component';
 
 interface SideNavToggle {
   screenWidth: number;
@@ -32,8 +33,21 @@ export class CrudUserComponent {
       
     });
 
+
     dialogRef.afterClosed().subscribe(result => {
       console.log('Dialog closed with result:', result);
     });
   }
+  openDialoge(): void {
+    const dialogRef = this.dialog.open(AddRoleDialogComponent, {
+      width: '700px',
+      height:'700px',
+      
+    });
+
+    dialogRef.afterClosed().subscribe(result => {
+      console.log('Dialog closed with result:', result);
+    });
+  }
+  
 }

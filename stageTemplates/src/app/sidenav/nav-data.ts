@@ -1,4 +1,6 @@
-export const navbarData = [
+import { INavbarData } from "./helper";
+
+export const navbarData:INavbarData[] = [
     {
         routelink: 'site',
         icon : 'fal fa-home',
@@ -7,7 +9,17 @@ export const navbarData = [
     {
         routelink: 'grandeur',
         icon : 'fal fa-box',
-        label: 'Grandeur'
+        label: 'Grandeur',
+        items:[
+        {
+            routelink:'grandeur/list',
+            label:'GRD1'
+        },
+        {
+            routelink:'grandeur/list',
+            label:'GRD2'
+        }
+      ]
     },
     {
         routelink: 'crudUser',

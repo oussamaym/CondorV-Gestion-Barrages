@@ -8,6 +8,9 @@ import { SidenavComponent } from './sidenav/sidenav.component';
 import { SettingsComponent } from './settings/settings.component';
 import { DetailBarrageComponent } from './detail-barrage/detail-barrage.component';
 import { DetailUserComponent } from './detail-user/detail-user.component';
+import { DetailAgenceComponent } from './detail-agence/detail-agence.component';
+import { CrudGrandeurComponent } from './crud-grandeur/crud-grandeur.component';
+import { CrudAgenceComponent } from './crud-agence/crud-agence.component';
 
 const routes: Routes = [
   {path:'', component:LoginComponent},
@@ -18,7 +21,10 @@ const routes: Routes = [
   {path:'navside', component:SidenavComponent},
   {path:'settings', component:SettingsComponent},
   {path:'detailBarrage', component:DetailBarrageComponent},
-  {path:'detailUser' , component:DetailUserComponent}
+  {path:'detailUser' , component:DetailUserComponent},
+  {path:'detailAgence', component:DetailAgenceComponent},
+  {path:'crudGrandeur',component:CrudGrandeurComponent},
+  {path:'crudAgence' ,component:CrudAgenceComponent}
 ];
 
 @NgModule({

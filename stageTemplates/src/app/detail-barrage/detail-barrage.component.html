@@ -4,7 +4,7 @@
     <div class="crud-spacer"></div>
     <div class="login-container" >
         <div class="crud-container">
-            <h3>Barrage :</h3>
+            <h3>Site:</h3>
              
           </div>  
       <br>
@@ -28,6 +28,16 @@
             <td>
                 <span>
                     taille crayon 
+                </span>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <strong>Type de Site:</strong>
+            </td>
+            <td>
+                 <span>
+                  Barrage
                 </span>
             </td>
         </tr>
@@ -115,7 +125,7 @@
     </tbody>
 </table>
 <div class="crud-container">
-    <button class="btn btn-outline-success">  <i class="fas fa-pencil-alt"></i> Modifier</button>
+    <button class="btn btn-outline-success" (click)="openDialog()">  <i class="fas fa-pencil-alt"></i> Modifier</button>
     <a>&nbsp;</a><a>&nbsp;</a>
     <button class="btn btn-outline-success"><i class="fas fa-trash-alt"></i> Supprimer</button>
 </div>

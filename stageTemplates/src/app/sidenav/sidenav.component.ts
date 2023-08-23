@@ -1,5 +1,6 @@
 import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 import { navbarData } from './nav-data';
+import { INavbarData } from './helper';
 
 interface SideNavToggle {
   screenWidth: number;
@@ -18,6 +19,7 @@ export class SidenavComponent implements OnInit {
   collapsed = false;
   screenWidth = 0;
   navData = navbarData;
+  multiple : boolean =false;
 
   ngOnInit(): void {
     this.getUtilisateur();
@@ -31,6 +33,17 @@ export class SidenavComponent implements OnInit {
   closeSidenav(): void {
     this.collapsed = false;
     this.onToggleSideNav.emit({ collapsed: this.collapsed, screenWidth: this.screenWidth });
+  }
+
+  handleClick(item:INavbarData): void{
+    if(!this.multiple){
+      for(let modelItem of this.navData){
+        if(item !== modelItem && modelItem.expanded){
+            modelItem.expanded=false;
+        }
+      }
+    }
+    item.expanded = !item.expanded
   }
 
   getUtilisateur(): void {

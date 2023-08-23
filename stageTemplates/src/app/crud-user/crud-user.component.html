@@ -5,6 +5,7 @@
   <div class="crud-spacer"></div>
   <div class="login-container" >
     <div class="crud-container">
+      <button class="btn btn-outline-success" (click)="openDialoge()"><b>Creer un Role</b></button><a>&nbsp;</a><a>&nbsp;</a>
       <button class="btn btn-outline-success" (click)="openDialog()"><b>Creer un nouveau Utilisateur</b></button>
        <app-search></app-search> 
     </div>  
@@ -28,7 +29,7 @@
                                     Supprimer
                                   </button>
                                   <a>&nbsp;</a>
-                                  <button class="btn btn-outline-success">
+                                  <button class="btn btn-outline-success" (click)="openDialog()">
                                     Modifier
                                 </button>
                                 <a>&nbsp;</a>
