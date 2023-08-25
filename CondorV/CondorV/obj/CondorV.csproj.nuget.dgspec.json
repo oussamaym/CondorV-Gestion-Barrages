@@ -1,20 +1,20 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\m-str\\Desktop\\CondorV\\CondorV\\CondorV\\CondorV.csproj": {}
+    "C:\\Users\\elhan\\Desktop\\stage\\CondorV\\CondorV\\CondorV\\CondorV.csproj": {}
   },
   "projects": {
-    "C:\\Users\\m-str\\Desktop\\CondorV\\CondorV\\CondorV\\CondorV.csproj": {
+    "C:\\Users\\elhan\\Desktop\\stage\\CondorV\\CondorV\\CondorV\\CondorV.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\m-str\\Desktop\\CondorV\\CondorV\\CondorV\\CondorV.csproj",
+        "projectUniqueName": "C:\\Users\\elhan\\Desktop\\stage\\CondorV\\CondorV\\CondorV\\CondorV.csproj",
         "projectName": "CondorV",
-        "projectPath": "C:\\Users\\m-str\\Desktop\\CondorV\\CondorV\\CondorV\\CondorV.csproj",
-        "packagesPath": "C:\\Users\\m-str\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\m-str\\Desktop\\CondorV\\CondorV\\CondorV\\obj\\",
+        "projectPath": "C:\\Users\\elhan\\Desktop\\stage\\CondorV\\CondorV\\CondorV\\CondorV.csproj",
+        "packagesPath": "C:\\Users\\elhan\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\elhan\\Desktop\\stage\\CondorV\\CondorV\\CondorV\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "C:\\Users\\m-str\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\elhan\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [

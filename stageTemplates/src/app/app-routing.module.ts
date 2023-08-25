@@ -22,7 +22,7 @@ const routes: Routes = [
   {path:'settings', component:SettingsComponent},
   {path:'detailBarrage', component:DetailBarrageComponent},
   {path:'detailUser' , component:DetailUserComponent},
-  {path:'detailAgence', component:DetailAgenceComponent},
+  {path:'detailAgence/:agenceId', component:DetailAgenceComponent},
   {path:'crudGrandeur',component:CrudGrandeurComponent},
   {path:'crudAgence' ,component:CrudAgenceComponent}
 ];

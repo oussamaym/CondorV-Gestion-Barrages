@@ -11,14 +11,14 @@
       <br>
       <br>
 <table class="table table-bordered " id="tabback">
-    <tbody>
+    <tbody *ngIf="agence">
         <tr>
             <td>
                 <strong>Nom:</strong>
             </td>
             <td>
                 <span>
-                    Ag RBT
+                    {{ agence.nom }}
                 </span>
             </td>
         </tr>
@@ -28,7 +28,7 @@
             </td>
             <td>
                 <span>
-                    Rabat
+                    {{ agence.ville }}
                 </span>
             </td>
         </tr>

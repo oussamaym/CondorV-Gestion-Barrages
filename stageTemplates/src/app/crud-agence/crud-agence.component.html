@@ -5,13 +5,15 @@
     <div class="login-container" >
       <div class="crud-container">
         
-        <button class="btn btn-outline-success" ><b>Creer une Agence</b></button>
+        <button class="btn btn-outline-success" (click)="openDialogee()" ><b>Creer une Agence</b></button>
          <app-search></app-search> 
       </div>  
       <br>
             <table class="table table-bordered " id="tabback">
                     <thead>
                             <tr>
+                                <th>ID</th>
+
                                 <th>Agence</th>
                                 
                                 <th>Action</th>
@@ -20,19 +22,20 @@
                         </thead>
                         <tbody class="table-group-divider">
                            
-                            <tr>
-                                <td><b>Ag RBT</b></td>
+                            <tr *ngFor="let agence of agences">
+                              <td><b>{{agence.id }}</b></td>
+                              <td><b>{{agence.nom }}</b></td>
                                 
                                 <td>
-                                    <button class="btn btn-outline-success">
+                                    <button class="btn btn-outline-success" (click)="Suppr(agence.id)">
                                       Supprimer
                                     </button>
                                     <a>&nbsp;</a>
-                                    <button class="btn btn-outline-success" >
+                                    <button class="btn btn-outline-success" (click)="Modif()">
                                       Modifier
                                   </button>
                                   <a>&nbsp;</a>
-                                  <button class="btn btn-outline-success" routerLink="/detailAgence">
+                                  <button class="btn btn-outline-success" (click)="afficherDetailsAgence(agence.id)">
                                     Plus de Detail
                                 </button>
                                 </td>
