@@ -25,7 +25,7 @@ namespace CondorV.Controllers
 
         // GET: api/APISites
         [HttpGet]
-       // [Authorize(Roles = "AdminBAR,AdminAG,Admin" ,Policy = "LecturePermission")]
+       [Authorize(Roles = "AdminBAR,AdminAG,Admin" ,Policy = "LecturePermission")]
     
         public async Task<ActionResult<IEnumerable<Site>>> GetSite()
         {
@@ -46,7 +46,7 @@ namespace CondorV.Controllers
           {
               return NotFound();
           }
-            var site = await _context.Site.FindAsync(id);
+            var site = await _context.Site.Include(l => l.LocalisationBarr).Include(a => a.Agence).FirstOrDefaultAsync(s=> s.Id == id); ;
 
             if (site == null)
             {

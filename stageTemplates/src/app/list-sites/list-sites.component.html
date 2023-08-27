@@ -19,14 +19,14 @@
             <tbody class="table-group-divider">
                 <tr *ngFor="let site of sites">
                     <td><b>{{ site.nom }}</b></td>
-                    <td><b>{{ site.localisationBarr.designation}}</b></td>
+                    <td><b>{{ site.localisationBarr?.designation}}</b></td>
                     <td><b>{{ site.capacite }}</b></td>
                     <td><b>{{ site.type }}</b></td>
                     <td><b>{{ site.hauteurBarr }}</b></td>
                     <td><b>{{ site.villePlusProche }}</b></td>
                     <td><b>{{ site.dateMiseEnServ }}</b></td>
                     <td><b>{{ site.laRetenue }}</b></td>
-                    <td><b>{{ site.agence.nom }}</b></td>
+                    <td><b>{{ site.agence?.nom }}</b></td>
                     
 
                     <td>

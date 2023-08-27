@@ -1,5 +1,7 @@
 import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 import { navbarData } from './nav-data';
+import { INavbarData } from './helper';
+import { Router } from '@angular/router';
 
 interface SideNavToggle {
   screenWidth: number;
@@ -18,6 +20,8 @@ export class SidenavComponent implements OnInit {
   collapsed = false;
   screenWidth = 0;
   navData = navbarData;
+  multiple : boolean =false;
+  constructor(private router: Router) { }
 
   ngOnInit(): void {
     this.getUtilisateur();
@@ -33,6 +37,17 @@ export class SidenavComponent implements OnInit {
     this.onToggleSideNav.emit({ collapsed: this.collapsed, screenWidth: this.screenWidth });
   }
 
+  handleClick(item:INavbarData): void{
+    if(!this.multiple){
+      for(let modelItem of this.navData){
+        if(item !== modelItem && modelItem.expanded){
+            modelItem.expanded=false;
+        }
+      }
+    }
+    item.expanded = !item.expanded
+  }
+
   getUtilisateur(): void {
     this.utilisateurconnecte=localStorage.getItem('utilisateurconnecte');
     if (this.utilisateurconnecte !== null) {
@@ -41,5 +56,10 @@ export class SidenavComponent implements OnInit {
     } else {
       console.log('Erreur.');
     }
+  }
+  logout():void{
+    localStorage.clear();
+  
+  this.router.navigate(['/']);
   }
 }

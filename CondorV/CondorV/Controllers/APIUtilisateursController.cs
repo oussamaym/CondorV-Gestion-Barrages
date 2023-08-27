@@ -60,16 +60,28 @@ namespace CondorV.Controllers
         // PUT: api/APIUtilisateurs/5
         // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
         [HttpPut("{id}")]
-        [Authorize(Roles = "AdminAG,Admin", Policy = "ModifierPermission")]
-        public async Task<IActionResult> PutUtilisateur(Guid id, Utilisateur utilisateur)
+        //[Authorize(Roles = "AdminAG,Admin", Policy = "ModifierPermission")]
+        public async Task<IActionResult> PutUtilisateur(Guid id, Utilisateur EditedUser)
         {
-            if (id != utilisateur.Id)
+            if (id != EditedUser.Id)
             {
                 return BadRequest();
             }
-
+            var utilisateur = _context.Utilisateur.FirstOrDefault<Utilisateur>(obj => obj.Id == id);
+            utilisateur.Nom = EditedUser.Nom;
+            utilisateur.Prenom = EditedUser.Prenom;
+            utilisateur.UserName = EditedUser.UserName;
+            utilisateur.Email = EditedUser.Email;
+            utilisateur.EstActive = EditedUser.EstActive;
+            utilisateur.RoleId = EditedUser.RoleId;
+            utilisateur.SiteId = EditedUser.SiteId;
+            utilisateur.AgenceId = EditedUser.AgenceId;
+            Console.WriteLine("MDP BD : " + utilisateur.Password + " MDP EDIT : " + EditedUser.Password);
+            if (EditedUser.Password != utilisateur.Password)
+            {
+                utilisateur.Password = BCrypt.Net.BCrypt.HashPassword(EditedUser.Password);
+            }
             _context.Entry(utilisateur).State = EntityState.Modified;
-
             try
             {
                 await _context.SaveChangesAsync();

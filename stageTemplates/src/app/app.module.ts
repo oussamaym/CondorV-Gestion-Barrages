@@ -27,6 +27,16 @@ import { DetailBarrageComponent } from './detail-barrage/detail-barrage.componen
 import { AddUserDialogComponent } from './add-user-dialog/add-user-dialog.component';
 import { MatDialogModule } from '@angular/material/dialog';
 import { DetailUserComponent } from './detail-user/detail-user.component';
+import { DetailAgenceComponent } from './detail-agence/detail-agence.component';
+import { EditSiteDialogComponent } from './edit-site-dialog/edit-site-dialog.component';
+import {MatListModule} from '@angular/material/list';
+import {MatMenuModule} from '@angular/material/menu';
+import { AddRoleDialogComponent } from './add-role-dialog/add-role-dialog.component';
+import { CrudGrandeurComponent } from './crud-grandeur/crud-grandeur.component';
+import { SublevelMenuComponent } from './sidenav/sublevel-menu.component';
+import { CommonModule } from '@angular/common';
+import { CrudAgenceComponent } from './crud-agence/crud-agence.component';
+import { EditUserDialogComponent } from './edit-user-dialog/edit-user-dialog.component';
 
 @NgModule({
   declarations: [
@@ -44,7 +54,14 @@ import { DetailUserComponent } from './detail-user/detail-user.component';
     SettingsComponent,
     DetailBarrageComponent,
     AddUserDialogComponent,
-    DetailUserComponent
+    DetailUserComponent,
+    DetailAgenceComponent,
+    EditSiteDialogComponent,
+    AddRoleDialogComponent,
+    CrudGrandeurComponent,
+    SublevelMenuComponent,
+    CrudAgenceComponent,
+    EditUserDialogComponent
   ],
   imports: [
     BrowserModule,
@@ -58,7 +75,10 @@ import { DetailUserComponent } from './detail-user/detail-user.component';
     MatToolbarModule,
     HttpClientModule,
     FormsModule,
-    MatDialogModule 
+    MatDialogModule,
+    MatListModule,
+    MatMenuModule,
+    CommonModule
   ],
   providers: [],
   bootstrap: [AppComponent]

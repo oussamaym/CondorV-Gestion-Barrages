@@ -28,7 +28,7 @@ namespace CondorV.Models.BD
 
         [Required]
         [Column(TypeName = "varchar(500)")]
-        [JsonIgnore]
+        //[JsonIgnore]
         public string Password { get; set; }
 
         public DateTime? DateCreation { get; set; } = DateTime.Now;

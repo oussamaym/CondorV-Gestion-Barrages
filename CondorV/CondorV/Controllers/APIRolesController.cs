@@ -7,6 +7,8 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using CondorV.Data;
 using CondorV.Models.BD;
+using Microsoft.AspNetCore.Authorization;
+using System.Data;
 
 namespace CondorV.Controllers
 {
@@ -23,6 +25,7 @@ namespace CondorV.Controllers
 
         // GET: api/APIRoles
         [HttpGet]
+       // [Authorize(Roles = "Admin", Policy = "LecturePermission")]
         public async Task<ActionResult<IEnumerable<Role>>> GetRole()
         {
           if (_context.Role == null)
@@ -34,6 +37,7 @@ namespace CondorV.Controllers
 
         // GET: api/APIRoles/5
         [HttpGet("{id}")]
+        [Authorize(Roles = "Admin", Policy = "LecturePermission")]
         public async Task<ActionResult<Role>> GetRole(long id)
         {
           if (_context.Role == null)
@@ -53,6 +57,7 @@ namespace CondorV.Controllers
         // PUT: api/APIRoles/5
         // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
         [HttpPut("{id}")]
+        [Authorize(Roles = "Admin", Policy = "ModifierPermission")]
         public async Task<IActionResult> PutRole(long id, Role role)
         {
             if (id != role.Id)
@@ -84,6 +89,7 @@ namespace CondorV.Controllers
         // POST: api/APIRoles
         // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
         [HttpPost]
+        [Authorize(Roles = "Admin", Policy = "AjouterPermission")]
         public async Task<ActionResult<Role>> PostRole(Role role)
         {
           if (_context.Role == null)
@@ -98,6 +104,7 @@ namespace CondorV.Controllers
 
         // DELETE: api/APIRoles/5
         [HttpDelete("{id}")]
+        [Authorize(Roles = "Admin", Policy = "SupprimerPermission")]
         public async Task<IActionResult> DeleteRole(long id)
         {
             if (_context.Role == null)

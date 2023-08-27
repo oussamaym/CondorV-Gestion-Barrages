@@ -1,4 +1,4 @@
-import { Component , OnInit } from '@angular/core';
+import { Component , OnInit ,Inject} from '@angular/core';
 import { RoleService } from '../services/role.service';
 import { Role } from '../models/role';
 import { Site } from '../models/site';
@@ -8,7 +8,7 @@ import { AgenceService } from '../services/agence.service';
 import { Utilisateur } from '../models/user';
 import { UserService } from '../services/user.service';
 import { Router } from '@angular/router';
-import { MatDialogRef } from '@angular/material/dialog';
+import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
 
 @Component({
   selector: 'app-add-user-dialog',
@@ -17,34 +17,36 @@ import { MatDialogRef } from '@angular/material/dialog';
 })
 export class AddUserDialogComponent implements OnInit{
    roles: Role[] = [];
-   sites: Site[] = [];
+   //initialize sites with one element
+   sites: Site[] =[];
    agences: Agence[] = [];
    user: Utilisateur =  new Utilisateur('', '', '', '', null, '', false, 0, 0, 0);
-  constructor(private roleService: RoleService,private siteService: SiteService,private agenceService: AgenceService,private userService: UserService,private router: Router, private dialogRef: MatDialogRef<AddUserDialogComponent>) {
- 
-   }
-  ngOnInit(): void {
-    this.loadRoles();
-    this.loadAgences();
-    this.loadBarrages();
-   
-  }
+  constructor(private roleService: RoleService,private siteService: SiteService,private agenceService: AgenceService,private userService: UserService,private router: Router, private dialogRef: MatDialogRef<AddUserDialogComponent>,@Inject(MAT_DIALOG_DATA) public data: any) {
 
-  isActive: boolean = true; 
-  
-  loadRoles(): void {
-    this.roleService.getAllRoles().subscribe(
-      roles => {
-        this.roles = roles;
-        if (this.roles.length > 0) {
-          this.user.roleId = this.roles[0].id;
-        }
-      },
-      error => {
-        console.error('Error fetching Roles', error);
-      }
-    );
   }
+  ngOnInit(): void {
+    if(this.data.isSite==true&&this.data.isAdmin==false)
+    {
+    this.roles= this.data.role;
+    this.sites.push(this.data.site);
+    this.agences.push(this.data.agence);
+    this.user.siteId=this.data.site.id;
+    this.user.agenceId=this.data.agence.id;
+    this.user.roleId=this.data.role[0].id;
+    }
+    else if(this.data.isSite==false&&this.data.isAdmin==false)
+    {
+      this.roles= this.data.role;
+      this.sites.push(new Site(0,'Tous les sites',0,0,'','',0,0,'','','',0));
+      this.agences.push(new Agence(this.data.agence.id,this.data.agence.nom,this.data));
+      this.user.siteId=this.sites[0].id;
+      this.user.agenceId=this.data.agence.id;
+      this.user.roleId=this.data.role[0].id;
+  }
+  //this.loadRoles();
+    //this.loadAgences();
+    //this.loadBarrages();
+  } 
   ajouter(user: Utilisateur):void{
     var PostModel = user;
     this.userService.createUtilisateur(PostModel).subscribe(
@@ -58,6 +60,21 @@ export class AddUserDialogComponent implements OnInit{
       }
     );
   }
+  /*
+   loadRoles(): void {
+    this.roleService.getAllRoles().subscribe(
+      roles => {
+        this.roles = roles;
+        if (this.roles.length > 0) {
+          this.user.roleId = this.roles[0].id;
+        }
+      },
+      error => {
+        console.error('Error fetching Roles', error);
+      }
+    );
+  }
+  
   loadAgences(): void {
     this.agenceService.getAllAgences().subscribe(
       agences => {
@@ -77,5 +94,5 @@ export class AddUserDialogComponent implements OnInit{
         console.error('Error fetching Barrages:', error);
       }
     );
-  }
+  }*/
 }

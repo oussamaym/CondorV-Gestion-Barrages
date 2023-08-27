@@ -3,7 +3,7 @@
   <div class="crud-spacer"></div>
   <div class="login-container">
     <div class="crud-container">
-      <button class="btn btn-outline-success" (click)="openDialog()">
+      <button class="btn btn-outline-success" (click)="openAddUserDialog()">
         <b>Creer un nouveau Utilisateur</b>
       </button>
       <app-search></app-search>
@@ -18,13 +18,15 @@
         </tr>
       </thead>
       <tbody class="table-group-divider">
-        <tr *ngFor="let utilisateur of utilisateurs">
+        <tr *ngFor="let utilisateur of utilisateurs" >
           <td><b>{{ utilisateur.nom }} {{ utilisateur.prenom }}</b></td>
           <td><b>{{ utilisateur.role?.designation }}</b></td>
           <td>
             <button class="btn btn-outline-success">Supprimer</button>
             <a>&nbsp;</a>
-            <button class="btn btn-outline-success">Modifier</button>
+            <button class="btn btn-outline-success" (click)="openEditUserDialog(utilisateur.id)">
+              Modifier
+            </button>
             <a>&nbsp;</a>
             <button class="btn btn-outline-success" [routerLink]="['/detailUser', utilisateur.id]">
               Plus de Detail

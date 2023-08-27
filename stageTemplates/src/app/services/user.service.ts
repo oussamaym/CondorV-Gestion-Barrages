@@ -28,12 +28,12 @@ export class UserService {
   }
 
   // PUT: Update an existing Agence
-  updateAgence(utilisateur: Utilisateur): Observable<any> {
+  updateUtilisateur(utilisateur: Utilisateur): Observable<any> {
     return this.http.put<any>(`${this.baseUrl}/${utilisateur.id}`, utilisateur);
   }
 
   // DELETE: Delete an Agence by ID
-  deleteAgence(id: string): Observable<any> {
+  deleteUtilisateur(id: string): Observable<any> {
     return this.http.delete<any>(`${this.baseUrl}/${id}`);
   }
 }

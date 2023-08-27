@@ -27,23 +27,20 @@
       <div class="column">
         <div class="select-box">
           <select  [(ngModel)]="user.roleId" name="roleId"> 
-            
             <option *ngFor="let role of roles" [value]="role.id">{{ role.designation }}</option>
           </select>
         </div>
+      
       </div>
       <div class="column">
       <div class="select-box">
         <select [(ngModel)]="user.siteId" name="siteId">
-          <option value="0">Tous les sites</option>
           <option *ngFor="let site of sites" [value]="site.id">{{ site.nom }}</option>
         </select>
       </div>
       <div class="select-box">
         <select [(ngModel)]="user.agenceId" name="agenceId">
-          <option value="0">Toutes les agences</option>
           <option *ngFor="let agence of agences" [value]="agence.id">{{ agence.nom }}</option>
-
         </select>
       </div>
     </div>

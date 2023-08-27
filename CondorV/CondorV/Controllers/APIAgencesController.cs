@@ -37,7 +37,7 @@ namespace CondorV.Controllers
 
         // GET: api/APIAgences/5
         [HttpGet("{id}")]
-        [Authorize(Roles = "AdminAG,Admin", Policy = "LecturePermission")]
+        //[Authorize(Roles = "AdminAG,Admin", Policy = "LecturePermission")]
         public async Task<ActionResult<Agence>> GetAgence(long id)
         {
           if (_context.Agence == null)

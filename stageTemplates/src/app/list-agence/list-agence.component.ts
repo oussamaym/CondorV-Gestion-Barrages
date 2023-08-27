@@ -14,6 +14,7 @@ export class ListAgenceComponent implements OnInit {
 
   constructor(private agenceService: AgenceService,private router: Router) {}
   nav(agenceId: number): void {
+    localStorage.setItem('agenceId', agenceId.toString());
     this.router.navigate(['/listSites', agenceId]);
   }
   ngOnInit(): void {
