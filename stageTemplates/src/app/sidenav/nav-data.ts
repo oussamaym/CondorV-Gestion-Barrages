@@ -22,6 +22,11 @@ export const navbarData:INavbarData[] = [
       ]
     },
     {
+        routelink: 'crudAgence',
+        icon : 'fal fa-box',
+        label: 'Agence',
+    },
+    {
         routelink: '',
         icon : 'fal fa-user',
         label: 'Utilisateur',

@@ -37,7 +37,7 @@ namespace CondorV.Controllers
 
         // GET: api/APIRoles/5
         [HttpGet("{id}")]
-        [Authorize(Roles = "Admin", Policy = "LecturePermission")]
+        //[Authorize(Roles = "Admin", Policy = "LecturePermission")]
         public async Task<ActionResult<Role>> GetRole(long id)
         {
           if (_context.Role == null)
