@@ -68,9 +68,6 @@ namespace CondorV.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<long>("Id"), 1L, 1);
 
-                    b.Property<bool>("AucunDroit")
-                        .HasColumnType("bit");
-
                     b.Property<bool>("ControleTotal")
                         .HasColumnType("bit");
 

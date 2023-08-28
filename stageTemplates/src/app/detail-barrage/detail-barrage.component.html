@@ -10,14 +10,14 @@
       <br>
       <br>
 <table class="table table-bordered " id="tabback">
-    <tbody>
+    <tbody *ngIf="site">
         <tr>
             <td>
                 <strong>Nom:</strong>
             </td>
             <td>
                 <span>
-                    Agdez
+                    {{site.nom}}
                 </span>
             </td>
         </tr>
@@ -27,7 +27,7 @@
             </td>
             <td>
                 <span>
-                    taille crayon 
+                    {{site.localisationBarr?.designation}}
                 </span>
             </td>
         </tr>
@@ -37,7 +37,7 @@
             </td>
             <td>
                  <span>
-                  Barrage
+                  {{site.type}}
                 </span>
             </td>
         </tr>
@@ -47,17 +47,17 @@
             </td>
             <td>
                  <span>
-                  12
+                  {{site.capacite}}
                 </span>
             </td>
         </tr>
         <tr>
             <td>
-                <strong>VillePlusProche :</strong>
+                <strong>Ville Plus Proche :</strong>
             </td>
             <td>
                 <span>
-                    Rabat
+                    {{site.villePlusProche}}
                 </span>
             </td>
         </tr>
@@ -67,7 +67,7 @@
             </td>
             <td>
                 <span>
-                    27
+                    {{site.hauteurBarr}}
                 </span>
             </td>
         </tr>
@@ -77,27 +77,17 @@
             </td>
             <td>
                 <span>
-                    24
+                    {{site.distVillePlusProche}}
                 </span>
             </td>
         </tr>
         <tr>
             <td>
-                <strong>CodeRetNormal :</strong>
+                <strong>Code Retenue Normal :</strong>
             </td>
             <td>
                 <span>
-                    Rabat
-                </span>
-            </td>
-        </tr>
-        <tr>
-            <td>
-                <strong>Date Mise En Service :</strong>
-            </td>
-            <td>
-                <span>
-                    12/06/1998
+                   {{site.codeRetNormal}}
                 </span>
             </td>
         </tr>
@@ -107,21 +97,20 @@
             </td>
             <td>
                 <span>
-                    12/06/1998
+                    {{site.dateMiseEnServ | date:'dd/MM/yyyy'}}
                 </span>
             </td>
         </tr>
         <tr>
             <td>
-                <strong>Retenue</strong>
+                <strong>La Retenue :</strong>
             </td>
             <td>
                 <span>
-                    12/06/1998
+                    {{site.laRetenue}}
                 </span>
             </td>
         </tr>
-            
     </tbody>
 </table>
 <div class="crud-container">

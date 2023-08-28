@@ -19,18 +19,19 @@
             <tbody class="table-group-divider">
                 <tr *ngFor="let site of sites">
                     <td><b>{{ site.nom }}</b></td>
-                    <td><b>{{ site.localisationBarr.designation}}</b></td>
+                    <td><b>{{ site.localisationBarr?.designation}}</b></td>
                     <td><b>{{ site.capacite }}</b></td>
                     <td><b>{{ site.type }}</b></td>
                     <td><b>{{ site.hauteurBarr }}</b></td>
                     <td><b>{{ site.villePlusProche }}</b></td>
                     <td><b>{{ site.dateMiseEnServ }}</b></td>
                     <td><b>{{ site.laRetenue }}</b></td>
-                    <td><b>{{ site.agence.nom }}</b></td>
+                    <td><b>{{ site.agence?.nom }}</b></td>
                     
 
                     <td>
-                        <button (click)="nav()" class="btn btn-outline-success">
+                        <button *ngIf="(utilisateurconnecte.siteId !=null && utilisateurconnecte.siteId === site.id) || (utilisateurconnecte.agenceId != null && (utilisateurconnecte.agenceId === site.agenceId && utilisateurconnecte.role.designation==='Admin AG')) || (utilisateurconnecte.role.designation === 'Admin')"
+                         (click)="nav(site.id)" class="btn btn-outline-success">
                             Se Connecter
                         </button>
                     </td>

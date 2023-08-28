@@ -15,20 +15,22 @@ import { CrudAgenceComponent } from './crud-agence/crud-agence.component';
 const routes: Routes = [
   {path:'', component:LoginComponent},
   {path:'listAgences', component:ListAgenceComponent},
-  {path:'listSites', component:ListSiteComponent},
-  {path: 'listSites/:agenceId', component: ListSiteComponent },
-  {path:'crudUser', component:CrudUserComponent},
+  {path:'listSites/:agenceId', component: ListSiteComponent },
+  {path:'crudUser/:value', component:CrudUserComponent},
+  {path:'detailUser/:userId', component: DetailUserComponent },
   {path:'navside', component:SidenavComponent},
   {path:'settings', component:SettingsComponent},
   {path:'detailBarrage', component:DetailBarrageComponent},
+  {path:'detailAgence', component:DetailAgenceComponent},
   {path:'detailUser' , component:DetailUserComponent},
   {path:'detailAgence/:agenceId', component:DetailAgenceComponent},
   {path:'crudGrandeur',component:CrudGrandeurComponent},
-  {path:'crudAgence' ,component:CrudAgenceComponent}
+  {path:'crudAgence' ,component:CrudAgenceComponent},
+  
 ];
 
 @NgModule({
-  imports: [RouterModule.forRoot(routes)],
+  imports: [RouterModule.forRoot(routes,{ useHash: true })],
   exports: [RouterModule]
 })
 export class AppRoutingModule { }

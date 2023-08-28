@@ -4,9 +4,11 @@ using CondorV.Models.BD;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.IdentityModel.Tokens;
 using System.IdentityModel.Tokens.Jwt;
 using System.Security.Claims;
+using System.Security.Cryptography;
 using System.Text;
 using System.Text.Json;
 
@@ -27,15 +29,12 @@ namespace CondorV.Controllers
             _httpContext = httpContext;
         }
         [HttpPost("login")]
-        //[AllowAnonymous]
+        [AllowAnonymous]
         public async Task<ActionResult> Login(AuthModel auth)
         {
             try
             {
-                //Si login est un nom d'utilisateur (UserName)
-                Utilisateur? connectedUtilisateur = _authContext.Utilisateur
-                    .FirstOrDefault<Utilisateur>(obj => (obj.UserName.Equals(auth.Login) || obj.Email.Equals(auth.Login)) && obj.EstActive == true /*&& obj.Role != null*/);
-                Console.WriteLine("Test password : " + connectedUtilisateur.Password);
+                Utilisateur? connectedUtilisateur = _authContext.Utilisateur.Include(r => r.Role).Include(s => s.Site).FirstOrDefault<Utilisateur>(obj => (obj.UserName.Equals(auth.Login) || obj.Email.Equals(auth.Login)) && obj.EstActive == true);
                 if (connectedUtilisateur is null || BCrypt.Net.BCrypt.Verify(auth.Password, connectedUtilisateur.Password) == false)
                 {
                     return base.BadRequest(new
@@ -44,38 +43,47 @@ namespace CondorV.Controllers
                         Erreur = new
                         {
                             code = "400",
-                            message="Informations saisies incorrectes",
+                            message = "Informations saisies incorrectes",
                             id = this.HttpContext.TraceIdentifier
                         }
                     });
                 }
-                Console.WriteLine("test 2 ");
                 var claims = new List<Claim>
                 {
-
                     new Claim(ClaimTypes.NameIdentifier,connectedUtilisateur.UserName),
                     new Claim(ClaimTypes.PrimarySid,connectedUtilisateur.Id.ToString()),
+
                 };
 
-
                 // ajouter les permissions
-                /*string[] permissions = Array.Empty<string>();
-                if (connectedUtilisateur.Role is not null)
+                if (connectedUtilisateur.Role != null)
                 {
-                   claims.Add
-                    
+                    var role = connectedUtilisateur.Role;
+
+                    if (role.ControleTotal)
+                    {
+                        claims.Add(new Claim("ControleTotalPermission", "ControleTotal"));
+                    }
+
+                    if (role.Creer)
+                    {
+                        claims.Add(new Claim("AjouterPermission", "Ajouter"));
+                    }
+                    if (role.Modifier)
+                    {
+                        claims.Add(new Claim("ModifierPermission", "Modifier"));
+                    }
+                    if (role.Lecture)
+                    {
+                        claims.Add(new Claim("LecturePermission", "Lecture"));
+                    }
+                    if (role.Supprimer)
+                    {
+                        claims.Add(new Claim("SupprimerPermission", "Supprimer"));
+                    }
+                    claims.Add(new Claim(ClaimTypes.Role, role.Designation));
                 }
-                claims.AddRange(roles.Select(x => new Claim(ClaimTypes.Role, x)));
-                //claims.AddRange(roles.Select(x => new Claim("Role", x)));
-
-                */
-                 Console.WriteLine("##############################################################");
-                 Console.WriteLine(JsonSerializer.Serialize(claims));
-                  Console.WriteLine("##############################################################");
-                
                 var token = CreateToken(claims);
-
-
                 // Debut Log Authentification
                 /* var logauthentification = new Logauthent
                  {
@@ -88,13 +96,11 @@ namespace CondorV.Controllers
                 //await _authContext.SaveChangesAsync();
                 // Debut Log Authentification
 
-                var viewUrl = "https://localhost:7109/Home/Index";
                 return Ok(new
                 {
                     AccessToken = new JwtSecurityTokenHandler().WriteToken(token),
                     Expiration = token.ValidTo,
                     UtilisateurConnecte = connectedUtilisateur,
-                    RedirectUrl = viewUrl
                 });
             }
             catch (Exception ex)
@@ -114,6 +120,41 @@ namespace CondorV.Controllers
                );
             }
         }
+        [HttpGet("connecte")]
+
+        public async Task<ActionResult> GetConnected()
+        {
+            try
+            {
+
+                var claimsIdentity = this.User.Identity as ClaimsIdentity;
+                Console.WriteLine("ClaimsIdentity:");
+                foreach (var claim in claimsIdentity.Claims)
+                {
+                    Console.WriteLine($"Claim Type: {claim.Type}, Claim Value: {claim.Value}");
+                }
+                var userId = claimsIdentity.FindFirst(ClaimTypes.PrimarySid)?.Value;
+                var utilisateur = _authContext.Utilisateur.FirstOrDefault<Utilisateur>(obj => obj.Id == Guid.Parse(userId));
+
+                return Ok("200");
+            }
+            catch (Exception ex)
+            {
+                return base.StatusCode(
+             StatusCodes.Status500InternalServerError,
+             new
+             {
+                 Status = StatusCodes.Status500InternalServerError,
+                 Erreur = new
+                 {
+                     code = "500",
+                     message = ex.Message,
+                     id = this.HttpContext.TraceIdentifier
+                 }
+             }
+             );
+            }
+        }
         private JwtSecurityToken CreateToken(List<Claim> claims)
         {
 
@@ -127,12 +168,38 @@ namespace CondorV.Controllers
                 expires: DateTime.UtcNow.AddMinutes(tokenValidityInMinutes),
                 signingCredentials: new SigningCredentials(authSigningKey, SecurityAlgorithms.HmacSha256)
                 );
+
+
             return token;
         }
-        [HttpGet("View")]
-        public IActionResult GetDotNetView()
+
+        /*private static string GenerateRefreshToken()
         {
-            return RedirectToAction("Index", "Utilisateurs");
+            var randomNumber = new byte[64];
+            using var rng = RandomNumberGenerator.Create();
+            rng.GetBytes(randomNumber);
+            return Convert.ToBase64String(randomNumber);
         }
+        private ClaimsPrincipal? GetPrincipalFromExpiredToken(string? token)
+        {
+            var tokenValidationParameters = new TokenValidationParameters
+            {
+                ValidateAudience = false,
+                ValidateIssuer = false,
+                ValidateIssuerSigningKey = true,
+                IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(_configuration["JWT:Key"])),
+                ValidateLifetime = false
+            };
+
+            var tokenHandler = new JwtSecurityTokenHandler();
+            var principal = tokenHandler.ValidateToken(token, tokenValidationParameters, out SecurityToken securityToken);
+            if (securityToken is not JwtSecurityToken jwtSecurityToken || !jwtSecurityToken.Header.Alg.Equals(SecurityAlgorithms.HmacSha256, StringComparison.InvariantCultureIgnoreCase))
+                throw new SecurityTokenException("Invalid token");
+
+            return principal;
+
+        }
+        */
+
     }
-    }
+}

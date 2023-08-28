@@ -30,11 +30,32 @@ builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme).AddJw
         };
     }
     );
-builder.Services.AddCors(options => options.AddPolicy(name: "NgOrigins",
-policy =>
+builder.Services.AddAuthorization(options =>
 {
-    policy.WithOrigins("http://localhost:4200").AllowAnyMethod().AllowAnyHeader();
-}));
+    options.AddPolicy("ControleTotalPermission", policy =>
+        policy.RequireClaim("ControleTotalPermission", "ControleTotal"));
+
+    options.AddPolicy("AjouterPermission", policy =>
+        policy.RequireClaim("AjouterPermission", "Ajouter"));
+
+    options.AddPolicy("ModifierPermission", policy =>
+        policy.RequireClaim("ModifierPermission", "Modifier"));
+
+    options.AddPolicy("SupprimerPermission", policy =>
+        policy.RequireClaim("SuprrimerPermission", "Supprimer"));
+
+    options.AddPolicy("LecturePermission", policy =>
+        policy.RequireClaim("LecturePermission", "Lecture"));
+
+});
+
+
+builder.Services.AddCors(options => {options.AddPolicy("AllowNgOrigins",
+    builder =>
+    {
+        builder.WithOrigins("http://localhost:4200").AllowAnyHeader().AllowAnyMethod();
+    });
+});
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.
@@ -45,15 +66,15 @@ if (!app.Environment.IsDevelopment())
     app.UseHsts();
 }
 
+
+
 app.UseHttpsRedirection();
 app.UseStaticFiles();
-
 app.UseRouting();
 
-app.UseAuthorization();
+app.UseCors("AllowNgOrigins");
 app.UseAuthentication();
-app.UseCors("NgOrigins");
-
+app.UseAuthorization();
 app.MapControllerRoute(
     name: "default",
     pattern: "{controller=Home}/{action=Login}/{id?}");

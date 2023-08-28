@@ -9,14 +9,17 @@ import { Router } from '@angular/router';
   styleUrls: ['./list-agence.component.css']
 })
 export class ListAgenceComponent implements OnInit {
+  utilisateurconnecte: any | null = null;
   agences: Agence[] = [];
 
   constructor(private agenceService: AgenceService,private router: Router) {}
   nav(agenceId: number): void {
+    localStorage.setItem('agenceId', agenceId.toString());
     this.router.navigate(['/listSites', agenceId]);
   }
   ngOnInit(): void {
     this.loadAgences();
+    this.getUtilisateur();
   }
 
   loadAgences(): void {
@@ -28,5 +31,14 @@ export class ListAgenceComponent implements OnInit {
         console.error('Error fetching Agences:', error);
       }
     );
+  }
+  getUtilisateur(): void {
+    this.utilisateurconnecte=localStorage.getItem('utilisateurconnecte');
+    if (this.utilisateurconnecte !== null) {
+      this.utilisateurconnecte = JSON.parse(this.utilisateurconnecte);
+      console.log('Utilisateur connecté : ', this.utilisateurconnecte);
+    } else {
+      console.log('Utilisateur non connecté.');
+    }
   }
 }

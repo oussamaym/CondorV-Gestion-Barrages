@@ -10,14 +10,14 @@
       <br>
       <br>
 <table class="table table-bordered " id="tabback">
-    <tbody>
-        <tr>
+    <tbody *ngIf="utilisateur">
+        <tr >
             <td>
                 <strong>Nom:</strong>
             </td>
             <td>
                 <span>
-                    Oussama
+                    {{utilisateur.nom}}
                 </span>
             </td>
         </tr>
@@ -27,7 +27,7 @@
             </td>
             <td>
                 <span>
-                    ElYassmine
+                    {{utilisateur.prenom}}
                 </span>
             </td>
         </tr>
@@ -37,7 +37,7 @@
             </td>
             <td>
                  <span>
-                  oussamaym
+                  {{utilisateur.userName}}
                 </span>
             </td>
         </tr>
@@ -47,7 +47,7 @@
             </td>
             <td>
                 <span>
-                    Oussamaym@gmail.com
+                    {{utilisateur.email}}
                 </span>
             </td>
         </tr>
@@ -57,7 +57,7 @@
             </td>
             <td>
                 <span>
-                    Admin Superieur
+                    {{utilisateur.role?.designation}}
                 </span>
             </td>
         </tr>
@@ -67,7 +67,7 @@
             </td>
             <td>
                 <span>
-                    Oui
+                    {{ utilisateur.estActive ? 'Oui' : 'Non' }}
                 </span>
             </td>
         </tr>
@@ -77,7 +77,7 @@
             </td>
             <td>
                 <span>
-                    Agdez
+                    {{utilisateur.site?.nom}}
                 </span>
             </td>
         </tr>
@@ -87,17 +87,7 @@
             </td>
             <td>
                 <span>
-                    12/06/1998
-                </span>
-            </td>
-        </tr>
-        <tr>
-            <td>
-                <strong>Agence :</strong>
-            </td>
-            <td>
-                <span>
-                    Ag RBT
+                    {{utilisateur.dateCreation | date:'dd/MM/yyyy'}}
                 </span>
             </td>
         </tr>

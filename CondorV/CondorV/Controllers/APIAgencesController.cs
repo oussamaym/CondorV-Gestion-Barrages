@@ -7,6 +7,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using CondorV.Data;
 using CondorV.Models.BD;
+using Microsoft.AspNetCore.Authorization;
 
 namespace CondorV.Controllers
 {
@@ -23,6 +24,7 @@ namespace CondorV.Controllers
 
         // GET: api/APIAgences
         [HttpGet]
+        //[Authorize(Roles = "AdminAG,Admin", Policy = "LecturePermission")]
         public async Task<ActionResult<IEnumerable<Agence>>> GetAgence()
         {
           if (_context.Agence == null)
@@ -35,6 +37,7 @@ namespace CondorV.Controllers
 
         // GET: api/APIAgences/5
         [HttpGet("{id}")]
+        //[Authorize(Roles = "AdminAG,Admin", Policy = "LecturePermission")]
         public async Task<ActionResult<Agence>> GetAgence(long id)
         {
           if (_context.Agence == null)
@@ -54,6 +57,7 @@ namespace CondorV.Controllers
         // PUT: api/APIAgences/5
         // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
         [HttpPut("{id}")]
+        [Authorize(Roles = "AdminAG,Admin", Policy = "ModifierPermission")]
         public async Task<IActionResult> PutAgence(long id, Agence agence)
         {
             if (id != agence.Id)
@@ -85,6 +89,7 @@ namespace CondorV.Controllers
         // POST: api/APIAgences
         // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
         [HttpPost]
+        [Authorize(Roles = "AdminAG,Admin", Policy = "AjouterPermission")]
         public async Task<ActionResult<Agence>> PostAgence(Agence agence)
         {
           if (_context.Agence == null)
@@ -99,6 +104,7 @@ namespace CondorV.Controllers
 
         // DELETE: api/APIAgences/5
         [HttpDelete("{id}")]
+        [Authorize(Roles = "AdminAG,Admin", Policy = "SupprimerPermission")]
         public async Task<IActionResult> DeleteAgence(long id)
         {
             if (_context.Agence == null)

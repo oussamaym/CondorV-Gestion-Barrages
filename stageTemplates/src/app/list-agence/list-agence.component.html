@@ -13,7 +13,8 @@
                     <td><b>{{ agence.nom }}</b></td>
                     <td><b>{{ agence.ville }}</b></td>
                     <td>
-                        <button class="btn btn-outline-success" (click)="nav(agence.id)">
+                        <button   *ngIf="(utilisateurconnecte.agenceId != null && utilisateurconnecte.agenceId === agence.id) || ( utilisateurconnecte.site != null && utilisateurconnecte.site.agenceId === agence.id) || (utilisateurconnecte.role.designation === 'Admin')"
+                         class="btn btn-outline-success" (click)="nav(agence.id)">
                             Acceder
                         </button>
                     </td>

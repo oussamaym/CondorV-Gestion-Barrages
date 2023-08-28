@@ -37,6 +37,7 @@ import { CommonModule } from '@angular/common';
 import { CrudAgenceComponent } from './crud-agence/crud-agence.component';
 import { AddAgenceDialogComponent } from './add-agence-dialog/add-agence-dialog.component';
 import { EditAgenceDialogComponent } from './edit-agence-dialog/edit-agence-dialog.component';
+import { EditUserDialogComponent } from './edit-user-dialog/edit-user-dialog.component';
 
 @NgModule({
   declarations: [
@@ -62,7 +63,8 @@ import { EditAgenceDialogComponent } from './edit-agence-dialog/edit-agence-dial
     SublevelMenuComponent,
     CrudAgenceComponent,
     AddAgenceDialogComponent,
-    EditAgenceDialogComponent
+    EditAgenceDialogComponent,
+    EditUserDialogComponent
   ],
   imports: [
     BrowserModule,

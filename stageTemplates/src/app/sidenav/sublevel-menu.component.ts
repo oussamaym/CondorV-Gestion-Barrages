@@ -20,7 +20,7 @@ import { animate, state, style, transition, trigger } from '@angular/animations'
         >
         <i class="subleel-link-icon fa fa-circle"></i>
         <span class="sublevel-link-text" *ngIf="collapsed">{{item.label}}</span>
-        <i *ngIf="item.items && collapsed" class="menu-collapse-icon"
+        <i *ngIf="item.items && collapsed" class="menu-collapse-icon "
           [ngClass]="!item.expanded ? 'fal fa-angle-right' : 'fal fa-angle-down' "
         ></i>
         </a>

@@ -1,6 +1,7 @@
 import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 import { navbarData } from './nav-data';
 import { INavbarData } from './helper';
+import { Router } from '@angular/router';
 
 interface SideNavToggle {
   screenWidth: number;
@@ -20,6 +21,7 @@ export class SidenavComponent implements OnInit {
   screenWidth = 0;
   navData = navbarData;
   multiple : boolean =false;
+  constructor(private router: Router) { }
 
   ngOnInit(): void {
     this.getUtilisateur();
@@ -50,9 +52,14 @@ export class SidenavComponent implements OnInit {
     this.utilisateurconnecte=localStorage.getItem('utilisateurconnecte');
     if (this.utilisateurconnecte !== null) {
       this.utilisateurconnecte = JSON.parse(this.utilisateurconnecte);
-      console.log('Utilisateur connecté : ', this.utilisateurconnecte);
+     
     } else {
-      console.log('Utilisateur non connecté.');
+      console.log('Erreur.');
     }
+  }
+  logout():void{
+    localStorage.clear();
+  
+  this.router.navigate(['/']);
   }
 }

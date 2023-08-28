@@ -2,7 +2,7 @@ import { INavbarData } from "./helper";
 
 export const navbarData:INavbarData[] = [
     {
-        routelink: 'site',
+        routelink: 'detailBarrage',
         icon : 'fal fa-home',
         label: 'Site'
     },
@@ -22,14 +22,29 @@ export const navbarData:INavbarData[] = [
       ]
     },
     {
-        routelink: 'crudUser',
+        routelink: 'crudAgence',
+        icon : 'fal fa-box',
+        label: 'Agence',
+    },
+    {
+        routelink: '',
         icon : 'fal fa-user',
-        label: 'Utilisateur'
+        label: 'Utilisateur',
+        items:[
+            {
+                routelink:'/crudUser/BAR',
+                label:'Barrage'
+            },
+            {
+                routelink:'/crudUser/AG',
+                label:'Agence'
+            }
+          ]
     },
     {
         routelink: 'settings',
         icon : 'fal fa-cog',
-        label: 'parametres'
+        label: 'Parametres'
     },
 
 ];

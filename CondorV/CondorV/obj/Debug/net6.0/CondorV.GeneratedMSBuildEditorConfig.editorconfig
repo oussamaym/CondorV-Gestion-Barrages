@@ -36,6 +36,26 @@ build_metadata.AdditionalFiles.CssScope =
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWdlbmNlc1xJbmRleC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
+[C:/Users/elhan/Desktop/stage/CondorV/CondorV/CondorV/Views/APIRoles/Create.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQVBJUm9sZXNcQ3JlYXRlLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/elhan/Desktop/stage/CondorV/CondorV/CondorV/Views/APIRoles/Delete.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQVBJUm9sZXNcRGVsZXRlLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/elhan/Desktop/stage/CondorV/CondorV/CondorV/Views/APIRoles/Details.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQVBJUm9sZXNcRGV0YWlscy5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/elhan/Desktop/stage/CondorV/CondorV/CondorV/Views/APIRoles/Edit.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQVBJUm9sZXNcRWRpdC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/elhan/Desktop/stage/CondorV/CondorV/CondorV/Views/APIRoles/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQVBJUm9sZXNcSW5kZXguY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
 [C:/Users/elhan/Desktop/stage/CondorV/CondorV/CondorV/Views/Home/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxJbmRleC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
