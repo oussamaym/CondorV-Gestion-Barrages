@@ -1,0 +1,16 @@
+<section class="container">
+  <header>
+    <h4><b>Nouvelle Agence</b></h4>
+  </header>
+  <form class="form">
+    <div class="input-box">
+      <label><b>Nom</b></label>
+      <input type="text" placeholder="Entrer le nom" required name="nom" [(ngModel)]="nom" />
+    </div>
+    <div class="input-box">
+      <label><b>Ville</b></label>
+      <input type="text" placeholder="Entrer la ville" required name="ville" [(ngModel)]="ville" />
+    </div>
+    <button class="btn btn-outline-success" (click)="onSubmit()">Submit</button>
+  </form>
+</section>

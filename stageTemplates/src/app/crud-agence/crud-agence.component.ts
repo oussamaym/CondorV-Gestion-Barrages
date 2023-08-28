@@ -3,6 +3,8 @@ import { MatDialog } from '@angular/material/dialog';
 import { HttpClient } from '@angular/common/http';
 import { Router } from '@angular/router';
 import { AgenceService } from '../services/agence.service';
+import { AddAgenceDialogComponent } from '../add-agence-dialog/add-agence-dialog.component';
+import { EditAgenceDialogComponent } from '../edit-agence-dialog/edit-agence-dialog.component';
 interface SideNavToggle {
   screenWidth: number;
   collapsed : boolean;
@@ -46,20 +48,21 @@ export class CrudAgenceComponent implements OnInit {
       this.router.navigate(['detailAgence', id]);
     }
     openDialogee(): void {
-     /* const dialogRef = this.dialog.open(AddAgenceDialogComponent, {
+     const dialogRef = this.dialog.open(AddAgenceDialogComponent, {
         width: '700px',
         height:'700px',
         
-      });*/
+      });
   
     }
     Suppr(idAgence: number): void {
       // Effectuer une requête DELETE à votre API en utilisant l'ID passé en argument
-      this.http.delete(`/api/APIAgences/${idAgence}`)
-        .subscribe(
+      this.agenceService.deleteAgence(idAgence).subscribe(
           () => {
             // L'agence a été supprimée avec succès
             alert('Agence supprimée avec succès');
+            window.location.reload();
+
             // Vous pouvez également effectuer d'autres actions ici si nécessaire, par exemple, mettre à jour votre liste d'agences après la suppression.
           },
           (error) => {
@@ -71,6 +74,11 @@ export class CrudAgenceComponent implements OnInit {
     
   
     Modif():void {
+      const dialogRef = this.dialog.open(EditAgenceDialogComponent, {
+        width: '700px',
+        height:'700px',
+        
+      });
 
     }
   }

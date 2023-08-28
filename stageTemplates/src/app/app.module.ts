@@ -1,6 +1,5 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
@@ -36,6 +35,8 @@ import { CrudGrandeurComponent } from './crud-grandeur/crud-grandeur.component';
 import { SublevelMenuComponent } from './sidenav/sublevel-menu.component';
 import { CommonModule } from '@angular/common';
 import { CrudAgenceComponent } from './crud-agence/crud-agence.component';
+import { AddAgenceDialogComponent } from './add-agence-dialog/add-agence-dialog.component';
+import { EditAgenceDialogComponent } from './edit-agence-dialog/edit-agence-dialog.component';
 
 @NgModule({
   declarations: [
@@ -59,7 +60,9 @@ import { CrudAgenceComponent } from './crud-agence/crud-agence.component';
     AddRoleDialogComponent,
     CrudGrandeurComponent,
     SublevelMenuComponent,
-    CrudAgenceComponent
+    CrudAgenceComponent,
+    AddAgenceDialogComponent,
+    EditAgenceDialogComponent
   ],
   imports: [
     BrowserModule,
