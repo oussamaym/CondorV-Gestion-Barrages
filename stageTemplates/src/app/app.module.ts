@@ -38,6 +38,9 @@ import { CrudAgenceComponent } from './crud-agence/crud-agence.component';
 import { AddAgenceDialogComponent } from './add-agence-dialog/add-agence-dialog.component';
 import { EditAgenceDialogComponent } from './edit-agence-dialog/edit-agence-dialog.component';
 import { EditUserDialogComponent } from './edit-user-dialog/edit-user-dialog.component';
+import { Sidenav2Component } from './sidenav2/sidenav2.component';
+import { AddPropriteGrComponent } from './add-proprite-gr/add-proprite-gr.component';
+import { AddGrandeurDialogComponent } from './add-grandeur-dialog/add-grandeur-dialog.component';
 
 @NgModule({
   declarations: [
@@ -64,7 +67,10 @@ import { EditUserDialogComponent } from './edit-user-dialog/edit-user-dialog.com
     CrudAgenceComponent,
     AddAgenceDialogComponent,
     EditAgenceDialogComponent,
-    EditUserDialogComponent
+    EditUserDialogComponent,
+    Sidenav2Component,
+    AddPropriteGrComponent,
+    AddGrandeurDialogComponent
   ],
   imports: [
     BrowserModule,

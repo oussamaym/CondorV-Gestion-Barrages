@@ -1,4 +1,8 @@
 import { Component } from '@angular/core';
+import { AddPropriteGrComponent } from '../add-proprite-gr/add-proprite-gr.component';
+import { Router } from '@angular/router';
+import { MatDialog } from '@angular/material/dialog';
+import { AddGrandeurDialogComponent } from '../add-grandeur-dialog/add-grandeur-dialog.component';
 interface SideNavToggle {
   screenWidth: number;
   collapsed : boolean;
@@ -16,4 +20,20 @@ export class CrudGrandeurComponent {
     this.isSideNavCollapsed = data.collapsed;
     
   }
+  constructor( public dialog: MatDialog,private router: Router) {}
+  openAddPropDialog():void{
+    const dialogRef = this.dialog.open(AddPropriteGrComponent, {
+      width: '700px',
+      height: '700px',
+ 
+    });
+  }
+  openAddGrDialog(): void {
+    const dialogRef = this.dialog.open(AddGrandeurDialogComponent, {
+       width: '700px',
+       height:'700px',
+       
+     });
+ 
+   }
 }

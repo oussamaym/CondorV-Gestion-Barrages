@@ -7,7 +7,7 @@
     <div class="login-container" >
       <div class="crud-container">
         
-        <button class="btn btn-outline-success" ><b>Creer une nouvelle grandeur</b></button>
+        <button class="btn btn-outline-success" (click)="openAddGrDialog()"><b>Creer une nouvelle grandeur</b></button>
          <app-search></app-search> 
       </div>  
       <br>
@@ -37,6 +37,10 @@
                                   <button class="btn btn-outline-success" routerLink="/#">
                                     Plus de Detail
                                 </button>
+                                <a>&nbsp;</a>
+                                <button class="btn btn-outline-success" routerLink="/#" (click)="openAddPropDialog()">
+                                  Propriete
+                              </button>
                                 </td>
                             </tr>
                             
