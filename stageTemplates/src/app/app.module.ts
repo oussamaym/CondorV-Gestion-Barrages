@@ -1,6 +1,5 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
@@ -36,8 +35,13 @@ import { CrudGrandeurComponent } from './crud-grandeur/crud-grandeur.component';
 import { SublevelMenuComponent } from './sidenav/sublevel-menu.component';
 import { CommonModule } from '@angular/common';
 import { CrudAgenceComponent } from './crud-agence/crud-agence.component';
+import { AddAgenceDialogComponent } from './add-agence-dialog/add-agence-dialog.component';
+import { EditAgenceDialogComponent } from './edit-agence-dialog/edit-agence-dialog.component';
 import { EditUserDialogComponent } from './edit-user-dialog/edit-user-dialog.component';
 import { EditPropGrandeurDialogComponent } from './edit-prop-grandeur-dialog/edit-prop-grandeur-dialog.component';
+import { Sidenav2Component } from './sidenav2/sidenav2.component';
+import { AddPropriteGrComponent } from './add-proprite-gr/add-proprite-gr.component';
+import { AddGrandeurDialogComponent } from './add-grandeur-dialog/add-grandeur-dialog.component';
 
 @NgModule({
   declarations: [
@@ -63,7 +67,13 @@ import { EditPropGrandeurDialogComponent } from './edit-prop-grandeur-dialog/edi
     SublevelMenuComponent,
     CrudAgenceComponent,
     EditUserDialogComponent,
-    EditPropGrandeurDialogComponent
+    EditPropGrandeurDialogComponent,
+    AddAgenceDialogComponent,
+    EditAgenceDialogComponent,
+    EditUserDialogComponent,
+    Sidenav2Component,
+    AddPropriteGrComponent,
+    AddGrandeurDialogComponent
   ],
   imports: [
     BrowserModule,

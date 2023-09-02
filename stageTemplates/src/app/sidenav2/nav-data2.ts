@@ -1,13 +1,14 @@
-import { INavbarData } from "./helper";
+import { INavbarData } from "./helper2";
 
-export const navbarData:INavbarData[] = [
+
+export const navbarDataII:INavbarData[]  = [
     {
         routelink: 'detailBarrage',
         icon : 'fal fa-home',
         label: 'Site'
     },
     {
-        routelink: '',
+        routelink: 'grandeur',
         icon : 'fal fa-box',
         label: 'Grandeur',
         items:[
@@ -43,8 +44,8 @@ export const navbarData:INavbarData[] = [
     },
     {
         routelink: 'settings',
-        icon : 'fal fa-cog',
-        label: 'Parametres'
+        icon : 'fal fa-arrow-left',
+        label: 'Retour Au Site'
     },
 
 ];

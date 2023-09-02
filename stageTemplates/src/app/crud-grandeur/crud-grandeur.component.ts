@@ -4,6 +4,7 @@ import { GrandeurService } from '../services/grandeur.service';
 import { ActivatedRoute } from '@angular/router';
 import { MatDialog } from '@angular/material/dialog';
 import { EditPropGrandeurDialogComponent } from '../edit-prop-grandeur-dialog/edit-prop-grandeur-dialog.component';
+import { AddPropriteGrComponent } from '../add-proprite-gr/add-proprite-gr.component';
 interface SideNavToggle {
   screenWidth: number;
   collapsed : boolean;
@@ -65,5 +66,11 @@ performSearch(searchTerm: string): void {
     );
   }
 }
-
+  openAddPropDialog():void{
+    const dialogRef = this.dialog.open(AddPropriteGrComponent, {
+      width: '700px',
+      height: '700px',
+ 
+    });
+  }
 }

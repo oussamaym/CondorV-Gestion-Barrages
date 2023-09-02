@@ -1,20 +1,20 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\DELL\\Desktop\\Studies\\S8\\Stage ete\\CondorV\\CondorV\\CondorV.csproj": {}
+    "C:\\Users\\elhan\\Desktop\\stage\\CondorV\\CondorV\\CondorV\\CondorV.csproj": {}
   },
   "projects": {
-    "C:\\Users\\DELL\\Desktop\\Studies\\S8\\Stage ete\\CondorV\\CondorV\\CondorV.csproj": {
+    "C:\\Users\\elhan\\Desktop\\stage\\CondorV\\CondorV\\CondorV\\CondorV.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\DELL\\Desktop\\Studies\\S8\\Stage ete\\CondorV\\CondorV\\CondorV.csproj",
+        "projectUniqueName": "C:\\Users\\elhan\\Desktop\\stage\\CondorV\\CondorV\\CondorV\\CondorV.csproj",
         "projectName": "CondorV",
-        "projectPath": "C:\\Users\\DELL\\Desktop\\Studies\\S8\\Stage ete\\CondorV\\CondorV\\CondorV.csproj",
-        "packagesPath": "C:\\Users\\DELL\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\DELL\\Desktop\\Studies\\S8\\Stage ete\\CondorV\\CondorV\\obj\\",
+        "projectPath": "C:\\Users\\elhan\\Desktop\\stage\\CondorV\\CondorV\\CondorV\\CondorV.csproj",
+        "packagesPath": "C:\\Users\\elhan\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\elhan\\Desktop\\stage\\CondorV\\CondorV\\CondorV\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "C:\\Users\\DELL\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\elhan\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
@@ -22,7 +22,7 @@
         ],
         "sources": {
           "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
-          "C:\\Program Files\\dotnet\\sdk\\7.0.306\\Sdks\\Microsoft.NET.Sdk.Web\\library-packs": {},
+          "C:\\Program Files\\dotnet\\sdk\\7.0.304\\Sdks\\Microsoft.NET.Sdk.Web\\library-packs": {},
           "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {
@@ -91,7 +91,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.306\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.304\\RuntimeIdentifierGraph.json"
         }
       }
     }
