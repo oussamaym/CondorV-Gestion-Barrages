@@ -6,7 +6,7 @@
       <button class="btn btn-outline-success" (click)="openAddUserDialog()">
         <b>Creer un nouveau Utilisateur</b>
       </button>
-      <app-search></app-search>
+      <app-search (onSearch)="performSearch($event)"></app-search>
     </div>
     <br>
     <table class="table table-bordered " id="tabback">
@@ -22,7 +22,7 @@
           <td><b>{{ utilisateur.nom }} {{ utilisateur.prenom }}</b></td>
           <td><b>{{ utilisateur.role?.designation }}</b></td>
           <td>
-            <button class="btn btn-outline-success">Supprimer</button>
+            <button class="btn btn-outline-success" (click)="showConfirm(utilisateur.id)">Supprimer</button>
             <a>&nbsp;</a>
             <button class="btn btn-outline-success" (click)="openEditUserDialog(utilisateur.id)">
               Modifier

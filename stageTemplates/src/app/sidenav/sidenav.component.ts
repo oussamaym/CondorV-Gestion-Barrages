@@ -2,6 +2,11 @@ import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 import { navbarData } from './nav-data';
 import { INavbarData } from './helper';
 import { Router } from '@angular/router';
+import { TypeGrandeurService } from '../services/typegrandeur.service';
+import { GrandeurService } from '../services/grandeur.service';
+import { Type } from '@angular/compiler';
+import { TypeGrandeur } from '../models/typegrandeur';
+import { Grandeur } from '../models/grandeur';
 
 interface SideNavToggle {
   screenWidth: number;
@@ -14,6 +19,8 @@ interface SideNavToggle {
   styleUrls: ['./sidenav.component.css']
 })
 export class SidenavComponent implements OnInit {
+  typeGrandeurs: TypeGrandeur[] = [];
+ 
   utilisateurconnecte: any | null = null;
   
   @Output() onToggleSideNav: EventEmitter<SideNavToggle> = new EventEmitter();
@@ -21,10 +28,11 @@ export class SidenavComponent implements OnInit {
   screenWidth = 0;
   navData = navbarData;
   multiple : boolean =false;
-  constructor(private router: Router) { }
+  constructor(private router: Router,private typeGrandeurService: TypeGrandeurService) { }
 
   ngOnInit(): void {
     this.getUtilisateur();
+    this.getAllTypeGrandeur(); 
   }
 
   toggleCollapse(): void {
@@ -62,4 +70,33 @@ export class SidenavComponent implements OnInit {
   
   this.router.navigate(['/']);
   }
+  getAllTypeGrandeur(): void {
+    this.typeGrandeurService.getAllTypeGrandeurs().subscribe(
+      typeGrandeurs => {
+        this.typeGrandeurs = typeGrandeurs;
+  
+        // Map typeGrandeurs to items for grandeur section
+        const grandeurItems = this.typeGrandeurs.map(type => {
+          return {
+            routelink: '/crudGrandeur/'+type.id,
+            label: type.nom
+          };
+        });
+  
+        // Update grandeur section in navbarData
+        const grandeurSection = this.navData.find(item => item.label=== 'Grandeur');
+
+        // If grandeur section is found, update its items
+        if (grandeurSection) {
+          grandeurSection.items = grandeurItems;
+        }
+  
+        console.log(this.typeGrandeurs);
+      },
+      (error) => {
+        console.log(error);
+      }
+    );
+  }
+  
 }

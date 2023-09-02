@@ -44,7 +44,6 @@ namespace CondorV.Migrations
                         .Annotation("SqlServer:Identity", "1, 1"),
                     Designation = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     ControleTotal = table.Column<bool>(type: "bit", nullable: false),
-                    AucunDroit = table.Column<bool>(type: "bit", nullable: false),
                     Creer = table.Column<bool>(type: "bit", nullable: false),
                     Modifier = table.Column<bool>(type: "bit", nullable: false),
                     Supprimer = table.Column<bool>(type: "bit", nullable: false),
@@ -53,6 +52,19 @@ namespace CondorV.Migrations
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_Role", x => x.Id);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "TypeGrandeur",
+                columns: table => new
+                {
+                    Id = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    Nom = table.Column<string>(type: "nvarchar(max)", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_TypeGrandeur", x => x.Id);
                 });
 
             migrationBuilder.CreateTable(
@@ -90,6 +102,87 @@ namespace CondorV.Migrations
                 });
 
             migrationBuilder.CreateTable(
+                name: "Grandeur",
+                columns: table => new
+                {
+                    Id = table.Column<long>(type: "bigint", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    NomGrandeur = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    NomAbrege = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    NomComplet = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    TypeGrandeurId = table.Column<int>(type: "int", nullable: false),
+                    Unite = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    LocalisationBarrId = table.Column<int>(type: "int", nullable: true),
+                    ModeAcquisition = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    FrequenceMesure = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    PrecisionMesure = table.Column<int>(type: "int", nullable: true),
+                    CoordonneeX = table.Column<double>(type: "float", nullable: true),
+                    CoordonneeY = table.Column<double>(type: "float", nullable: true),
+                    CoordonneeZ = table.Column<double>(type: "float", nullable: true),
+                    Minimum = table.Column<int>(type: "int", nullable: true),
+                    Maximum = table.Column<int>(type: "int", nullable: true),
+                    ValeurDexclusion = table.Column<int>(type: "int", nullable: true),
+                    ProcessorId = table.Column<double>(type: "float", nullable: true),
+                    ProcessorUnitId = table.Column<double>(type: "float", nullable: true),
+                    NumberDecimalDigits = table.Column<int>(type: "int", nullable: true),
+                    CodeAppareil = table.Column<double>(type: "float", nullable: true),
+                    HeureMBI = table.Column<float>(type: "real", nullable: true),
+                    DateMBI = table.Column<float>(type: "real", nullable: true),
+                    ValeurMBI = table.Column<float>(type: "real", nullable: true),
+                    PiezomPlusProche = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    LectureDeBase = table.Column<long>(type: "bigint", nullable: true),
+                    Longueur = table.Column<double>(type: "float", nullable: true),
+                    Calibre = table.Column<double>(type: "float", nullable: true),
+                    KlCalibrage = table.Column<double>(type: "float", nullable: true),
+                    LineaireZero = table.Column<float>(type: "real", nullable: true),
+                    SiteId = table.Column<long>(type: "bigint", nullable: true)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Grandeur", x => x.Id);
+                    table.ForeignKey(
+                        name: "FK_Grandeur_LocalisationBarr_LocalisationBarrId",
+                        column: x => x.LocalisationBarrId,
+                        principalTable: "LocalisationBarr",
+                        principalColumn: "Id");
+                    table.ForeignKey(
+                        name: "FK_Grandeur_Site_SiteId",
+                        column: x => x.SiteId,
+                        principalTable: "Site",
+                        principalColumn: "Id");
+                    table.ForeignKey(
+                        name: "FK_Grandeur_TypeGrandeur_TypeGrandeurId",
+                        column: x => x.TypeGrandeurId,
+                        principalTable: "TypeGrandeur",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Cascade);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "SiteGrandeurs",
+                columns: table => new
+                {
+                    SitesId = table.Column<long>(type: "bigint", nullable: false),
+                    TypesGrandeursId = table.Column<int>(type: "int", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_SiteGrandeurs", x => new { x.SitesId, x.TypesGrandeursId });
+                    table.ForeignKey(
+                        name: "FK_SiteGrandeurs_Site_SitesId",
+                        column: x => x.SitesId,
+                        principalTable: "Site",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Cascade);
+                    table.ForeignKey(
+                        name: "FK_SiteGrandeurs_TypeGrandeur_TypesGrandeursId",
+                        column: x => x.TypesGrandeursId,
+                        principalTable: "TypeGrandeur",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Cascade);
+                });
+
+            migrationBuilder.CreateTable(
                 name: "Utilisateur",
                 columns: table => new
                 {
@@ -97,7 +190,7 @@ namespace CondorV.Migrations
                     Nom = table.Column<string>(type: "varchar(200)", nullable: false),
                     Prenom = table.Column<string>(type: "varchar(200)", nullable: false),
                     UserName = table.Column<string>(type: "varchar(200)", nullable: false),
-                    Email = table.Column<string>(type: "varchar(250)", nullable: true),
+                    Email = table.Column<string>(type: "varchar(250)", nullable: false),
                     Password = table.Column<string>(type: "varchar(500)", nullable: false),
                     DateCreation = table.Column<DateTime>(type: "datetime2", nullable: true),
                     EstActive = table.Column<bool>(type: "bit", nullable: false),
@@ -127,6 +220,21 @@ namespace CondorV.Migrations
                 });
 
             migrationBuilder.CreateIndex(
+                name: "IX_Grandeur_LocalisationBarrId",
+                table: "Grandeur",
+                column: "LocalisationBarrId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_Grandeur_SiteId",
+                table: "Grandeur",
+                column: "SiteId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_Grandeur_TypeGrandeurId",
+                table: "Grandeur",
+                column: "TypeGrandeurId");
+
+            migrationBuilder.CreateIndex(
                 name: "IX_Site_AgenceId",
                 table: "Site",
                 column: "AgenceId");
@@ -135,6 +243,11 @@ namespace CondorV.Migrations
                 name: "IX_Site_LocalisationBarrId",
                 table: "Site",
                 column: "LocalisationBarrId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_SiteGrandeurs_TypesGrandeursId",
+                table: "SiteGrandeurs",
+                column: "TypesGrandeursId");
 
             migrationBuilder.CreateIndex(
                 name: "IX_Utilisateur_AgenceId",
@@ -155,7 +268,16 @@ namespace CondorV.Migrations
         protected override void Down(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.DropTable(
+                name: "Grandeur");
+
+            migrationBuilder.DropTable(
+                name: "SiteGrandeurs");
+
+            migrationBuilder.DropTable(
                 name: "Utilisateur");
+
+            migrationBuilder.DropTable(
+                name: "TypeGrandeur");
 
             migrationBuilder.DropTable(
                 name: "Role");

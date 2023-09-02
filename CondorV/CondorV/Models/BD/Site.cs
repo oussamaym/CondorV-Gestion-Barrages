@@ -29,6 +29,8 @@ namespace CondorV.Models.BD
         public long? AgenceId { get; set; }
         //[JsonIgnore]
         public Agence? Agence { get; set; }
+        
+        public ICollection<TypeGrandeur>? TypesGrandeurs { get; set; }
 
         public Site() { }
     }

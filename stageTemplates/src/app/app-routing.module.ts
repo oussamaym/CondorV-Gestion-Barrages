@@ -26,6 +26,7 @@ const routes: Routes = [
   {path:'detailAgence/:agenceId', component:DetailAgenceComponent},
   {path:'crudGrandeur',component:CrudGrandeurComponent},
   {path:'crudAgence' ,component:CrudAgenceComponent},
+  {path:'crudGrandeur/:typegrandeurId',component:CrudGrandeurComponent}
   
 ];
 

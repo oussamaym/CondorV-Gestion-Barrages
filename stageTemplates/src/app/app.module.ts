@@ -37,6 +37,7 @@ import { SublevelMenuComponent } from './sidenav/sublevel-menu.component';
 import { CommonModule } from '@angular/common';
 import { CrudAgenceComponent } from './crud-agence/crud-agence.component';
 import { EditUserDialogComponent } from './edit-user-dialog/edit-user-dialog.component';
+import { EditPropGrandeurDialogComponent } from './edit-prop-grandeur-dialog/edit-prop-grandeur-dialog.component';
 
 @NgModule({
   declarations: [
@@ -61,7 +62,8 @@ import { EditUserDialogComponent } from './edit-user-dialog/edit-user-dialog.com
     CrudGrandeurComponent,
     SublevelMenuComponent,
     CrudAgenceComponent,
-    EditUserDialogComponent
+    EditUserDialogComponent,
+    EditPropGrandeurDialogComponent
   ],
   imports: [
     BrowserModule,

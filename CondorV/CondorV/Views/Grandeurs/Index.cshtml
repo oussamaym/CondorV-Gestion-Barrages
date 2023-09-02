@@ -1,0 +1,203 @@
+﻿@model IEnumerable<CondorV.Models.BD.Grandeur>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Index</h1>
+
+<p>
+    <a asp-action="Create">Create New</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.NomGrandeur)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.NomAbrege)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.NomComplet)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.TypeGrandeur)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Unite)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.LocalisationBarr)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ModeAcquisition)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.FrequenceMesure)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.PrecisionMesure)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.CoordonneeX)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.CoordonneeY)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.CoordonneeZ)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Minimum)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Maximum)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ValeurDexclusion)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ProcessorId)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ProcessorUnitId)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.NumberDecimalDigits)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.CodeAppareil)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.HeureMBI)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.DateMBI)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ValeurMBI)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.PiezomPlusProche)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.LectureDeBase)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Longueur)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Calibre)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.KlCalibrage)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.LineaireZero)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Site)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.NomGrandeur)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.NomAbrege)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.NomComplet)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.TypeGrandeur.Id)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Unite)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.LocalisationBarr.Id)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ModeAcquisition)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.FrequenceMesure)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.PrecisionMesure)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.CoordonneeX)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.CoordonneeY)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.CoordonneeZ)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Minimum)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Maximum)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ValeurDexclusion)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ProcessorId)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ProcessorUnitId)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.NumberDecimalDigits)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.CodeAppareil)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.HeureMBI)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.DateMBI)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ValeurMBI)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.PiezomPlusProche)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.LectureDeBase)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Longueur)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Calibre)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.KlCalibrage)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.LineaireZero)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Site.Id)
+            </td>
+            <td>
+                <a asp-action="Edit" asp-route-id="@item.Id">Edit</a> |
+                <a asp-action="Details" asp-route-id="@item.Id">Details</a> |
+                <a asp-action="Delete" asp-route-id="@item.Id">Delete</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

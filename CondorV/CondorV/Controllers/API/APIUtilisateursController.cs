@@ -133,7 +133,7 @@ namespace CondorV.Controllers
 
         // DELETE: api/APIUtilisateurs/5
         [HttpDelete("{id}")]
-        [Authorize(Roles = "AdminAG,Admin", Policy = "SupprimerPermission")]
+        //[Authorize(Roles = "AdminAG,Admin", Policy = "SupprimerPermission")]
         public async Task<IActionResult> DeleteUtilisateur(Guid id)
         {
             if (_context.Utilisateur == null)

@@ -21,7 +21,7 @@ namespace CondorV.Models.BD
         [Column(TypeName = "varchar(200)")]
         public string UserName { get; set; }
 
-        [Required]
+       
         [Column(TypeName = "varchar(250)")]
         [EmailAddress]
         public string? Email { get; set; }
