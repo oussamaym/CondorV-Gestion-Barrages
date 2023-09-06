@@ -2,8 +2,8 @@
     <div class="row">
       <div>
         <div class="input-group">
-          <input type="text" class="form-control" placeholder="Rechercher...">
-          <button class="btn btn-outline-success" type="button">Search</button>
+          <input type="text" class="form-control" placeholder="Rechercher..."[(ngModel)]="searchTerm">
+          <button class="btn btn-outline-success" (click)="search()" type="button">Search</button>
         </div>
       </div>
     </div>

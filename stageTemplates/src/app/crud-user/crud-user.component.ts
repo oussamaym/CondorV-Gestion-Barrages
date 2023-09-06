@@ -135,7 +135,7 @@ export class CrudUserComponent  implements OnInit{
     const siteId = Number(localStorage.getItem('siteId'));
     const agenceId = Number(localStorage.getItem('agenceId'));
     
-    if(this.utilisateurconnecte.role.designation === 'AdminAG' && this.cond === 'AG'){
+    if((this.utilisateurconnecte.role.designation === 'AdminAG'||this.utilisateurconnecte.role.designation === 'Admin') && this.cond === 'BAR'){
     
       this.userService.getAllUtilisateurs().subscribe(
         utilisateurs=> {
@@ -147,31 +147,19 @@ export class CrudUserComponent  implements OnInit{
         }
       );
     }
-    else if(this.utilisateurconnecte.role.designation === 'Admin' && this.cond === 'BAR'){
+    else if(this.utilisateurconnecte.role.designation === 'Admin' && this.cond === 'AG'){
   
       this.userService.getAllUtilisateurs().subscribe(
         utilisateurs=> {
           
-          this.utilisateurs = utilisateurs.filter(utilisateur => utilisateur.siteId === siteId && utilisateur.role?.designation === 'AdminBAR');
+          this.utilisateurs = utilisateurs.filter(utilisateur => utilisateur.agenceId === agenceId && utilisateur.role?.designation === 'AdminAG');
         },
         error => {
-          console.error('Error fetching Utilisateurs BAR', error);
+          console.error('Error fetching Utilisateurs AG', error);
         }
       );
     
   }
-  else if(this.utilisateurconnecte.role.designation === 'Admin' && this.cond === 'AG'){
-    this.userService.getAllUtilisateurs().subscribe(
-      utilisateurs=> {
-        
-        this.utilisateurs = utilisateurs.filter(utilisateur => utilisateur.agenceId === agenceId && utilisateur.role?.designation === 'AdminAG');
-      },
-      error => {
-        console.error('Error fetching Utilisateurs AG', error);
-      }
-    );
-  
-}
 }
   getUtilisateur(): void {
     this.utilisateurconnecte=localStorage.getItem('utilisateurconnecte');
@@ -180,6 +168,43 @@ export class CrudUserComponent  implements OnInit{
      
     } else {
       console.log('Erreur.');
+    }
+  }
+  performSearch(searchTerm: string): void {
+    if (!searchTerm) {
+      console.log("dkhel if");
+      // If the search term is empty, reset the displayed utilisateurs to the full list
+      this.loadUtilisateurs();
+    } else {
+      console.log("dkhel else");
+      // Filter the utilisateurs based on partial matches of the search term
+      searchTerm = searchTerm.toLowerCase(); // Convert the search term to lowercase for case-insensitive search
+      this.utilisateurs = this.utilisateurs.filter((utilisateur) =>
+        (utilisateur.nom.toLowerCase().includes(searchTerm) ||
+        utilisateur.prenom.toLowerCase().includes(searchTerm))
+      );
+    }
+  }
+  supprimer(id: string):void
+  {
+    this.userService.deleteUtilisateur(id).subscribe(
+      (response: any) => {
+        this.loadUtilisateurs();
+      }, 
+      (error) => {
+        console.error('Delete error:', error);
+      }
+    );
+  }
+  showConfirm(id: string): void {
+    const result = window.confirm('Are you sure you want to continue?');
+
+    if (result) {
+      this.supprimer(id);
+      // Perform your action here
+    } else {
+      // Do nothing
+      
     }
   }
   

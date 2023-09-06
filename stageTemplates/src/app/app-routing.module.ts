@@ -28,6 +28,7 @@ const routes: Routes = [
   {path:'crudGrandeur',component:CrudGrandeurComponent},
   {path:'crudAgence' ,component:CrudAgenceComponent},
   {path:'grandeurMesure' ,component:ExecuteMesureComponent},
+  {path:'crudGrandeur/:typegrandeurId',component:CrudGrandeurComponent}
   
 ];
 

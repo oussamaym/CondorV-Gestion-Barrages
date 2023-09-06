@@ -9,161 +9,201 @@ build_property.EnforceExtendedAnalyzerRules =
 build_property._SupportedPlatformList = Linux,macOS,Windows
 build_property.RootNamespace = CondorV
 build_property.RootNamespace = CondorV
-build_property.ProjectDir = C:\Users\elhan\Desktop\stage\CondorV\CondorV\CondorV\
+build_property.ProjectDir = C:\Users\DELL\Desktop\Studies\S8\Stage ete\CondorV\CondorV\
 build_property.RazorLangVersion = 6.0
 build_property.SupportLocalizedComponentNames = 
 build_property.GenerateRazorMetadataSourceChecksumAttributes = 
-build_property.MSBuildProjectDirectory = C:\Users\elhan\Desktop\stage\CondorV\CondorV\CondorV
+build_property.MSBuildProjectDirectory = C:\Users\DELL\Desktop\Studies\S8\Stage ete\CondorV\CondorV
 build_property._RazorSourceGeneratorDebug = 
 
-[C:/Users/elhan/Desktop/stage/CondorV/CondorV/CondorV/Views/Agences/Create.cshtml]
+[C:/Users/DELL/Desktop/Studies/S8/Stage ete/CondorV/CondorV/Views/Agences/Create.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWdlbmNlc1xDcmVhdGUuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/elhan/Desktop/stage/CondorV/CondorV/CondorV/Views/Agences/Delete.cshtml]
+[C:/Users/DELL/Desktop/Studies/S8/Stage ete/CondorV/CondorV/Views/Agences/Delete.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWdlbmNlc1xEZWxldGUuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/elhan/Desktop/stage/CondorV/CondorV/CondorV/Views/Agences/Details.cshtml]
+[C:/Users/DELL/Desktop/Studies/S8/Stage ete/CondorV/CondorV/Views/Agences/Details.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWdlbmNlc1xEZXRhaWxzLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/elhan/Desktop/stage/CondorV/CondorV/CondorV/Views/Agences/Edit.cshtml]
+[C:/Users/DELL/Desktop/Studies/S8/Stage ete/CondorV/CondorV/Views/Agences/Edit.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWdlbmNlc1xFZGl0LmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/elhan/Desktop/stage/CondorV/CondorV/CondorV/Views/Agences/Index.cshtml]
+[C:/Users/DELL/Desktop/Studies/S8/Stage ete/CondorV/CondorV/Views/Agences/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWdlbmNlc1xJbmRleC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/elhan/Desktop/stage/CondorV/CondorV/CondorV/Views/APIRoles/Create.cshtml]
+[C:/Users/DELL/Desktop/Studies/S8/Stage ete/CondorV/CondorV/Views/APIRoles/Create.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQVBJUm9sZXNcQ3JlYXRlLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/elhan/Desktop/stage/CondorV/CondorV/CondorV/Views/APIRoles/Delete.cshtml]
+[C:/Users/DELL/Desktop/Studies/S8/Stage ete/CondorV/CondorV/Views/APIRoles/Delete.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQVBJUm9sZXNcRGVsZXRlLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/elhan/Desktop/stage/CondorV/CondorV/CondorV/Views/APIRoles/Details.cshtml]
+[C:/Users/DELL/Desktop/Studies/S8/Stage ete/CondorV/CondorV/Views/APIRoles/Details.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQVBJUm9sZXNcRGV0YWlscy5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/elhan/Desktop/stage/CondorV/CondorV/CondorV/Views/APIRoles/Edit.cshtml]
+[C:/Users/DELL/Desktop/Studies/S8/Stage ete/CondorV/CondorV/Views/APIRoles/Edit.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQVBJUm9sZXNcRWRpdC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/elhan/Desktop/stage/CondorV/CondorV/CondorV/Views/APIRoles/Index.cshtml]
+[C:/Users/DELL/Desktop/Studies/S8/Stage ete/CondorV/CondorV/Views/APIRoles/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQVBJUm9sZXNcSW5kZXguY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/elhan/Desktop/stage/CondorV/CondorV/CondorV/Views/Home/Index.cshtml]
+[C:/Users/DELL/Desktop/Studies/S8/Stage ete/CondorV/CondorV/Views/Grandeurs/Create.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcR3JhbmRldXJzXENyZWF0ZS5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/DELL/Desktop/Studies/S8/Stage ete/CondorV/CondorV/Views/Grandeurs/Delete.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcR3JhbmRldXJzXERlbGV0ZS5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/DELL/Desktop/Studies/S8/Stage ete/CondorV/CondorV/Views/Grandeurs/Details.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcR3JhbmRldXJzXERldGFpbHMuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/DELL/Desktop/Studies/S8/Stage ete/CondorV/CondorV/Views/Grandeurs/Edit.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcR3JhbmRldXJzXEVkaXQuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/DELL/Desktop/Studies/S8/Stage ete/CondorV/CondorV/Views/Grandeurs/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcR3JhbmRldXJzXEluZGV4LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/DELL/Desktop/Studies/S8/Stage ete/CondorV/CondorV/Views/Home/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxJbmRleC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/elhan/Desktop/stage/CondorV/CondorV/CondorV/Views/Home/Login.cshtml]
+[C:/Users/DELL/Desktop/Studies/S8/Stage ete/CondorV/CondorV/Views/Home/Login.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxMb2dpbi5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/elhan/Desktop/stage/CondorV/CondorV/CondorV/Views/Home/Privacy.cshtml]
+[C:/Users/DELL/Desktop/Studies/S8/Stage ete/CondorV/CondorV/Views/Home/Privacy.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxQcml2YWN5LmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/elhan/Desktop/stage/CondorV/CondorV/CondorV/Views/LocalisationBarrs/Create.cshtml]
+[C:/Users/DELL/Desktop/Studies/S8/Stage ete/CondorV/CondorV/Views/LocalisationBarrs/Create.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcTG9jYWxpc2F0aW9uQmFycnNcQ3JlYXRlLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/elhan/Desktop/stage/CondorV/CondorV/CondorV/Views/LocalisationBarrs/Delete.cshtml]
+[C:/Users/DELL/Desktop/Studies/S8/Stage ete/CondorV/CondorV/Views/LocalisationBarrs/Delete.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcTG9jYWxpc2F0aW9uQmFycnNcRGVsZXRlLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/elhan/Desktop/stage/CondorV/CondorV/CondorV/Views/LocalisationBarrs/Details.cshtml]
+[C:/Users/DELL/Desktop/Studies/S8/Stage ete/CondorV/CondorV/Views/LocalisationBarrs/Details.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcTG9jYWxpc2F0aW9uQmFycnNcRGV0YWlscy5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/elhan/Desktop/stage/CondorV/CondorV/CondorV/Views/LocalisationBarrs/Edit.cshtml]
+[C:/Users/DELL/Desktop/Studies/S8/Stage ete/CondorV/CondorV/Views/LocalisationBarrs/Edit.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcTG9jYWxpc2F0aW9uQmFycnNcRWRpdC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/elhan/Desktop/stage/CondorV/CondorV/CondorV/Views/LocalisationBarrs/Index.cshtml]
+[C:/Users/DELL/Desktop/Studies/S8/Stage ete/CondorV/CondorV/Views/LocalisationBarrs/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcTG9jYWxpc2F0aW9uQmFycnNcSW5kZXguY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/elhan/Desktop/stage/CondorV/CondorV/CondorV/Views/Roles/Create.cshtml]
+[C:/Users/DELL/Desktop/Studies/S8/Stage ete/CondorV/CondorV/Views/Roles/Create.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUm9sZXNcQ3JlYXRlLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/elhan/Desktop/stage/CondorV/CondorV/CondorV/Views/Roles/Delete.cshtml]
+[C:/Users/DELL/Desktop/Studies/S8/Stage ete/CondorV/CondorV/Views/Roles/Delete.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUm9sZXNcRGVsZXRlLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/elhan/Desktop/stage/CondorV/CondorV/CondorV/Views/Roles/Details.cshtml]
+[C:/Users/DELL/Desktop/Studies/S8/Stage ete/CondorV/CondorV/Views/Roles/Details.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUm9sZXNcRGV0YWlscy5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/elhan/Desktop/stage/CondorV/CondorV/CondorV/Views/Roles/Edit.cshtml]
+[C:/Users/DELL/Desktop/Studies/S8/Stage ete/CondorV/CondorV/Views/Roles/Edit.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUm9sZXNcRWRpdC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/elhan/Desktop/stage/CondorV/CondorV/CondorV/Views/Roles/Index.cshtml]
+[C:/Users/DELL/Desktop/Studies/S8/Stage ete/CondorV/CondorV/Views/Roles/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUm9sZXNcSW5kZXguY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/elhan/Desktop/stage/CondorV/CondorV/CondorV/Views/Shared/Error.cshtml]
+[C:/Users/DELL/Desktop/Studies/S8/Stage ete/CondorV/CondorV/Views/Shared/Error.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXEVycm9yLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/elhan/Desktop/stage/CondorV/CondorV/CondorV/Views/Shared/_ValidationScriptsPartial.cshtml]
+[C:/Users/DELL/Desktop/Studies/S8/Stage ete/CondorV/CondorV/Views/Shared/_ValidationScriptsPartial.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9WYWxpZGF0aW9uU2NyaXB0c1BhcnRpYWwuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/elhan/Desktop/stage/CondorV/CondorV/CondorV/Views/Sites/Create.cshtml]
+[C:/Users/DELL/Desktop/Studies/S8/Stage ete/CondorV/CondorV/Views/Sites/Create.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2l0ZXNcQ3JlYXRlLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/elhan/Desktop/stage/CondorV/CondorV/CondorV/Views/Sites/Delete.cshtml]
+[C:/Users/DELL/Desktop/Studies/S8/Stage ete/CondorV/CondorV/Views/Sites/Delete.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2l0ZXNcRGVsZXRlLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/elhan/Desktop/stage/CondorV/CondorV/CondorV/Views/Sites/Details.cshtml]
+[C:/Users/DELL/Desktop/Studies/S8/Stage ete/CondorV/CondorV/Views/Sites/Details.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2l0ZXNcRGV0YWlscy5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/elhan/Desktop/stage/CondorV/CondorV/CondorV/Views/Sites/Edit.cshtml]
+[C:/Users/DELL/Desktop/Studies/S8/Stage ete/CondorV/CondorV/Views/Sites/Edit.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2l0ZXNcRWRpdC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/elhan/Desktop/stage/CondorV/CondorV/CondorV/Views/Sites/Index.cshtml]
+[C:/Users/DELL/Desktop/Studies/S8/Stage ete/CondorV/CondorV/Views/Sites/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2l0ZXNcSW5kZXguY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/elhan/Desktop/stage/CondorV/CondorV/CondorV/Views/Utilisateurs/Create.cshtml]
+[C:/Users/DELL/Desktop/Studies/S8/Stage ete/CondorV/CondorV/Views/TypeGrandeurs/Create.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVHlwZUdyYW5kZXVyc1xDcmVhdGUuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/DELL/Desktop/Studies/S8/Stage ete/CondorV/CondorV/Views/TypeGrandeurs/Delete.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVHlwZUdyYW5kZXVyc1xEZWxldGUuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/DELL/Desktop/Studies/S8/Stage ete/CondorV/CondorV/Views/TypeGrandeurs/Details.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVHlwZUdyYW5kZXVyc1xEZXRhaWxzLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/DELL/Desktop/Studies/S8/Stage ete/CondorV/CondorV/Views/TypeGrandeurs/Edit.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVHlwZUdyYW5kZXVyc1xFZGl0LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/DELL/Desktop/Studies/S8/Stage ete/CondorV/CondorV/Views/TypeGrandeurs/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVHlwZUdyYW5kZXVyc1xJbmRleC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/DELL/Desktop/Studies/S8/Stage ete/CondorV/CondorV/Views/Utilisateurs/Create.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVXRpbGlzYXRldXJzXENyZWF0ZS5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/elhan/Desktop/stage/CondorV/CondorV/CondorV/Views/Utilisateurs/Delete.cshtml]
+[C:/Users/DELL/Desktop/Studies/S8/Stage ete/CondorV/CondorV/Views/Utilisateurs/Delete.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVXRpbGlzYXRldXJzXERlbGV0ZS5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/elhan/Desktop/stage/CondorV/CondorV/CondorV/Views/Utilisateurs/Details.cshtml]
+[C:/Users/DELL/Desktop/Studies/S8/Stage ete/CondorV/CondorV/Views/Utilisateurs/Details.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVXRpbGlzYXRldXJzXERldGFpbHMuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/elhan/Desktop/stage/CondorV/CondorV/CondorV/Views/Utilisateurs/Edit.cshtml]
+[C:/Users/DELL/Desktop/Studies/S8/Stage ete/CondorV/CondorV/Views/Utilisateurs/Edit.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVXRpbGlzYXRldXJzXEVkaXQuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/elhan/Desktop/stage/CondorV/CondorV/CondorV/Views/Utilisateurs/Index.cshtml]
+[C:/Users/DELL/Desktop/Studies/S8/Stage ete/CondorV/CondorV/Views/Utilisateurs/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVXRpbGlzYXRldXJzXEluZGV4LmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/elhan/Desktop/stage/CondorV/CondorV/CondorV/Views/_ViewImports.cshtml]
+[C:/Users/DELL/Desktop/Studies/S8/Stage ete/CondorV/CondorV/Views/_ViewImports.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcX1ZpZXdJbXBvcnRzLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/elhan/Desktop/stage/CondorV/CondorV/CondorV/Views/_ViewStart.cshtml]
+[C:/Users/DELL/Desktop/Studies/S8/Stage ete/CondorV/CondorV/Views/_ViewStart.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcX1ZpZXdTdGFydC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/elhan/Desktop/stage/CondorV/CondorV/CondorV/Views/Shared/_Layout.cshtml]
+[C:/Users/DELL/Desktop/Studies/S8/Stage ete/CondorV/CondorV/Views/Shared/_Layout.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9MYXlvdXQuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = b-vz616vkyp5
