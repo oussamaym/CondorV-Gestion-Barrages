@@ -41,6 +41,9 @@ import { EditUserDialogComponent } from './edit-user-dialog/edit-user-dialog.com
 import { Sidenav2Component } from './sidenav2/sidenav2.component';
 import { AddPropriteGrComponent } from './add-proprite-gr/add-proprite-gr.component';
 import { AddGrandeurDialogComponent } from './add-grandeur-dialog/add-grandeur-dialog.component';
+import { DeletingDialogComponent } from './deleting-dialog/deleting-dialog.component';
+import { ExecuteMesureComponent } from './execute-mesure/execute-mesure.component';
+import { AddMesureGrandeurDialogComponent } from './add-mesure-grandeur-dialog/add-mesure-grandeur-dialog.component';
 
 @NgModule({
   declarations: [
@@ -70,7 +73,10 @@ import { AddGrandeurDialogComponent } from './add-grandeur-dialog/add-grandeur-d
     EditUserDialogComponent,
     Sidenav2Component,
     AddPropriteGrComponent,
-    AddGrandeurDialogComponent
+    AddGrandeurDialogComponent,
+    DeletingDialogComponent,
+    ExecuteMesureComponent,
+    AddMesureGrandeurDialogComponent
   ],
   imports: [
     BrowserModule,

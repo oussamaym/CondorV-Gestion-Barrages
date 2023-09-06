@@ -11,6 +11,7 @@ import { DetailUserComponent } from './detail-user/detail-user.component';
 import { DetailAgenceComponent } from './detail-agence/detail-agence.component';
 import { CrudGrandeurComponent } from './crud-grandeur/crud-grandeur.component';
 import { CrudAgenceComponent } from './crud-agence/crud-agence.component';
+import { ExecuteMesureComponent } from './execute-mesure/execute-mesure.component';
 
 const routes: Routes = [
   {path:'', component:LoginComponent},
@@ -26,6 +27,7 @@ const routes: Routes = [
   {path:'detailAgence/:agenceId', component:DetailAgenceComponent},
   {path:'crudGrandeur',component:CrudGrandeurComponent},
   {path:'crudAgence' ,component:CrudAgenceComponent},
+  {path:'grandeurMesure' ,component:ExecuteMesureComponent},
   
 ];
 

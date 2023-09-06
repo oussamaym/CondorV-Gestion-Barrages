@@ -1,0 +1,40 @@
+
+<div class="crud-page">
+  
+    <div class="crud-spacer"></div>
+    <div class="login-container" >
+      <div class="crud-container">
+        
+        <button class="btn btn-outline-success" (click)="openAddMesDialog()" ><b>Ajouter Nouvelle Mesure</b></button>
+         <app-search></app-search> 
+      </div>  
+      <br>
+            <table class="table table-bordered " id="tabback">
+                    <thead>
+                            <tr>
+                                <th>Date</th>
+                                <th>Mesures</th>
+                                
+                                <th>Action</th>
+                            </tr>
+                            
+                        </thead>
+                        <tbody class="table-group-divider">
+                           
+                            <tr>
+                                <td><b>Date</b></td>
+                                <td><b>1.23 m</b></td>
+                                <td>
+                                    <a>&nbsp;</a>
+                                    <button class="btn btn-outline-success">
+                                      Modifier
+                                  </button>
+                                </td>
+                            </tr>
+                            
+    
+                        </tbody>
+            </table>
+    </div>
+  </div>
+

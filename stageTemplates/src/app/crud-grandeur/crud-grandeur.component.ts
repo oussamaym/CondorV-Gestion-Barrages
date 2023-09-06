@@ -3,6 +3,7 @@ import { AddPropriteGrComponent } from '../add-proprite-gr/add-proprite-gr.compo
 import { Router } from '@angular/router';
 import { MatDialog } from '@angular/material/dialog';
 import { AddGrandeurDialogComponent } from '../add-grandeur-dialog/add-grandeur-dialog.component';
+import { DeletingDialogComponent } from '../deleting-dialog/deleting-dialog.component';
 interface SideNavToggle {
   screenWidth: number;
   collapsed : boolean;
@@ -32,6 +33,15 @@ export class CrudGrandeurComponent {
     const dialogRef = this.dialog.open(AddGrandeurDialogComponent, {
        width: '700px',
        height:'700px',
+       
+     });
+ 
+   }
+
+   opendelGrDialog(): void {
+    const dialogRef = this.dialog.open(DeletingDialogComponent, {
+       width: '500px',
+       height:'325px',
        
      });
  
