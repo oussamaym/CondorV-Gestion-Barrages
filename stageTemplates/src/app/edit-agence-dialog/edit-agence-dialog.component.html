@@ -1,17 +1,16 @@
 <section class="container">
-    
-    <header>
-        <h4><b>Modifier Agence</b></h4>
-    </header>
-    <form action="#" class="form">
-      <div class="input-box">
-        <label><b>Nom</b></label>
-        <input type="text" placeholder="Entrer le nom" required />
-      </div>
-      <div class="input-box">
-        <label><b>Ville</b></label>
-        <input type="text" placeholder="Entrer la ville" required />
-      </div>
-      <button class="btn btn-outline-success">Submit</button>
-    </form>
-  </section>
+  <header>
+    <h4><b>Modifier Agence</b></h4>
+  </header>
+  <form action="#" class="form" (ngSubmit)="onSubmit()">
+    <div class="input-box">
+      <label><b>Nom</b></label>
+      <input type="text" placeholder="Entrer le nom" required name="nom" [(ngModel)]="agence.nom" />
+    </div>
+    <div class="input-box">
+      <label><b>Ville</b></label>
+      <input type="text" placeholder="Entrer la ville" required name="ville" [(ngModel)]="agence.ville" />
+    </div>
+    <button class="btn btn-outline-success" type="submit">Submit</button>
+  </form>
+</section>

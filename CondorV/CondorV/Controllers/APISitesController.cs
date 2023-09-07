@@ -25,7 +25,7 @@ namespace CondorV.Controllers
 
         // GET: api/APISites
         [HttpGet]
-       [Authorize(Roles = "AdminBAR,AdminAG,Admin" ,Policy = "LecturePermission")]
+      // [Authorize(Roles = "AdminBAR,AdminAG,Admin" ,Policy = "LecturePermission")]
     
         public async Task<ActionResult<IEnumerable<Site>>> GetSite()
         {
@@ -39,7 +39,7 @@ namespace CondorV.Controllers
 
         // GET: api/APISites/5
         [HttpGet("{id}")]
-        [Authorize(Roles = "AdminBAR,AdminAG,Admin", Policy = "LecturePermission")]
+        //[Authorize(Roles = "AdminBAR,AdminAG,Admin", Policy = "LecturePermission")]
         public async Task<ActionResult<Site>> GetSite(long id)
         {
           if (_context.Site == null)
@@ -91,7 +91,7 @@ namespace CondorV.Controllers
         // POST: api/APISites
         // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
         [HttpPost]
-        [Authorize(Roles = "AdminBAR,AdminAG,Admin", Policy = "AjouterPermission")]
+      //  [Authorize(Roles = "AdminBAR,AdminAG,Admin", Policy = "AjouterPermission")]
         public async Task<ActionResult<Site>> PostSite(Site site)
         {
           if (_context.Site == null)
@@ -106,7 +106,7 @@ namespace CondorV.Controllers
 
         // DELETE: api/APISites/5
         [HttpDelete("{id}")]
-        [Authorize(Roles = "AdminBAR,AdminAG,Admin", Policy = "SupprimerPermission")]
+      //  [Authorize(Roles = "AdminBAR,AdminAG,Admin", Policy = "SupprimerPermission")]
         public async Task<IActionResult> DeleteSite(long id)
         {
             if (_context.Site == null)

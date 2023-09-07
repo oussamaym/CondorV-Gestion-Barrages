@@ -73,11 +73,11 @@ export class CrudAgenceComponent implements OnInit {
     }
     
   
-    Modif():void {
+    Modif(idAgence: number):void {
       const dialogRef = this.dialog.open(EditAgenceDialogComponent, {
         width: '700px',
         height:'700px',
-        
+        data: { idAgence: idAgence }
       });
 
     }

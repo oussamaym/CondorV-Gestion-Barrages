@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { Agence } from '../models/agence';
 import { AgenceService } from '../services/agence.service';
+import { MatDialogRef } from '@angular/material/dialog';
 
 @Component({
   selector: 'app-add-agence-dialog',
@@ -11,7 +12,7 @@ export class AddAgenceDialogComponent {
   nom: string = '';
   ville: string = '';
 
-  constructor(private agenceService: AgenceService) {}
+  constructor(private agenceService: AgenceService,private dialogRef: MatDialogRef<AddAgenceDialogComponent>) {}
 
   onSubmit() {
     // Créez un objet Agence à partir des valeurs des champs du formulaire
@@ -26,7 +27,8 @@ export class AddAgenceDialogComponent {
       (agenceCreee) => {
         // La nouvelle agence a été créée avec succès
         console.log('Agence créée avec succès :', agenceCreee);
-  
+        this.dialogRef.close('agenceCreated'); 
+        window.location.reload();
         // Réinitialisez les valeurs des champs du formulaire après la création
         this.nom = '';
         this.ville = '';
