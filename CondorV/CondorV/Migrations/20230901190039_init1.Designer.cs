@@ -12,8 +12,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace CondorV.Migrations
 {
     [DbContext(typeof(CondorVContext))]
-    [Migration("20230818002604_update1")]
-    partial class update1
+    [Migration("20230901190039_init1")]
+    partial class init1
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -43,6 +43,112 @@ namespace CondorV.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("Agence");
+                });
+
+            modelBuilder.Entity("CondorV.Models.BD.Grandeur", b =>
+                {
+                    b.Property<long>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("bigint");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<long>("Id"), 1L, 1);
+
+                    b.Property<double?>("Calibre")
+                        .HasColumnType("float");
+
+                    b.Property<double?>("CodeAppareil")
+                        .HasColumnType("float");
+
+                    b.Property<double?>("CoordonneeX")
+                        .HasColumnType("float");
+
+                    b.Property<double?>("CoordonneeY")
+                        .HasColumnType("float");
+
+                    b.Property<double?>("CoordonneeZ")
+                        .HasColumnType("float");
+
+                    b.Property<float?>("DateMBI")
+                        .HasColumnType("real");
+
+                    b.Property<string>("FrequenceMesure")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<float?>("HeureMBI")
+                        .HasColumnType("real");
+
+                    b.Property<double?>("KlCalibrage")
+                        .HasColumnType("float");
+
+                    b.Property<long?>("LectureDeBase")
+                        .HasColumnType("bigint");
+
+                    b.Property<float?>("LineaireZero")
+                        .HasColumnType("real");
+
+                    b.Property<int?>("LocalisationBarrId")
+                        .HasColumnType("int");
+
+                    b.Property<double?>("Longueur")
+                        .HasColumnType("float");
+
+                    b.Property<int?>("Maximum")
+                        .HasColumnType("int");
+
+                    b.Property<int?>("Minimum")
+                        .HasColumnType("int");
+
+                    b.Property<string>("ModeAcquisition")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("NomAbrege")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("NomComplet")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("NomGrandeur")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<int?>("NumberDecimalDigits")
+                        .HasColumnType("int");
+
+                    b.Property<string>("PiezomPlusProche")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<int?>("PrecisionMesure")
+                        .HasColumnType("int");
+
+                    b.Property<double?>("ProcessorId")
+                        .HasColumnType("float");
+
+                    b.Property<double?>("ProcessorUnitId")
+                        .HasColumnType("float");
+
+                    b.Property<long?>("SiteId")
+                        .HasColumnType("bigint");
+
+                    b.Property<int>("TypeGrandeurId")
+                        .HasColumnType("int");
+
+                    b.Property<string>("Unite")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<int?>("ValeurDexclusion")
+                        .HasColumnType("int");
+
+                    b.Property<float?>("ValeurMBI")
+                        .HasColumnType("real");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("LocalisationBarrId");
+
+                    b.HasIndex("SiteId");
+
+                    b.HasIndex("TypeGrandeurId");
+
+                    b.ToTable("Grandeur");
                 });
 
             modelBuilder.Entity("CondorV.Models.BD.LocalisationBarr", b =>
@@ -149,6 +255,23 @@ namespace CondorV.Migrations
                     b.ToTable("Site");
                 });
 
+            modelBuilder.Entity("CondorV.Models.BD.TypeGrandeur", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
+
+                    b.Property<string>("Nom")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("TypeGrandeur");
+                });
+
             modelBuilder.Entity("CondorV.Models.BD.Utilisateur", b =>
                 {
                     b.Property<Guid>("Id")
@@ -162,6 +285,7 @@ namespace CondorV.Migrations
                         .HasColumnType("datetime2");
 
                     b.Property<string>("Email")
+                        .IsRequired()
                         .HasColumnType("varchar(250)");
 
                     b.Property<bool>("EstActive")
@@ -198,6 +322,44 @@ namespace CondorV.Migrations
                     b.HasIndex("SiteId");
 
                     b.ToTable("Utilisateur");
+                });
+
+            modelBuilder.Entity("SiteTypeGrandeur", b =>
+                {
+                    b.Property<long>("SitesId")
+                        .HasColumnType("bigint");
+
+                    b.Property<int>("TypesGrandeursId")
+                        .HasColumnType("int");
+
+                    b.HasKey("SitesId", "TypesGrandeursId");
+
+                    b.HasIndex("TypesGrandeursId");
+
+                    b.ToTable("SiteGrandeurs", (string)null);
+                });
+
+            modelBuilder.Entity("CondorV.Models.BD.Grandeur", b =>
+                {
+                    b.HasOne("CondorV.Models.BD.LocalisationBarr", "LocalisationBarr")
+                        .WithMany()
+                        .HasForeignKey("LocalisationBarrId");
+
+                    b.HasOne("CondorV.Models.BD.Site", "Site")
+                        .WithMany()
+                        .HasForeignKey("SiteId");
+
+                    b.HasOne("CondorV.Models.BD.TypeGrandeur", "TypeGrandeur")
+                        .WithMany()
+                        .HasForeignKey("TypeGrandeurId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("LocalisationBarr");
+
+                    b.Navigation("Site");
+
+                    b.Navigation("TypeGrandeur");
                 });
 
             modelBuilder.Entity("CondorV.Models.BD.Site", b =>
@@ -238,6 +400,21 @@ namespace CondorV.Migrations
                     b.Navigation("Role");
 
                     b.Navigation("Site");
+                });
+
+            modelBuilder.Entity("SiteTypeGrandeur", b =>
+                {
+                    b.HasOne("CondorV.Models.BD.Site", null)
+                        .WithMany()
+                        .HasForeignKey("SitesId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("CondorV.Models.BD.TypeGrandeur", null)
+                        .WithMany()
+                        .HasForeignKey("TypesGrandeursId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
                 });
 
             modelBuilder.Entity("CondorV.Models.BD.Agence", b =>

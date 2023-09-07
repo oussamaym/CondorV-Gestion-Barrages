@@ -9,7 +9,7 @@ using CondorV.Data;
 using CondorV.Models.BD;
 using Microsoft.AspNetCore.Authorization;
 
-namespace CondorV.Controllers
+namespace CondorV.Controllers.API
 {
     [Route("api/[controller]")]
     [ApiController]
@@ -27,10 +27,10 @@ namespace CondorV.Controllers
         //[Authorize(Roles = "AdminAG,Admin", Policy = "LecturePermission")]
         public async Task<ActionResult<IEnumerable<Agence>>> GetAgence()
         {
-          if (_context.Agence == null)
-          {
-              return NotFound();
-          }
+            if (_context.Agence == null)
+            {
+                return NotFound();
+            }
             var agences = _context.Agence.Include(s => s.Sites).Include(u => u.Utilisateurs);
             return await _context.Agence.ToListAsync();
         }
@@ -40,10 +40,10 @@ namespace CondorV.Controllers
         //[Authorize(Roles = "AdminAG,Admin", Policy = "LecturePermission")]
         public async Task<ActionResult<Agence>> GetAgence(long id)
         {
-          if (_context.Agence == null)
-          {
-              return NotFound();
-          }
+            if (_context.Agence == null)
+            {
+                return NotFound();
+            }
             var agence = await _context.Agence.FindAsync(id);
 
             if (agence == null)
@@ -92,10 +92,10 @@ namespace CondorV.Controllers
         // [Authorize(Roles = "AdminAG,Admin", Policy = "AjouterPermission")]
         public async Task<ActionResult<Agence>> PostAgence(Agence agence)
         {
-          if (_context.Agence == null)
-          {
-              return Problem("Entity set 'CondorVContext.Agence'  is null.");
-          }
+            if (_context.Agence == null)
+            {
+                return Problem("Entity set 'CondorVContext.Agence'  is null.");
+            }
             _context.Agence.Add(agence);
             await _context.SaveChangesAsync();
 

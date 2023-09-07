@@ -25,7 +25,9 @@ namespace CondorV.Controllers
 
         // GET: api/APISites
         [HttpGet]
+
       // [Authorize(Roles = "AdminBAR,AdminAG,Admin" ,Policy = "LecturePermission")]
+
     
         public async Task<ActionResult<IEnumerable<Site>>> GetSite()
         {
@@ -39,7 +41,9 @@ namespace CondorV.Controllers
 
         // GET: api/APISites/5
         [HttpGet("{id}")]
+
         //[Authorize(Roles = "AdminBAR,AdminAG,Admin", Policy = "LecturePermission")]
+
         public async Task<ActionResult<Site>> GetSite(long id)
         {
           if (_context.Site == null)

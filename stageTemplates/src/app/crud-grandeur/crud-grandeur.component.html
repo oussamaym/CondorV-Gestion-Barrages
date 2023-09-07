@@ -8,38 +8,55 @@
       <div class="crud-container">
         
         <button class="btn btn-outline-success" ><b>Creer une nouvelle grandeur</b></button>
-         <app-search></app-search> 
+        <app-search (onSearch)="performSearch($event)"></app-search>
       </div>  
       <br>
             <table class="table table-bordered " id="tabback">
                     <thead>
                             <tr>
-                                <th>Grandeur</th>
-                                
+                                <th>Nom</th>
+                                <th>Type de grandeur</th>
+                                <th>Localisation</th>
+                                <th>Mode d'acquisition</th>
+                                <th>Unite</th>        
                                 <th>Action</th>
                             </tr>
                             
                         </thead>
-                        <tbody class="table-group-divider">
+                        <tbody class="table-group-divider" *ngFor="let grandeur of grandeurs">
                            
                             <tr>
-                                <td><b>GRD1</b></td>
+                                <td><b>{{grandeur.nomAbrege}}</b></td>
+                                <td><b>{{grandeur.typeGrandeur?.nom}}</b></td>
+                                <td><b>{{grandeur.localisationBarrId}}</b></td>
+                                <td><b>{{grandeur.modeAcquisition}}</b></td>
+                                <td><b>{{grandeur.unite}}</b></td>
+                                
                                 
                                 <td>
-                                    <button class="btn btn-outline-success">
+                                    <button class="btn btn-outline-success" (click)="opendelGrDialog()">
                                       Supprimer
                                     </button>
                                     <a>&nbsp;</a>
-                                    <button class="btn btn-outline-success">
-                                      Modifier
+                                    <button class="btn btn-outline-success" (click)="openProprieteGrandeurDialog(grandeur.id)">
+                                      Propriete
                                   </button>
                                   <a>&nbsp;</a>
                                   <button class="btn btn-outline-success" routerLink="/#">
-                                    Plus de Detail
+                                    Parametrage
                                 </button>
+                                <a>&nbsp;</a>
+                                <button class="btn btn-outline-success" routerLink="/#" (click)="openAddPropDialog()">
+                                  Propriete
+                              </button>
+                              <a>&nbsp;</a>
+                              <button class="btn btn-outline-success" routerLink="/grandeurMesure">
+                                Executer
+                            </button>
                                 </td>
                             </tr>
-                            
+
+                          
     
                         </tbody>
             </table>

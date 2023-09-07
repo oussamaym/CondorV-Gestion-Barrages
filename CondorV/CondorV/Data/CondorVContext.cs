@@ -26,5 +26,18 @@ namespace CondorV.Data
 
 
         public DbSet<CondorV.Models.BD.LocalisationBarr>? LocalisationBarr { get; set; }
+
+
+        public DbSet<CondorV.Models.BD.Grandeur>? Grandeur { get; set; }
+
+
+        public DbSet<CondorV.Models.BD.TypeGrandeur>? TypeGrandeur { get; set; }
+            protected override void OnModelCreating(ModelBuilder modelBuilder)
+    {
+        modelBuilder.Entity<Site>()
+            .HasMany(s => s.TypesGrandeurs)
+            .WithMany(t => t.Sites)
+            .UsingEntity(j => j.ToTable("SiteGrandeurs"));
+    }
     }
 }

@@ -7,7 +7,7 @@ export const navbarData:INavbarData[] = [
         label: 'Site'
     },
     {
-        routelink: 'grandeur',
+        routelink: '',
         icon : 'fal fa-box',
         label: 'Grandeur',
         items:[
@@ -22,8 +22,13 @@ export const navbarData:INavbarData[] = [
       ]
     },
     {
+<<<<<<< HEAD
         routelink: 'detailAgence',
         icon : 'fal fa-box',
+=======
+        routelink: 'crudAgence',
+        icon : 'fal fa-building',
+>>>>>>> b52df6286e5bb8d0f6f261603da90d51cc0fa068
         label: 'Agence',
     },
     {
