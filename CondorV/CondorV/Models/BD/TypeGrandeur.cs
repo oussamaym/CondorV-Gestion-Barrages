@@ -8,9 +8,9 @@ namespace CondorV.Models.BD
     {
         [Key]
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
-        public int Id { get; set; }
+        public long Id { get; set; }
         public string Nom { get; set; }
         [JsonIgnore]
-        public ICollection<Site>? Sites { get; set; }
+        public ICollection<SitesGrandeurs>? SitesGrandeurs { get; set; }
     }
 }

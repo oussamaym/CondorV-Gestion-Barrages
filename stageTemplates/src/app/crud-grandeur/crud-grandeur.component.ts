@@ -4,7 +4,8 @@ import { GrandeurService } from '../services/grandeur.service';
 import { ActivatedRoute } from '@angular/router';
 import { MatDialog } from '@angular/material/dialog';
 import { EditPropGrandeurDialogComponent } from '../edit-prop-grandeur-dialog/edit-prop-grandeur-dialog.component';
-import { AddPropriteGrComponent } from '../add-proprite-gr/add-proprite-gr.component';
+import { AddPropGrandeurDialogComponent } from '../add-prop-grandeur-dialog/add-prop-grandeur-dialog.component';
+import { EditParamGrandeurDialogComponent } from '../edit-param-grandeur-dialog/edit-param-grandeur-dialog.component';
 interface SideNavToggle {
   screenWidth: number;
   collapsed : boolean;
@@ -26,11 +27,11 @@ export class CrudGrandeurComponent implements OnInit {
   constructor(private grandeurService: GrandeurService,private route: ActivatedRoute,public dialog: MatDialog) { }
   ngOnInit(): void {
     this.route.params.subscribe(params => {
-      this.typegrandeur = params['typegrandeurId'];
+      this.typegrandeur = params['typeId'];
       this.getAllGrandeurs();
     });
   }
-  openProprieteGrandeurDialog(id: number): void {
+  EditProprieteGrandeurDialog(id: number): void {
     const dialogRef = this.dialog.open(EditPropGrandeurDialogComponent, {
       width: '700px',
       height:'700px',
@@ -43,10 +44,29 @@ export class CrudGrandeurComponent implements OnInit {
       }
     });
   }
+  AddProprieteGrandeurDialog():void{
+    const typeId = +this.route.snapshot.paramMap.get('typeId')!;
+    const dialogRef = this.dialog.open(AddPropGrandeurDialogComponent, {
+      width: '700px',
+      height: '700px',
+      data: { typeId: typeId }
+    });
+    dialogRef.afterClosed().subscribe(result => {
+      if (result === 'grandeurCreated') {
+        this.getAllGrandeurs(); // Manually refresh the user data
+      }
+    });
+
+  }
+  EditerMesures(id: number):void{
+    
+  }
+
   getAllGrandeurs(): void {
+    const siteId=Number(localStorage.getItem('siteId'));
     this.grandeurService.getAllGrandeurs().subscribe(
       grandeurs => {
-        this.grandeurs = grandeurs.filter(grandeur => grandeur.typeGrandeurId == this.typegrandeur);
+        this.grandeurs = grandeurs.filter(grandeur => grandeur.typeGrandeurId == this.typegrandeur && grandeur.siteId==siteId);
       },  
       error => {
         console.error('Error fetching Grandeurs:', error);
@@ -66,11 +86,17 @@ performSearch(searchTerm: string): void {
     );
   }
 }
-  openAddPropDialog():void{
-    const dialogRef = this.dialog.open(AddPropriteGrComponent, {
+  EditParamGrandeurDialog(id:number):void{
+    const dialogRef = this.dialog.open(EditParamGrandeurDialogComponent, {
       width: '700px',
       height: '700px',
- 
+      data: { grandeurId: id }
+      
     });
-  }
+    dialogRef.afterClosed().subscribe(result => {
+      if (result === 'grandeurUpdated') {
+        this.getAllGrandeurs(); // Manually refresh the user data
+      }
+    });
+}
 }

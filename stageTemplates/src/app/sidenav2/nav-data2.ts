@@ -8,19 +8,9 @@ export const navbarDataII:INavbarData[]  = [
         label: 'Site'
     },
     {
-        routelink: 'grandeur',
+        routelink: 'crudTypeGrandeur',
         icon : 'fal fa-box',
-        label: 'Grandeur',
-        items:[
-        {
-            routelink:'grandeur/list',
-            label:'GRD1'
-        },
-        {
-            routelink:'grandeur/list',
-            label:'GRD2'
-        }
-      ]
+        label: 'Types de Grandeur',
     },
     {
         routelink: 'crudAgence',
@@ -28,22 +18,12 @@ export const navbarDataII:INavbarData[]  = [
         label: 'Agence',
     },
     {
-        routelink: '',
+        routelink: 'crudUserAdmin',
         icon : 'fal fa-user',
         label: 'Utilisateur',
-        items:[
-            {
-                routelink:'/crudUser/BAR',
-                label:'Barrage'
-            },
-            {
-                routelink:'/crudUser/AG',
-                label:'Agence'
-            }
-          ]
     },
     {
-        routelink: 'settings',
+        routelink: 'detailBarrage',
         icon : 'fal fa-arrow-left',
         label: 'Retour Au Site'
     },

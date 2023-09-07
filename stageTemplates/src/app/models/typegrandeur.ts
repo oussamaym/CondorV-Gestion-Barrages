@@ -6,6 +6,5 @@ export class TypeGrandeur {
             this.id = id;
             this.nom = nom;
             }
-
   }
   

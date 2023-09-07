@@ -1,0 +1,45 @@
+<app-sidenav2 (onToggleSideNav)="onToggleSideNav($event)"></app-sidenav2>
+
+
+<div class="crud-page">
+  
+    <div class="crud-spacer"></div>
+    <div class="login-container" >
+      <div class="crud-container">
+        
+        <button class="btn btn-outline-success" (click)="addTypeGrandeur()" ><b>Creer</b></button>
+        <!--<app-search (onSearch)="performSearch($event)"></app-search>-->
+      </div>  
+      <br>
+            <table class="table table-bordered " id="tabback">
+                    <thead>
+                            <tr>  
+                                <th>Site</th>   
+                                <th>Type de grandeur du site</th>
+                                <th>Action</th>
+                            </tr>  
+                        </thead>
+                        <tbody class="table-group-divider" *ngFor="let sitesgrandeur of sitesGrandeurs" >
+                            <tr>
+                                <td><b>{{sitesgrandeur.site?.nom}}</b></td>
+                                <td><b>{{sitesgrandeur.typeGrandeur?.nom}}</b></td>
+                                
+                                <td>
+                                    <button class="btn btn-outline-success">
+                                      Supprimer
+                                    </button>
+                                    <a>&nbsp;</a>
+                                    <!--<button class="btn btn-outline-success">
+                                      Modifier
+                                  </button>
+                                  <a>&nbsp;</a>-->
+                                 
+                              
+                                </td>
+                            </tr>
+                            
+    
+                        </tbody>
+            </table>
+    </div>
+  </div>

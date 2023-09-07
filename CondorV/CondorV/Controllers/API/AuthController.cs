@@ -95,12 +95,27 @@ namespace CondorV.Controllers
                 //_authContext.Logauthentifications.Add(logauthentification);
                 //await _authContext.SaveChangesAsync();
                 // Debut Log Authentification
-
+                
                 return Ok(new
                 {
                     AccessToken = new JwtSecurityTokenHandler().WriteToken(token),
                     Expiration = token.ValidTo,
-                    UtilisateurConnecte = connectedUtilisateur,
+                    UtilisateurConnecte = new
+                    {
+                        Id = connectedUtilisateur.Id,
+                        Nom = connectedUtilisateur.Nom,
+                        Prenom = connectedUtilisateur.Prenom,
+                        UserName = connectedUtilisateur.UserName,
+                        Role = connectedUtilisateur.Role,
+                        Site = connectedUtilisateur.Site,
+                        Agence= connectedUtilisateur.Agence,
+                        SiteId= connectedUtilisateur.SiteId,
+                        AgenceId = connectedUtilisateur.AgenceId,
+                        EstActive = connectedUtilisateur.EstActive,
+                        Email = connectedUtilisateur.Email
+
+                        // Other properties you want to include
+                    },
                 });
             }
             catch (Exception ex)

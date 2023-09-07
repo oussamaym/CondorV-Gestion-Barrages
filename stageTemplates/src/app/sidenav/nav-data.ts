@@ -22,7 +22,7 @@ export const navbarData:INavbarData[] = [
       ]
     },
     {
-        routelink: 'crudAgence',
+        routelink: 'detailsAgence',
         icon : 'fal fa-building',
         label: 'Agence',
     },

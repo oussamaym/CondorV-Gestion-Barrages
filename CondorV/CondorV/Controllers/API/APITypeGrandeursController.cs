@@ -8,7 +8,7 @@ using Microsoft.EntityFrameworkCore;
 using CondorV.Data;
 using CondorV.Models.BD;
 
-namespace CondorV.Controllers
+namespace CondorV.Controllers.API
 {
     [Route("api/[controller]")]
     [ApiController]
@@ -34,7 +34,7 @@ namespace CondorV.Controllers
 
         // GET: api/APITypeGrandeurs/5
         [HttpGet("{id}")]
-        public async Task<ActionResult<TypeGrandeur>> GetTypeGrandeur(int id)
+        public async Task<ActionResult<TypeGrandeur>> GetTypeGrandeur(long id)
         {
           if (_context.TypeGrandeur == null)
           {
@@ -53,7 +53,7 @@ namespace CondorV.Controllers
         // PUT: api/APITypeGrandeurs/5
         // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
         [HttpPut("{id}")]
-        public async Task<IActionResult> PutTypeGrandeur(int id, TypeGrandeur typeGrandeur)
+        public async Task<IActionResult> PutTypeGrandeur(long id, TypeGrandeur typeGrandeur)
         {
             if (id != typeGrandeur.Id)
             {
@@ -98,7 +98,7 @@ namespace CondorV.Controllers
 
         // DELETE: api/APITypeGrandeurs/5
         [HttpDelete("{id}")]
-        public async Task<IActionResult> DeleteTypeGrandeur(int id)
+        public async Task<IActionResult> DeleteTypeGrandeur(long id)
         {
             if (_context.TypeGrandeur == null)
             {
@@ -116,7 +116,7 @@ namespace CondorV.Controllers
             return NoContent();
         }
 
-        private bool TypeGrandeurExists(int id)
+        private bool TypeGrandeurExists(long id)
         {
             return (_context.TypeGrandeur?.Any(e => e.Id == id)).GetValueOrDefault();
         }

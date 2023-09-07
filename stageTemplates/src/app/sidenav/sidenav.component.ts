@@ -7,6 +7,8 @@ import { GrandeurService } from '../services/grandeur.service';
 import { Type } from '@angular/compiler';
 import { TypeGrandeur } from '../models/typegrandeur';
 import { Grandeur } from '../models/grandeur';
+import { SiteGrandeur } from '../models/sitegrandeur';
+import { SiteGrandeurService } from '../services/sitegrandeur.service';
 
 interface SideNavToggle {
   screenWidth: number;
@@ -19,7 +21,7 @@ interface SideNavToggle {
   styleUrls: ['./sidenav.component.css']
 })
 export class SidenavComponent implements OnInit {
-  typeGrandeurs: TypeGrandeur[] = [];
+  siteGrandeurs: SiteGrandeur[] = [];
  
   utilisateurconnecte: any | null = null;
   
@@ -28,11 +30,12 @@ export class SidenavComponent implements OnInit {
   screenWidth = 0;
   navData = navbarData;
   multiple : boolean =false;
-  constructor(private router: Router,private typeGrandeurService: TypeGrandeurService) { }
+  constructor(private router: Router,private siteGrandeurService: SiteGrandeurService) { }
 
   ngOnInit(): void {
+    const siteId=Number(localStorage.getItem('siteId'));
     this.getUtilisateur();
-    this.getAllTypeGrandeur(); 
+    this.getAllTypeGrandeur(siteId); 
   }
 
   toggleCollapse(): void {
@@ -70,16 +73,18 @@ export class SidenavComponent implements OnInit {
   
   this.router.navigate(['/']);
   }
-  getAllTypeGrandeur(): void {
-    this.typeGrandeurService.getAllTypeGrandeurs().subscribe(
-      typeGrandeurs => {
-        this.typeGrandeurs = typeGrandeurs;
-  
-        // Map typeGrandeurs to items for grandeur section
-        const grandeurItems = this.typeGrandeurs.map(type => {
+
+  getAllTypeGrandeur(id:number): void {
+    if (id !== null) {
+      // Call the service to fetch user details by ID
+      this.siteGrandeurService.getSiteGrandeurBySiteId(id).subscribe(
+        siteGrandeurs => {
+          this.siteGrandeurs= siteGrandeurs;
+          // Map typeGrandeurs to items for grandeur section
+        const grandeurItems = this.siteGrandeurs.map(type => {
           return {
-            routelink: '/crudGrandeur/'+type.id,
-            label: type.nom
+            routelink: '/crudGrandeur/'+type.typeGrandeurId,
+            label: type.typeGrandeur?.nom|| 'Default Label',
           };
         });
   
@@ -91,12 +96,13 @@ export class SidenavComponent implements OnInit {
           grandeurSection.items = grandeurItems;
         }
   
-        console.log(this.typeGrandeurs);
-      },
-      (error) => {
-        console.log(error);
-      }
-    );
+  
+        },
+        error => {
+          console.error('Error fetching site details:', error);
+        }
+      );
+    }
   }
   
 }

@@ -40,8 +40,11 @@ import { EditAgenceDialogComponent } from './edit-agence-dialog/edit-agence-dial
 import { EditUserDialogComponent } from './edit-user-dialog/edit-user-dialog.component';
 import { EditPropGrandeurDialogComponent } from './edit-prop-grandeur-dialog/edit-prop-grandeur-dialog.component';
 import { Sidenav2Component } from './sidenav2/sidenav2.component';
-import { AddPropriteGrComponent } from './add-proprite-gr/add-proprite-gr.component';
-import { AddGrandeurDialogComponent } from './add-grandeur-dialog/add-grandeur-dialog.component';
+import { CrudTypeGrandeurComponent } from './crud-type-grandeur/crud-type-grandeur.component';
+import { AddPropGrandeurDialogComponent } from './add-prop-grandeur-dialog/add-prop-grandeur-dialog.component';
+import { EditParamGrandeurDialogComponent } from './edit-param-grandeur-dialog/edit-param-grandeur-dialog.component';
+import { AddTypeGrandeurDialogComponent } from './add-type-grandeur-dialog/add-type-grandeur-dialog.component';
+import { CrudUserAdminComponent } from './crud-user-admin/crud-user-admin.component';
 
 @NgModule({
   declarations: [
@@ -72,8 +75,11 @@ import { AddGrandeurDialogComponent } from './add-grandeur-dialog/add-grandeur-d
     EditAgenceDialogComponent,
     EditUserDialogComponent,
     Sidenav2Component,
-    AddPropriteGrComponent,
-    AddGrandeurDialogComponent
+    CrudTypeGrandeurComponent,
+    AddPropGrandeurDialogComponent,
+    EditParamGrandeurDialogComponent,
+    AddTypeGrandeurDialogComponent,
+    CrudUserAdminComponent,
   ],
   imports: [
     BrowserModule,

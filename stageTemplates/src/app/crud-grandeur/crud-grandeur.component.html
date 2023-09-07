@@ -7,7 +7,7 @@
     <div class="login-container" >
       <div class="crud-container">
         
-        <button class="btn btn-outline-success" ><b>Creer une nouvelle grandeur</b></button>
+        <button class="btn btn-outline-success" (click)="AddProprieteGrandeurDialog()"><b>Creer une nouvelle grandeur</b></button>
         <app-search (onSearch)="performSearch($event)"></app-search>
       </div>  
       <br>
@@ -28,7 +28,7 @@
                             <tr>
                                 <td><b>{{grandeur.nomAbrege}}</b></td>
                                 <td><b>{{grandeur.typeGrandeur?.nom}}</b></td>
-                                <td><b>{{grandeur.localisationBarrId}}</b></td>
+                                <td><b>{{grandeur.localisationBarr.designation}}</b></td>
                                 <td><b>{{grandeur.modeAcquisition}}</b></td>
                                 <td><b>{{grandeur.unite}}</b></td>
                                 
@@ -38,17 +38,18 @@
                                       Supprimer
                                     </button>
                                     <a>&nbsp;</a>
-                                    <button class="btn btn-outline-success" (click)="openProprieteGrandeurDialog(grandeur.id)">
+                                    <button class="btn btn-outline-success" (click)="EditProprieteGrandeurDialog(grandeur.id)">
                                       Propriete
                                   </button>
                                   <a>&nbsp;</a>
-                                  <button class="btn btn-outline-success" routerLink="/#">
+                                  <button class="btn btn-outline-success" (click)="EditParamGrandeurDialog(grandeur.id)">
                                     Parametrage
                                 </button>
                                 <a>&nbsp;</a>
-                                <button class="btn btn-outline-success" routerLink="/#" (click)="openAddPropDialog()">
-                                  Propriete
+                                <button class="btn btn-outline-success" (click)="EditerMesures(grandeur.id)">
+                                  Executer
                               </button>
+                              
                                 </td>
                             </tr>
                             

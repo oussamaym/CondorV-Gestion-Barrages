@@ -26,7 +26,7 @@ namespace CondorV.Models.BD
         [EmailAddress]
         public string? Email { get; set; }
 
-        [Required]
+        
         [Column(TypeName = "varchar(500)")]
         //[JsonIgnore]
         public string Password { get; set; }

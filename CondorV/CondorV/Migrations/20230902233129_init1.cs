@@ -58,7 +58,7 @@ namespace CondorV.Migrations
                 name: "TypeGrandeur",
                 columns: table => new
                 {
-                    Id = table.Column<int>(type: "int", nullable: false)
+                    Id = table.Column<long>(type: "bigint", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
                     Nom = table.Column<string>(type: "nvarchar(max)", nullable: false)
                 },
@@ -110,7 +110,7 @@ namespace CondorV.Migrations
                     NomGrandeur = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     NomAbrege = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     NomComplet = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    TypeGrandeurId = table.Column<int>(type: "int", nullable: false),
+                    TypeGrandeurId = table.Column<long>(type: "bigint", nullable: false),
                     Unite = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     LocalisationBarrId = table.Column<int>(type: "int", nullable: true),
                     ModeAcquisition = table.Column<string>(type: "nvarchar(max)", nullable: true),
@@ -159,24 +159,24 @@ namespace CondorV.Migrations
                 });
 
             migrationBuilder.CreateTable(
-                name: "SiteGrandeurs",
+                name: "SitesGrandeurs",
                 columns: table => new
                 {
-                    SitesId = table.Column<long>(type: "bigint", nullable: false),
-                    TypesGrandeursId = table.Column<int>(type: "int", nullable: false)
+                    SiteId = table.Column<long>(type: "bigint", nullable: false),
+                    TypeGrandeurId = table.Column<long>(type: "bigint", nullable: false)
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_SiteGrandeurs", x => new { x.SitesId, x.TypesGrandeursId });
+                    table.PrimaryKey("PK_SitesGrandeurs", x => new { x.SiteId, x.TypeGrandeurId });
                     table.ForeignKey(
-                        name: "FK_SiteGrandeurs_Site_SitesId",
-                        column: x => x.SitesId,
+                        name: "FK_SitesGrandeurs_Site_SiteId",
+                        column: x => x.SiteId,
                         principalTable: "Site",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
                     table.ForeignKey(
-                        name: "FK_SiteGrandeurs_TypeGrandeur_TypesGrandeursId",
-                        column: x => x.TypesGrandeursId,
+                        name: "FK_SitesGrandeurs_TypeGrandeur_TypeGrandeurId",
+                        column: x => x.TypeGrandeurId,
                         principalTable: "TypeGrandeur",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
@@ -190,7 +190,7 @@ namespace CondorV.Migrations
                     Nom = table.Column<string>(type: "varchar(200)", nullable: false),
                     Prenom = table.Column<string>(type: "varchar(200)", nullable: false),
                     UserName = table.Column<string>(type: "varchar(200)", nullable: false),
-                    Email = table.Column<string>(type: "varchar(250)", nullable: false),
+                    Email = table.Column<string>(type: "varchar(250)", nullable: true),
                     Password = table.Column<string>(type: "varchar(500)", nullable: false),
                     DateCreation = table.Column<DateTime>(type: "datetime2", nullable: true),
                     EstActive = table.Column<bool>(type: "bit", nullable: false),
@@ -245,9 +245,9 @@ namespace CondorV.Migrations
                 column: "LocalisationBarrId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_SiteGrandeurs_TypesGrandeursId",
-                table: "SiteGrandeurs",
-                column: "TypesGrandeursId");
+                name: "IX_SitesGrandeurs_TypeGrandeurId",
+                table: "SitesGrandeurs",
+                column: "TypeGrandeurId");
 
             migrationBuilder.CreateIndex(
                 name: "IX_Utilisateur_AgenceId",
@@ -271,7 +271,7 @@ namespace CondorV.Migrations
                 name: "Grandeur");
 
             migrationBuilder.DropTable(
-                name: "SiteGrandeurs");
+                name: "SitesGrandeurs");
 
             migrationBuilder.DropTable(
                 name: "Utilisateur");

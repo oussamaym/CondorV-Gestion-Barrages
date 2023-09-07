@@ -11,12 +11,15 @@ import { DetailUserComponent } from './detail-user/detail-user.component';
 import { DetailAgenceComponent } from './detail-agence/detail-agence.component';
 import { CrudGrandeurComponent } from './crud-grandeur/crud-grandeur.component';
 import { CrudAgenceComponent } from './crud-agence/crud-agence.component';
+import { CrudTypeGrandeurComponent } from './crud-type-grandeur/crud-type-grandeur.component';
+import { CrudUserAdminComponent } from './crud-user-admin/crud-user-admin.component';
 
 const routes: Routes = [
   {path:'', component:LoginComponent},
   {path:'listAgences', component:ListAgenceComponent},
   {path:'listSites/:agenceId', component: ListSiteComponent },
   {path:'crudUser/:value', component:CrudUserComponent},
+  {path:'crudUserAdmin', component:CrudUserAdminComponent},
   {path:'detailUser/:userId', component: DetailUserComponent },
   {path:'navside', component:SidenavComponent},
   {path:'settings', component:SettingsComponent},
@@ -24,9 +27,9 @@ const routes: Routes = [
   {path:'detailAgence', component:DetailAgenceComponent},
   {path:'detailUser' , component:DetailUserComponent},
   {path:'detailAgence/:agenceId', component:DetailAgenceComponent},
-  {path:'crudGrandeur',component:CrudGrandeurComponent},
   {path:'crudAgence' ,component:CrudAgenceComponent},
-  {path:'crudGrandeur/:typegrandeurId',component:CrudGrandeurComponent}
+  {path:'crudGrandeur/:typeId',component:CrudGrandeurComponent},
+  {path:'crudTypeGrandeur',component:CrudTypeGrandeurComponent}
   
 ];
 

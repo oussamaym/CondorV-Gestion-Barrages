@@ -1,0 +1,42 @@
+<section class="container">
+  <div style="text-align: center;">
+    <h6><strong>Ajouter un type de grandeur a un site</strong></h6>
+  </div>
+
+    <form class="form">
+      <div class="column">
+        <div class="input-box">
+          <label><b>Type de Grandeur</b></label>
+          <div class="select-box">
+            <select [(ngModel)]="siteGrandeur.typeGrandeurId" name="typeGrandeurId">
+              <option *ngFor="let type of typesGrandeurs" [value]="type.id">{{ type.nom }}</option>
+            </select>
+          </div> 
+          </div>
+            
+          <div class="input-box">
+            <label><b>Site</b></label>
+            <div class="select-box">
+              <select [(ngModel)]="siteGrandeur.siteId" name="siteId">
+                <option *ngFor="let site of sites" [value]="site.id">{{ site.nom }}</option>
+              </select>
+            </div>
+            </div>
+      </div>
+      <button class="btn btn-outline-success" (click) ="ajouterSiteGrandeur(siteGrandeur)">Submit</button>
+    </form>
+   
+    
+    <br><br>
+    <div style="text-align: center;">
+      <h6><strong>Ajouter un nouveau type de grandeur</strong></h6>
+    </div>
+    <form class="form">
+          <div class="input-box">
+              <label><b>Type de grandeur</b></label>
+              <input type="text" placeholder="Entrer le nom" required name="typeGrandeur" [(ngModel)]="typeGrandeur.nom" />
+          </div>
+        <button class="btn btn-outline-success" (click) ="ajouterTypeGrandeur(typeGrandeur)">Submit</button>
+    </form>
+  </section>
+  

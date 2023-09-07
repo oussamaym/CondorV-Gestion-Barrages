@@ -13,9 +13,9 @@ namespace ApiAuthentification1.Models
         [Required]
         public string Prenom { get; set; }
 
-        [Required]
+ 
         [EmailAddress]
-        public string Email { get; set; }
+        public string? Email { get; set; }
         [Required]
         public string UserName { get; set; }
 

@@ -22,6 +22,7 @@ export class Grandeur {
     valeurDexclusion?: number | null;
     processorId?: number | null;
     processorUnitId?: number | null;
+    processorName?: string | null;
     numberDecimalDigits?: number | null;
     codeAppareil?: number | null;
     heureMBI?: number | null;
@@ -30,12 +31,46 @@ export class Grandeur {
     piezomPlusProche?: string | null;
     lectureDeBase?: number | null;
     longueur?: number | null;
+    ancre?: number | null;
     calibre?: number | null;
     klCalibrage?: number | null;
     lineaireZero?: number | null;
     siteId?: number | null;
     site?: any; 
-    constructor(id: number, nomGrandeur: string, nomAbrege: string, nomComplet: string, typeGrandeurId: number,  localisationBarrId: number, modeAcquisition: string, frequenceMesure: string, precisionMesure: number, coordonneeX: number, coordonneeY: number, coordonneeZ: number, minimum: number, maximum: number, valeurDexclusion: number, processorId: number, processorUnitId: number, numberDecimalDigits: number, codeAppareil: number, heureMBI: number, dateMBI: number, valeurMBI: number, piezomPlusProche: string, lectureDeBase: number, longueur: number, calibre: number, klCalibrage: number, lineaireZero: number, siteId: number) {
+    
+    constructor(
+        id: number = 0,
+        nomGrandeur: string | null = null,
+        nomAbrege: string | null = null,
+        nomComplet: string | null = null,
+        typeGrandeurId: number = 0,
+        localisationBarrId: number | null = null,
+        modeAcquisition: string | null = null,
+        frequenceMesure: string | null = null,
+        precisionMesure: number | null = null,
+        coordonneeX: number | null = null,
+        coordonneeY: number | null = null,
+        coordonneeZ: number | null = null,
+        minimum: number | null = null,
+        maximum: number | null = null,
+        valeurDexclusion: number | null = null,
+        processorId: number | null = null,
+        processorUnitId: number | null = null,
+        processorName: string | null = null,
+        numberDecimalDigits: number | null = null,
+        codeAppareil: number | null = null,
+        heureMBI: number | null = null,
+        dateMBI: number | null = null,
+        valeurMBI: number | null = null,
+        piezomPlusProche: string | null = null,
+        lectureDeBase: number | null = null,
+        longueur: number | null = null,
+        ancre: number | null = null,
+        calibre: number | null = null,
+        klCalibrage: number | null = null,
+        lineaireZero: number | null = null,
+        siteId: number | null = null
+      ) {
         this.id = id;
         this.nomGrandeur = nomGrandeur;
         this.nomAbrege = nomAbrege;
@@ -53,6 +88,7 @@ export class Grandeur {
         this.valeurDexclusion = valeurDexclusion;
         this.processorId = processorId;
         this.processorUnitId = processorUnitId;
+        this.processorName = processorName;
         this.numberDecimalDigits = numberDecimalDigits;
         this.codeAppareil = codeAppareil;
         this.heureMBI = heureMBI;
@@ -61,11 +97,11 @@ export class Grandeur {
         this.piezomPlusProche = piezomPlusProche;
         this.lectureDeBase = lectureDeBase;
         this.longueur = longueur;
+        this.ancre = ancre;
         this.calibre = calibre;
         this.klCalibrage = klCalibrage;
         this.lineaireZero = lineaireZero;
         this.siteId = siteId;
-    }
-
+      }
   }
   

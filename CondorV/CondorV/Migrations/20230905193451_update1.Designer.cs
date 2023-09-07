@@ -12,8 +12,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace CondorV.Migrations
 {
     [DbContext(typeof(CondorVContext))]
-    [Migration("20230901190039_init1")]
-    partial class init1
+    [Migration("20230905193451_update1")]
+    partial class update1
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -52,6 +52,9 @@ namespace CondorV.Migrations
                         .HasColumnType("bigint");
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<long>("Id"), 1L, 1);
+
+                    b.Property<double?>("Ancre")
+                        .HasColumnType("float");
 
                     b.Property<double?>("Calibre")
                         .HasColumnType("float");
@@ -128,8 +131,8 @@ namespace CondorV.Migrations
                     b.Property<long?>("SiteId")
                         .HasColumnType("bigint");
 
-                    b.Property<int>("TypeGrandeurId")
-                        .HasColumnType("int");
+                    b.Property<long>("TypeGrandeurId")
+                        .HasColumnType("bigint");
 
                     b.Property<string>("Unite")
                         .HasColumnType("nvarchar(max)");
@@ -255,13 +258,28 @@ namespace CondorV.Migrations
                     b.ToTable("Site");
                 });
 
+            modelBuilder.Entity("CondorV.Models.BD.SitesGrandeurs", b =>
+                {
+                    b.Property<long>("SiteId")
+                        .HasColumnType("bigint");
+
+                    b.Property<long>("TypeGrandeurId")
+                        .HasColumnType("bigint");
+
+                    b.HasKey("SiteId", "TypeGrandeurId");
+
+                    b.HasIndex("TypeGrandeurId");
+
+                    b.ToTable("SitesGrandeurs");
+                });
+
             modelBuilder.Entity("CondorV.Models.BD.TypeGrandeur", b =>
                 {
-                    b.Property<int>("Id")
+                    b.Property<long>("Id")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
+                        .HasColumnType("bigint");
 
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<long>("Id"), 1L, 1);
 
                     b.Property<string>("Nom")
                         .IsRequired()
@@ -285,7 +303,6 @@ namespace CondorV.Migrations
                         .HasColumnType("datetime2");
 
                     b.Property<string>("Email")
-                        .IsRequired()
                         .HasColumnType("varchar(250)");
 
                     b.Property<bool>("EstActive")
@@ -322,21 +339,6 @@ namespace CondorV.Migrations
                     b.HasIndex("SiteId");
 
                     b.ToTable("Utilisateur");
-                });
-
-            modelBuilder.Entity("SiteTypeGrandeur", b =>
-                {
-                    b.Property<long>("SitesId")
-                        .HasColumnType("bigint");
-
-                    b.Property<int>("TypesGrandeursId")
-                        .HasColumnType("int");
-
-                    b.HasKey("SitesId", "TypesGrandeursId");
-
-                    b.HasIndex("TypesGrandeursId");
-
-                    b.ToTable("SiteGrandeurs", (string)null);
                 });
 
             modelBuilder.Entity("CondorV.Models.BD.Grandeur", b =>
@@ -379,6 +381,25 @@ namespace CondorV.Migrations
                     b.Navigation("LocalisationBarr");
                 });
 
+            modelBuilder.Entity("CondorV.Models.BD.SitesGrandeurs", b =>
+                {
+                    b.HasOne("CondorV.Models.BD.Site", "Site")
+                        .WithMany("SitesGrandeurs")
+                        .HasForeignKey("SiteId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("CondorV.Models.BD.TypeGrandeur", "TypeGrandeur")
+                        .WithMany("SitesGrandeurs")
+                        .HasForeignKey("TypeGrandeurId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Site");
+
+                    b.Navigation("TypeGrandeur");
+                });
+
             modelBuilder.Entity("CondorV.Models.BD.Utilisateur", b =>
                 {
                     b.HasOne("CondorV.Models.BD.Agence", "Agence")
@@ -402,21 +423,6 @@ namespace CondorV.Migrations
                     b.Navigation("Site");
                 });
 
-            modelBuilder.Entity("SiteTypeGrandeur", b =>
-                {
-                    b.HasOne("CondorV.Models.BD.Site", null)
-                        .WithMany()
-                        .HasForeignKey("SitesId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.HasOne("CondorV.Models.BD.TypeGrandeur", null)
-                        .WithMany()
-                        .HasForeignKey("TypesGrandeursId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-                });
-
             modelBuilder.Entity("CondorV.Models.BD.Agence", b =>
                 {
                     b.Navigation("Sites");
@@ -436,7 +442,14 @@ namespace CondorV.Migrations
 
             modelBuilder.Entity("CondorV.Models.BD.Site", b =>
                 {
+                    b.Navigation("SitesGrandeurs");
+
                     b.Navigation("Utilisateurs");
+                });
+
+            modelBuilder.Entity("CondorV.Models.BD.TypeGrandeur", b =>
+                {
+                    b.Navigation("SitesGrandeurs");
                 });
 #pragma warning restore 612, 618
         }

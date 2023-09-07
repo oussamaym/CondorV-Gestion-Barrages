@@ -16,8 +16,8 @@ import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
   styleUrls: ['./add-user-dialog.component.css']
 })
 export class AddUserDialogComponent implements OnInit{
+   cond: any;
    roles: Role[] = [];
-   //initialize sites with one element
    sites: Site[] =[];
    agences: Agence[] = [];
    user: Utilisateur =  new Utilisateur('', '', '', '', null, '', false, 0, 0, 0);
@@ -34,7 +34,7 @@ export class AddUserDialogComponent implements OnInit{
     this.user.agenceId=this.data.agence.id;
     this.user.roleId=this.data.role[0].id;
     }
-    else if(this.data.isSite==false&&this.data.isAdmin==false)
+    else if(this.data.isSite==false&&this.data.isAdmin==true)
     {
       this.roles= this.data.role;
       this.sites.push(new Site(0,'Tous les sites',0,0,'','',0,0,'','','',0));
@@ -43,9 +43,13 @@ export class AddUserDialogComponent implements OnInit{
       this.user.agenceId=this.data.agence.id;
       this.user.roleId=this.data.role[0].id;
   }
-  //this.loadRoles();
-    //this.loadAgences();
-    //this.loadBarrages();
+  else if(this.data.isAdmin==true)
+  {
+    this.cond="admin";
+    this.loadRoles();
+    this.loadAgences();
+    this.loadBarrages();
+  }
   } 
   ajouter(user: Utilisateur):void{
     var PostModel = user;
@@ -60,7 +64,7 @@ export class AddUserDialogComponent implements OnInit{
       }
     );
   }
-  /*
+  
    loadRoles(): void {
     this.roleService.getAllRoles().subscribe(
       roles => {
@@ -79,6 +83,9 @@ export class AddUserDialogComponent implements OnInit{
     this.agenceService.getAllAgences().subscribe(
       agences => {
         this.agences = agences;
+        if (this.agences.length > 0) {
+          this.user.agenceId = this.agences[0].id;
+        }
       },
       error => {
         console.error('Error fetching Agences:', error);
@@ -89,10 +96,13 @@ export class AddUserDialogComponent implements OnInit{
     this.siteService.getAllBarrages().subscribe(
       sites => {
         this.sites = sites;
+        if (this.sites.length > 0) {
+          this.user.siteId = this.sites[0].id;
+        }
       },
       error => {
         console.error('Error fetching Barrages:', error);
       }
     );
-  }*/
+  }
 }

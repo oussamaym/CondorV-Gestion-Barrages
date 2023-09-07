@@ -36,7 +36,6 @@ export class ListAgenceComponent implements OnInit {
     this.utilisateurconnecte=localStorage.getItem('utilisateurconnecte');
     if (this.utilisateurconnecte !== null) {
       this.utilisateurconnecte = JSON.parse(this.utilisateurconnecte);
-      console.log('Utilisateur connecté : ', this.utilisateurconnecte);
     } else {
       console.log('Utilisateur non connecté.');
     }

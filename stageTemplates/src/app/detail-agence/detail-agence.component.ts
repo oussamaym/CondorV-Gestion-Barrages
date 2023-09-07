@@ -19,9 +19,7 @@ export class DetailAgenceComponent implements OnInit{
   agence: Agence | undefined;
   constructor(private route: ActivatedRoute,public dialog: MatDialog,private http:HttpClient,private agenceService: AgenceService) {}
   ngOnInit(): void {
-    
-    const agenceId = +this.route.snapshot.paramMap.get('agenceId')!;
-    console.log("id:"+agenceId);
+    const agenceId= +this.route.snapshot.paramMap.get('agenceId')!;
     this.getAgenceById(agenceId);
   }
     getAgenceById(id: number): void {

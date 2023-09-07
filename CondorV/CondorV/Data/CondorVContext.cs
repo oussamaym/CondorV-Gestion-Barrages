@@ -32,12 +32,22 @@ namespace CondorV.Data
 
 
         public DbSet<CondorV.Models.BD.TypeGrandeur>? TypeGrandeur { get; set; }
-            protected override void OnModelCreating(ModelBuilder modelBuilder)
-    {
-        modelBuilder.Entity<Site>()
-            .HasMany(s => s.TypesGrandeurs)
-            .WithMany(t => t.Sites)
-            .UsingEntity(j => j.ToTable("SiteGrandeurs"));
-    }
+        protected override void OnModelCreating(ModelBuilder modelBuilder)
+        {
+            modelBuilder.Entity<SitesGrandeurs>()
+                .HasKey(bc => new { bc.SiteId, bc.TypeGrandeurId });
+            modelBuilder.Entity<SitesGrandeurs>()
+                .HasOne(bc => bc.Site)
+                .WithMany(b => b.SitesGrandeurs)
+                .HasForeignKey(bc => bc.SiteId);
+            modelBuilder.Entity<SitesGrandeurs>()
+                .HasOne(bc => bc.TypeGrandeur)
+                .WithMany(c => c.SitesGrandeurs)
+                .HasForeignKey(bc => bc.TypeGrandeurId);
+
+        }
+        public DbSet<CondorV.Models.BD.SitesGrandeurs>? SitesGrandeurs { get; set; }
+        public DbSet<CondorV.Models.BD.Mesure>? Mesure { get; set; }
+        
     }
 }

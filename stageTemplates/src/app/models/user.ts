@@ -8,7 +8,7 @@ export class Utilisateur {
   prenom: string;
   userName: string;
   email: string | null;
-  password: string;
+  password: string | null;
   dateCreation?: Date;
   estActive: boolean;
   roleId: number;

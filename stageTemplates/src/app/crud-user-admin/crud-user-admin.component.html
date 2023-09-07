@@ -1,0 +1,39 @@
+<app-sidenav (onToggleSideNav)="onToggleSideNav($event)"></app-sidenav>
+<div class="crud-page">
+  <div class="crud-spacer"></div>
+  <div class="login-container">
+    <div class="crud-container">
+      <button class="btn btn-outline-success" (click)="openAddUserDialog()">
+        <b>Creer un nouveau Utilisateur</b>
+      </button>
+      <app-search (onSearch)="performSearch($event)"></app-search>
+    </div>
+    <br>
+    <table class="table table-bordered " id="tabback">
+      <thead>
+        <tr>
+          <th>Utilisateur</th>
+          <th>Role</th>
+          <th>Action</th>
+        </tr>
+      </thead>
+      <tbody class="table-group-divider">
+        <tr *ngFor="let utilisateur of utilisateurs" >
+          <td><b>{{ utilisateur.nom }} {{ utilisateur.prenom }}</b></td>
+          <td><b>{{ utilisateur.role?.designation }}</b></td>
+          <td>
+            <button class="btn btn-outline-success" >Supprimer</button>
+            <a>&nbsp;</a>
+            <button class="btn btn-outline-success" (click)="openEditUserDialog(utilisateur.id)">
+              Modifier
+            </button>
+            <a>&nbsp;</a>
+            <button class="btn btn-outline-success" [routerLink]="['/detailUser', utilisateur.id]">
+              Plus de Detail
+            </button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>

@@ -2,7 +2,7 @@ import { Component, EventEmitter, Output } from '@angular/core';
 import { navbarDataII } from './nav-data2';
 import { INavbarData } from './helper2';
 
-interface SideNavToggle {
+interface AdminSideNavToggle {
   screenWidth: number;
   collapsed: boolean;
 }
@@ -13,7 +13,7 @@ interface SideNavToggle {
   styleUrls: ['./sidenav2.component.css']
 })
 export class Sidenav2Component {
-  @Output() onToggleSideNav: EventEmitter<SideNavToggle> = new EventEmitter();
+  @Output() onToggleSideNav: EventEmitter<AdminSideNavToggle> = new EventEmitter();
   collapsed = false;
   screenWidth = 0;
   navDataII = navbarDataII;

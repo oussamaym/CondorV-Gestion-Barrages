@@ -18,30 +18,42 @@
       </div>
       <div class="input-box">
         <label><b>Email</b></label>
-        <input type="text" placeholder="Entrer Email" required [(ngModel)]="user.email" name="email" />
+        <input type="text" placeholder="Entrer Email" [(ngModel)]="user.email" name="email" />
       </div>
     </div>
     <div class="input-box address">
       <label><b>Mot de Passe</b></label>
       <input type="password" placeholder="Entrer le Mot de Passe" required [(ngModel)]="user.password" name="password" />
       <div class="column">
+        <div class="input-box">
+          <label><b>Role</b></label>
         <div class="select-box">
           <select  [(ngModel)]="user.roleId" name="roleId"> 
+            
             <option *ngFor="let role of roles" [value]="role.id">{{ role.designation }}</option>
           </select>
         </div>
-      
+      </div>
       </div>
       <div class="column">
+        <div class="input-box">
+          <label><b>Site</b></label>
       <div class="select-box">
         <select [(ngModel)]="user.siteId" name="siteId">
+          <option *ngIf="cond=='admin'" [value]="0">Tous les sites</option>
           <option *ngFor="let site of sites" [value]="site.id">{{ site.nom }}</option>
         </select>
       </div>
+      </div>
+
+      <div class="input-box">
+        <label><b>Agence</b></label>
       <div class="select-box">
         <select [(ngModel)]="user.agenceId" name="agenceId">
+          <option *ngIf="cond=='admin'" [value]="0">Toutes les agences</option>
           <option *ngFor="let agence of agences" [value]="agence.id">{{ agence.nom }}</option>
         </select>
+      </div>
       </div>
     </div>
     </div>

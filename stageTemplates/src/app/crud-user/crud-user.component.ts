@@ -74,7 +74,7 @@ export class CrudUserComponent  implements OnInit{
           data: { "site": site, "isSite": true, "agence":site.agence,"role": roles,"isAdmin":false}
         });
         dialogRef.afterClosed().subscribe(result => {
-          if (result === 'userUpdated') {
+          if (result === 'userCreated') {
             this.loadUtilisateurs(); // Manually re fresh the user data
           }
         });
@@ -103,10 +103,10 @@ export class CrudUserComponent  implements OnInit{
         const dialogRef = this.dialog.open(AddUserDialogComponent, {
           width: '700px',
           height: '700px',
-          data: { "agence": agence, "isSite": false, "role": roles,"isAdmin":false }
+          data: { "agence": agence, "isSite": false, "role": roles,"isAdmin":true }
         });
         dialogRef.afterClosed().subscribe(result => {
-          if (result === 'userUpdated') {
+          if (result === 'userCreated') {
             this.loadUtilisateurs(); // Manually refresh the user data
           }
         });
@@ -116,20 +116,70 @@ export class CrudUserComponent  implements OnInit{
       }
     }
   }
+  async openEditUserDialog(id : string): Promise<void>  {
+    if (this.cond == "BAR") {
+      const agenceId = Number(localStorage.getItem('agenceId'));
+      try {
+        const agence = await new Promise<Agence>((resolve, reject) => {
+          this.agenceService.getAgenceById(agenceId).subscribe(
+            agence => resolve(agence),
+            error => reject(error)
+          );
+        });
+        const sites = await new Promise<Site[]>((resolve, reject) => {
+          this.siteService.getAllBarrages().subscribe(
+            sites => resolve(sites.filter(site => site.agenceId === agenceId)),
+            error => reject(error)
+          );
+        });
   
-  openEditUserDialog(id: string): void {
-    const dialogRef = this.dialog.open(EditUserDialogComponent, {
-      width: '700px',
-      height:'700px',
-      data: { userId: id }
-      
-    });
-    dialogRef.afterClosed().subscribe(result => {
-      if (result === 'userUpdated') {
-        this.loadUtilisateurs(); // Manually refresh the user data
+        const roles = await new Promise<Role[]>((resolve, reject) => {
+          this.roleService.getAllRoles().subscribe(
+            roles => resolve(roles.filter(role => role.designation === 'AdminBAR')),
+            error => reject(error)
+          );
+        });
+        const dialogRef = this.dialog.open(EditUserDialogComponent, {
+          width: '700px',
+          height: '700px',
+          data: {"userId":id,"isSite": true,"site":sites, "agence":agence,"role": roles,"isAdmin":false}
+        });
+        dialogRef.afterClosed().subscribe(result => {
+          if (result === 'userUpdated') {
+            this.loadUtilisateurs(); // Manually re fresh the user data
+          }
+        });
+  
+      } catch (error) {
+        console.error('Error:', error);
       }
-    });
   }
+    else if (this.cond == "AG") {
+      try {
+        const roles = await new Promise<Role[]>((resolve, reject) => {
+          this.roleService.getAllRoles().subscribe(
+            roles => resolve(roles.filter(role => role.designation === 'AdminAG')),
+            error => reject(error)
+          );
+        });
+
+        const dialogRef = this.dialog.open(EditUserDialogComponent, {
+          width: '700px',
+          height: '700px',
+          data: {"userId":id,"isSite": false,"role": roles,"isAdmin":true}
+        });
+        dialogRef.afterClosed().subscribe(result => {
+          if (result === 'userUpdated') {
+            this.loadUtilisateurs(); // Manually re fresh the user data
+          }
+        });
+  
+      } catch (error) {
+        console.error('Error:', error);
+      }
+  }
+
+}
   
   loadUtilisateurs(): void {
     const siteId = Number(localStorage.getItem('siteId'));

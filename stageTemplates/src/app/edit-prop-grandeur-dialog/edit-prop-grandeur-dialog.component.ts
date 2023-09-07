@@ -13,14 +13,17 @@ import { LocalisationBarrService } from '../services/localisationbarr.service';
   styleUrls: ['./edit-prop-grandeur-dialog.component.css']
 })
 export class EditPropGrandeurDialogComponent implements OnInit {
-   grandeur: Grandeur = new Grandeur(0, '', '', '', 0, 0, '', '', 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, '', 0, 0, 0, 0, 0, 0);
+   grandeur: Grandeur = new Grandeur();
    typesGrandeur: TypeGrandeur[] = [];
    localisations: LocalisationBarr[] = [];
 
     constructor(private localisationService: LocalisationBarrService,private grandeurService: GrandeurService,private typeGrandeurService: TypeGrandeurService ,private dialogRef: MatDialogRef<EditPropGrandeurDialogComponent>,@Inject(MAT_DIALOG_DATA) public data: any) { }
   
     ngOnInit(): void {
-      this.getGrandeurById(this.data.grandeurId);
+      if(this.data.grandeurId)
+      {
+        this.getGrandeurById(this.data.grandeurId);
+      }
       this.getAllTypesGrandeur();
       this.loadLocalisationBarrs();
     }
@@ -28,7 +31,6 @@ getGrandeurById(id: number): void {
   this.grandeurService.getGrandeurById(id).subscribe(
     grandeur => {
       this.grandeur = grandeur;
-      console.log("grandeur",this.grandeur);
     },
     error => {
       console.error('Error fetching grandeur', error);
@@ -51,7 +53,6 @@ getAllTypesGrandeur(): void {
   this.typeGrandeurService.getAllTypeGrandeurs().subscribe(
     typesGrandeur => {
       this.typesGrandeur = typesGrandeur;
-      console.log("types grandeurs",this.typesGrandeur);
     },
     error => {
       console.error('Error fetching typesGrandeur', error);
@@ -68,5 +69,8 @@ loadLocalisationBarrs(): void {
       console.error('Error fetching Localisations', error);
     }
   );
+}
+closeDialog():void{
+  this.dialogRef.close();
 }
 }

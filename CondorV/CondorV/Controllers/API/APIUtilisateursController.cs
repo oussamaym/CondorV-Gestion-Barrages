@@ -76,7 +76,6 @@ namespace CondorV.Controllers
             utilisateur.RoleId = EditedUser.RoleId;
             utilisateur.SiteId = EditedUser.SiteId;
             utilisateur.AgenceId = EditedUser.AgenceId;
-            Console.WriteLine("MDP BD : " + utilisateur.Password + " MDP EDIT : " + EditedUser.Password);
             if (EditedUser.Password != utilisateur.Password)
             {
                 utilisateur.Password = BCrypt.Net.BCrypt.HashPassword(EditedUser.Password);
@@ -100,7 +99,7 @@ namespace CondorV.Controllers
 
             return NoContent();
         }
-
+       
         // POST: api/APIUtilisateurs
         // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
         [HttpPost]

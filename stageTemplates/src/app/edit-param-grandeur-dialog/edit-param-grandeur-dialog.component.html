@@ -6,85 +6,85 @@
     <div class="column">
         <div class="input-box">
             <label><b>Processeur Id</b></label>
-            <input type="text"  required name="processorId" />
+            <input type="text"  required [(ngModel)]="grandeur.processorId" name="processorId" />
         </div>
         <div class="input-box">
             <label><b>Processeur Unite Id</b></label>
-            <input type="text"  required name="processorunitId" />
+            <input type="text"  required [(ngModel)]="grandeur.processorUnitId" name="processorUnitId"  />
+        </div>
+      </div>
+      <div class="column">
+        <div class="input-box">
+            <label><b>Processeur Name</b></label>
+            <input type="text"  required [(ngModel)]="grandeur.processorName" name="processorName" />
+        </div>
+        <div class="input-box">
+            <label><b>Nom complet</b></label>
+            <input type="text"  required [(ngModel)]="grandeur.nomComplet" name="nomComplet"  />
         </div>
       </div>
       <div class="column">
         <div class="input-box">
           <label><b>Nombre Decimal Degits</b></label>
-          <input type="text"  required  name="nomberDecimalDegits" />
+          <input type="text"  required  [(ngModel)]="grandeur.numberDecimalDigits" name="numberDecimalDigits"   />
         </div>
         <div class="input-box">
           <label><b>Cote d'Appareil</b></label>
-          <input type="number"  required  name="Cote Appareil" />
+          <input type="text"  required  [(ngModel)]="grandeur.codeAppareil" name="codeAppareil"   />
         </div>
       </div>
 
       <div class="column">
         <div class="input-box">
-          <label><b>Nombre Decimal Degits</b></label>
-          <input type="text"  required  name="nomberDecimalDegits" />
-        </div>
-        <div class="input-box">
-          <label><b>Cote d'Appareil</b></label>
-          <input type="number"  required  name="Cote Appareil" />
-        </div>
-      </div>
-      <div class="column">
-        <div class="input-box">
           <label><b>Date MBI</b></label>
-          <input type="date" required  name="date mbi" />
+          <input type="text" required  [(ngModel)]="grandeur.dateMBI" name="dateMBI"/>
         </div>
         <div class="input-box">
           <label><b>Heure MBI</b></label>
-          <input type="time"  required  name="heure mbi" />
+          <input type="text"  required  [(ngModel)]="grandeur.heureMBI" name="heureMBI"/>
         </div>
       </div>
 
       <div class="column">
         <div class="input-box">
           <label><b>Valeur MBI</b></label>
-          <input type="number"  required  name="valeur mbi" />
+          <input type="text"  required  [(ngModel)]="grandeur.valeurMBI" name="valeurMBI"/>
         </div>
         <div class="input-box">
           <label><b>Piezometre Plus Proche</b></label>
-          <input type="number"  required  name="PiezometrePlusProche" />
+          <input type="text"  required  [(ngModel)]="grandeur.piezomPlusProche" name="piezomPlusProche" />
         </div>
       </div>
       <div class="column">
         <div class="input-box">
           <label><b>Lecture de Base</b></label>
-          <input type="number"  required  name="lecture de base" />
+          <input type="text"  required  [(ngModel)]="grandeur.lectureDeBase" name="lectureDeBase" />
         </div>
         <div class="input-box">
           <label><b>Longueur</b></label>
-          <input type="number"  required  name="longueur" />
+          <input type="text"  required  [(ngModel)]="grandeur.longueur" name="longueur" />
         </div>
       </div>
 
       <div class="column">
         <div class="input-box">
           <label><b>Calibre</b></label>
-          <input type="number"  required  name="calibre" />
+          <input type="text"  required  [(ngModel)]="grandeur.calibre" name="calibre"  />
         </div>
         <div class="input-box">
           <label><b>Ancre</b></label>
-          <input type="number"  required  name="ancre" />
+          <input type="text"  required [(ngModel)]="grandeur.ancre" name="ancre"  />
         </div>
       </div>
 
       <div class="column">
         <div class="input-box">
           <label><b>KL Calibrage</b></label>
-          <input type="number" required  name="klcalibrage" />
+          <input type="number" required  [(ngModel)]="grandeur.klCalibrage" name="klCalibrage"  />
         </div>
         <div class="input-box">
           <label><b>Lineare Zero</b></label>
-          <input type="number"  required  name="lineare zero" />
+          <input type="number"  required [(ngModel)]="grandeur.lineaireZero" name="lineaireZero"   />
         </div>
       </div>
 
@@ -93,10 +93,10 @@
      
       <div class="column">
         <div class="input-box">
-            <button class="btn btn-outline-success">Submit</button>
+            <button class="btn btn-outline-success" (click)="modifier(grandeur)">Submit</button>
       </div>
       <div class="input-box">
-        <button class="btn btn-outline-success" type="reset">Annuler</button>
+        <button class="btn btn-outline-success" (click)="closeDialog()">Annuler</button>
       </div>
       </div>
     </form>

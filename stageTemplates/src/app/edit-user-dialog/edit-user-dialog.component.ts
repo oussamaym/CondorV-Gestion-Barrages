@@ -25,10 +25,30 @@ export class EditUserDialogComponent implements OnInit{
   }
  ngOnInit(): void {
   this.getUtilisateurById(this.data.userId);
-   this.loadRoles();
-   this.loadAgences();
-   this.loadBarrages();
-  
+  if(this.data.isSite==true &&this.data.isAdmin==false)
+  {
+    this.roles= this.data.role;
+    this.agences.push(this.data.agence);
+    for(let site of this.data.site)
+    {
+      this.sites.push(site);
+    }
+    console.log("site : ",this.data.site);
+    console.log("site : ",this.sites);
+  }
+  else if(this.data.isSite==false &&this.data.isAdmin==true)
+  {
+    this.roles= this.data.role;
+    this.sites.push(new Site(0,'Tous les sites',0,0,'','',0,0,'','','',0));
+    this.loadAgences();
+  }
+  else if(this.data.isAdmin==true)
+  {
+    this.loadRoles();
+    this.loadAgences();
+    this.loadBarrages();
+  }
+
  }
  modifier(user: Utilisateur):void{
   var EditedUser = user;
@@ -79,6 +99,7 @@ export class EditUserDialogComponent implements OnInit{
     this.userService.getUtilisateurById(id).subscribe(
       user => {
         this.user = user;
+        console.log("user : ",this.user);
       },
       error => {
         console.error('Error fetching user details:', error);

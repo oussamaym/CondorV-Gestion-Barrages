@@ -1,5 +1,6 @@
 import { Agence } from './agence';
 import { LocalisationBarr } from './localisationbarr'; // Make sure to provide the correct import path
+import { TypeGrandeur } from './typegrandeur';
 
 export class Site {
      id: number;
