@@ -72,7 +72,15 @@
             </label>
           </div>
         </div>
-        <button (click)="modifier(user)"class="btn btn-outline-success">Submit</button>
+        
+        <div class="column">
+          <div class="input-box">
+            <button (click)="modifier(user)"class="btn btn-outline-success">Submit</button>
+        </div>
+        <div class="input-box">
+          <button class="btn btn-outline-danger" (click)="closeDialog()">Annuler</button>
+        </div>
+        </div>
       </form>
     </section>
     

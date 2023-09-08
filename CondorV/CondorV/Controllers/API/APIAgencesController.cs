@@ -110,7 +110,9 @@ namespace CondorV.Controllers.API
        
         [HttpDelete("{id}")]
 
+
        //[Authorize(Roles = "AdminAG,Admin", Policy = "SupprimerPermission")]
+
         public async Task<IActionResult> DeleteAgence(long id)
         {
             var agence = await _context.Agence.FindAsync(id);

@@ -106,7 +106,8 @@ export class EditUserDialogComponent implements OnInit{
       }
     );
   }
-
-
+}
+closeDialog():void{
+  this.dialogRef.close();
 }
 }

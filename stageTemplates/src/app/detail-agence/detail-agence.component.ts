@@ -5,6 +5,8 @@ import { HttpClient } from '@angular/common/http';
 import { EditSiteDialogComponent } from '../edit-site-dialog/edit-site-dialog.component';
 import { Agence } from '../models/agence';
 import { AgenceService } from '../services/agence.service';
+import { EditAgenceDialogComponent } from '../edit-agence-dialog/edit-agence-dialog.component';
+import { DeletingDialogComponent } from '../deleting-dialog/deleting-dialog.component';
 
 interface SideNavToggle {
   screenWidth: number;
@@ -58,5 +60,16 @@ export class DetailAgenceComponent implements OnInit{
     dialogRef.afterClosed().subscribe(result => {
       console.log('Dialog closed with result:', result);
     });
+  }
+  Modif(idAgence: number| undefined):void {
+    if(idAgence != undefined)
+    {
+      const dialogRef = this.dialog.open(EditAgenceDialogComponent, {
+        width: '700px',
+        height:'700px',
+        data: { idAgence: idAgence }
+      });
+    }
+
   }
 }
