@@ -54,10 +54,11 @@ namespace CondorV.Controllers.API
             return agence;
         }
 
+
         // PUT: api/APIAgences/5
         // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
         [HttpPut("{id}")]
-        [Authorize(Roles = "AdminAG,Admin", Policy = "ModifierPermission")]
+        //[Authorize(Roles = "AdminAG,Admin", Policy = "ModifierPermission")]
         public async Task<IActionResult> PutAgence(long id, Agence agence)
         {
             if (id != agence.Id)
@@ -89,7 +90,7 @@ namespace CondorV.Controllers.API
         // POST: api/APIAgences
         // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
         [HttpPost]
-        [Authorize(Roles = "AdminAG,Admin", Policy = "AjouterPermission")]
+        //[Authorize(Roles = "AdminAG,Admin", Policy = "AjouterPermission")]
         public async Task<ActionResult<Agence>> PostAgence(Agence agence)
         {
             if (_context.Agence == null)
@@ -103,18 +104,28 @@ namespace CondorV.Controllers.API
         }
 
         // DELETE: api/APIAgences/5
+       
+        // [Authorize(Roles = "AdminAG,Admin", Policy = "SupprimerPermission")]
         [HttpDelete("{id}")]
-        [Authorize(Roles = "AdminAG,Admin", Policy = "SupprimerPermission")]
         public async Task<IActionResult> DeleteAgence(long id)
         {
-            if (_context.Agence == null)
-            {
-                return NotFound();
-            }
             var agence = await _context.Agence.FindAsync(id);
             if (agence == null)
             {
                 return NotFound();
+            }
+
+            // Find the associated sites and set their agency ID to NULL
+            var associatedSites = _context.Site.Where(s => s.AgenceId == id);
+            var associatedUsers= _context.Utilisateur.Where(u => u.AgenceId == id);
+
+            foreach (var site in associatedSites)
+            {
+                site.AgenceId = null; // Set the agency ID to NULL
+            }
+            foreach (var user in associatedUsers)
+            {
+                user.AgenceId = null; // Set the agency ID to NULL
             }
 
             _context.Agence.Remove(agence);
@@ -122,6 +133,7 @@ namespace CondorV.Controllers.API
 
             return NoContent();
         }
+
 
         private bool AgenceExists(long id)
         {

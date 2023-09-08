@@ -1,8 +1,6 @@
 import { Component,OnInit,Inject } from '@angular/core';
 import { Grandeur } from '../models/grandeur';
 import { SiteGrandeur } from '../models/sitegrandeur';
-import { LocalisationBarr } from '../models/localisationbarr';
-import { LocalisationBarrService } from '../services/localisationbarr.service';
 import { GrandeurService } from '../services/grandeur.service';
 import { SiteGrandeurService } from '../services/sitegrandeur.service';
 import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
@@ -18,14 +16,12 @@ export class AddPropGrandeurDialogComponent  implements OnInit {
   grandeur: Grandeur = new Grandeur();
   sitesGrandeurs: SiteGrandeur|undefined;
   typesGrandeurs: TypeGrandeur[] = [];
-  localisations: LocalisationBarr[] = [];
 
-   constructor(private route:ActivatedRoute,private localisationService: LocalisationBarrService,private grandeurService: GrandeurService,private siteGrandeurService: SiteGrandeurService ,private dialogRef: MatDialogRef<AddPropGrandeurDialogComponent>,@Inject(MAT_DIALOG_DATA) public data: any) { }
+   constructor(private route:ActivatedRoute,private grandeurService: GrandeurService,private siteGrandeurService: SiteGrandeurService ,private dialogRef: MatDialogRef<AddPropGrandeurDialogComponent>,@Inject(MAT_DIALOG_DATA) public data: any) { }
  
    ngOnInit(): void {
      this.getTypesGrandeur(this.data.typeId);
      this.grandeur.typeGrandeurId=this.data.typeId;
-     this.loadLocalisationBarrs();
    }
 ajouter(grandeur: Grandeur):void{
   const siteId=Number(localStorage.getItem('siteId'));
@@ -58,16 +54,8 @@ getTypesGrandeur(typeGrandeurId:number): void {
    }
  );
 }
-loadLocalisationBarrs(): void {
- this.localisationService.getAllLocalisations().subscribe(
-  localisations => {
-     this.localisations = localisations;
-   
-   },
-   error => {
-     console.error('Error fetching Localisations', error);
-   }
- );
+closeDialog():void{
+  this.dialogRef.close();
 }
 }
 

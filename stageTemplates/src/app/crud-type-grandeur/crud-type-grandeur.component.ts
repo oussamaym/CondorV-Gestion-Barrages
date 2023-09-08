@@ -9,6 +9,7 @@ import { TypeGrandeur } from '../models/typegrandeur';
 import { SiteGrandeur } from '../models/sitegrandeur';
 import { SiteGrandeurService } from '../services/sitegrandeur.service';
 import { TypeGrandeurService } from '../services/typegrandeur.service';
+import { DeletingDialogComponent } from '../deleting-dialog/deleting-dialog.component';
 interface AdminSideNavToggle {
   screenWidth: number;
   collapsed : boolean;
@@ -23,6 +24,8 @@ export class CrudTypeGrandeurComponent implements OnInit {
   sitesGrandeurs : SiteGrandeur[] = [];
   isSideNavCollapsed = false;
   screenWidth = 0;
+  itemsPerPage: number=5;
+  p:number=1;
   onToggleSideNav(data:AdminSideNavToggle): void{
     this.screenWidth = data.screenWidth;
     this.isSideNavCollapsed = data.collapsed;
@@ -78,4 +81,18 @@ export class CrudTypeGrandeurComponent implements OnInit {
           }
         );
       }
+      opendelGrDialog(siteId:number,typeGrandeurId:number): void {
+        const dialogRef = this.dialog.open(DeletingDialogComponent, {
+           width: '500px',
+           height:'325px',
+           data: {"siteGrandeurSiteId":siteId,"siteGrandeurtypeGrandeurId":typeGrandeurId}
+           
+         });
+          dialogRef.afterClosed().subscribe(result => {
+            if (result === 'siteGrandeurDeleted') {
+              this.getAllSitesGrandeur();
+            }
+          });
+      
+       }
 }

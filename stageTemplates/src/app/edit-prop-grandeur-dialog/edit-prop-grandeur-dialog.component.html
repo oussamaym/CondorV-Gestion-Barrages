@@ -31,15 +31,18 @@
       </div>
       <div class="column">
         
-          <div class="input-box">
-            <label><b>Localisation</b></label>
-            <div class="select-box">
-              <select  [(ngModel)]="grandeur.localisationBarrId" name=" localisationBarrId"> 
-                
-                <option *ngFor="let localisation of localisations" [value]="localisation.id">{{ localisation.designation }}</option>
-              </select>
-            </div>
-          </div>
+        <div class="input-box">
+          <label><b>Localisation</b></label>
+          <select class="select-box"  [(ngModel)]="grandeur.localisationBarr" name=" localisationBarr">
+            <option hidden>--- Choisir la localisation</option>
+          <option>Aval</option>
+          <option>Fondation</option>
+          <option>Aval</option>
+          <option>Mensuel</option>
+          <option>Semestrielle</option>
+          <option>Trimestrielle</option>
+          </select>
+        </div>
         
         <div class="input-box">
             <label><b>Mode d'acquisition</b></label>

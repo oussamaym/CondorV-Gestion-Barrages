@@ -1,16 +1,15 @@
 export class Role {
     id: number;
     designation: string;
-    controleTotal: boolean;
     creer: boolean;
     modifier: boolean;
     supprimer: boolean;
     lecture: boolean;
+    controlTotal: boolean=false;
   
     constructor(
       id: number,
       designation: string,
-      controleTotal: boolean,
       creer: boolean,
       modifier: boolean,
       supprimer: boolean,
@@ -18,7 +17,6 @@ export class Role {
     ) {
       this.id = id;
       this.designation = designation;
-      this.controleTotal = controleTotal;
       this.creer = creer;
       this.modifier = modifier;
       this.supprimer = supprimer;

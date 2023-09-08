@@ -1,39 +1,37 @@
-import { Agence } from './agence';
-import { LocalisationBarr } from './localisationbarr'; // Make sure to provide the correct import path
+import { Agence } from './agence'; // Make sure to provide the correct import path
 import { TypeGrandeur } from './typegrandeur';
 
 export class Site {
      id: number;
      nom: string;
-     localisationBarrId: number;
-     localisationBarr?: LocalisationBarr; // Use the correct property name
-     capacite: number;
+     localisationBarr: string;
+     capacite: number | null;
      type: string;
      villePlusProche: string;
-     hauteurBarr: number;
-     distVillePlusProche: number;
+     hauteurBarr: number | null;
+     distVillePlusProche: number | null;
      codeRetNormal: string;
-     dateMiseEnServ: string; 
+     dateMiseEnServ: Date | null; 
      laRetenue: string; 
-     agenceId: number;
+     agenceId: number | null;
      agence?: Agence ;
     constructor(
          id: number,
          nom: string,
-         localisationBarrId: number,
-         capacite: number,
+         localisationBarr: string,
+         capacite: number | null,
          type: string, 
          villePlusProche: string,
-         hauteurBarr: number,
-         distVillePlusProche: number,
+         hauteurBarr: number | null,
+         distVillePlusProche: number | null,
          codeRetNormal: string,
-         dateMiseEnServ: string, 
+         dateMiseEnServ: Date | null, 
          laRetenue: string, 
-         agenceId: number 
+         agenceId: number | null 
     ) {
         this.id = id;
         this.nom = nom;
-        this.localisationBarrId = localisationBarrId;
+        this.localisationBarr = localisationBarr;
         this.capacite = capacite;
         this.type = type;
         this.villePlusProche = villePlusProche;

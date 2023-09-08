@@ -11,10 +11,8 @@ namespace CondorV.Models.BD
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public long Id { get; set; } 
         public string Nom { get; set; }
-        public int LocalisationBarrId { get; set; }
-        //[JsonIgnore]
-        public LocalisationBarr? LocalisationBarr { get; set; }
-        public String Type { get; set; }
+        public string LocalisationBarr { get; set; }
+        public string Type { get; set; }
         public double Capacite { get; set; }
         public string VillePlusProche { get; set; }
         public double HauteurBarr { get; set; }

@@ -33,7 +33,7 @@ namespace CondorV.Controllers
           {
               return NotFound();
           }
-            var sites = _context.Site.Include(u => u.Utilisateurs).Include(a => a.Agence).Include(l => l.LocalisationBarr);
+            var sites = _context.Site.Include(u => u.Utilisateurs).Include(a => a.Agence);
             return await sites.ToListAsync();
         }
 
@@ -46,7 +46,7 @@ namespace CondorV.Controllers
           {
               return NotFound();
           }
-            var site = await _context.Site.Include(l => l.LocalisationBarr).Include(a => a.Agence).FirstOrDefaultAsync(s=> s.Id == id); ;
+            var site = await _context.Site.Include(a => a.Agence).FirstOrDefaultAsync(s=> s.Id == id); ;
 
             if (site == null)
             {
@@ -59,7 +59,7 @@ namespace CondorV.Controllers
         // PUT: api/APISites/5
         // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
         [HttpPut("{id}")]
-        [Authorize(Roles = "AdminBAR,AdminAG,Admin", Policy = "ModifierPermission")]
+        //[Authorize(Roles = "AdminBAR,AdminAG,Admin", Policy = "ModifierPermission")]
         public async Task<IActionResult> PutSite(long id, Site site)
         {
             if (id != site.Id)
@@ -91,7 +91,7 @@ namespace CondorV.Controllers
         // POST: api/APISites
         // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
         [HttpPost]
-        [Authorize(Roles = "AdminBAR,AdminAG,Admin", Policy = "AjouterPermission")]
+        //[Authorize(Roles = "AdminBAR,AdminAG,Admin", Policy = "AjouterPermission")]
         public async Task<ActionResult<Site>> PostSite(Site site)
         {
           if (_context.Site == null)
@@ -106,7 +106,7 @@ namespace CondorV.Controllers
 
         // DELETE: api/APISites/5
         [HttpDelete("{id}")]
-        [Authorize(Roles = "AdminBAR,AdminAG,Admin", Policy = "SupprimerPermission")]
+        //[Authorize(Roles = "AdminBAR,AdminAG,Admin", Policy = "SupprimerPermission")]
         public async Task<IActionResult> DeleteSite(long id)
         {
             if (_context.Site == null)

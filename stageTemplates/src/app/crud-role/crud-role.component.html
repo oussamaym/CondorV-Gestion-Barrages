@@ -1,0 +1,64 @@
+<app-sidenav2 (onToggleSideNav)="onToggleSideNav($event)"></app-sidenav2>
+<div class="crud-page">
+  <div class="crud-spacer"></div>
+  <div class="login-container">
+    <div class="crud-container">
+      <button class="btn btn-outline-success" (click)="openAddRoleDialog()">
+        <b>Creer un nouveau Role</b>
+      </button>
+      <!--<app-search (onSearch)="performSearch($event)"></app-search>-->
+    </div>
+    <br>
+    <table class="table table-bordered " id="tabback">
+      <thead>
+        <tr>
+          <th>Role</th>
+          <th>Creer</th>
+          <th>Modifer</th>
+          <th>Supprimer</th>
+          <th>Lecture</th>
+          <th>Action</th>
+        </tr>
+      </thead>
+      <tbody class="table-group-divider" *ngFor="let role of roles  |  paginate: { itemsPerPage: itemsPerPage, currentPage: p }">
+        <tr>
+          <td><b>{{ role.designation }}</b></td>
+          <td>
+            <span [style.color]="role.creer ? '#14c229' : 'red'" style="font-size: 25px;">
+              {{ role.creer ? '✓' : '✗' }}
+            </span>
+          </td>
+          <td>
+            <span [style.color]="role.modifier ? '#14c229' : 'red'" style="font-size: 25px;">
+              {{ role.modifier ? '✓' : '✗' }}
+            </span>
+          </td>
+          <td>
+            <span [style.color]="role.supprimer ? '#14c229' : 'red'" style="font-size: 25px;">
+              {{ role.supprimer ? '✓' : '✗' }}
+            </span>
+          </td>
+          <td>
+            <span [style.color]="role.lecture ? '#14c229' : 'red'" style="font-size: 25px;">
+              {{ role.lecture ? '✓' : '✗' }}
+            </span>
+          </td>
+          <td>
+            <button class="btn btn-outline-success" (click)="opendelGrDialog(role.id)">Supprimer</button>
+            <a>&nbsp;</a>
+            <button class="btn btn-outline-success" (click)="openEditRoleDialog(role.id)">
+              Modifier
+            </button>
+          </td>
+        </tr>
+        
+        
+      </tbody>
+    </table>
+    <div style="display: flex; justify-content: center;">
+      <pagination-controls (pageChange)="p = $event"></pagination-controls>
+    </div>
+    
+  </div>
+</div>
+

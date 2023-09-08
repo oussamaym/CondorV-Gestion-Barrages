@@ -5,6 +5,8 @@ import { Router } from '@angular/router';
 import { AgenceService } from '../services/agence.service';
 import { AddAgenceDialogComponent } from '../add-agence-dialog/add-agence-dialog.component';
 import { EditAgenceDialogComponent } from '../edit-agence-dialog/edit-agence-dialog.component';
+import { Agence } from '../models/agence';
+import { DeletingDialogComponent } from '../deleting-dialog/deleting-dialog.component';
 interface SideNavToggle {
   screenWidth: number;
   collapsed : boolean;
@@ -15,7 +17,9 @@ interface SideNavToggle {
   styleUrls: ['./crud-agence.component.css']
 })
 export class CrudAgenceComponent implements OnInit {
-  agences?: any[] ;
+  agences: Agence[] = [];
+  itemsPerPage: number=5;
+  p:number=1;
 
   constructor(private http: HttpClient, public dialog: MatDialog,private router: Router,private agenceService: AgenceService) {}
 
@@ -53,24 +57,27 @@ export class CrudAgenceComponent implements OnInit {
         height:'700px',
         
       });
-  
+      dialogRef.afterClosed().subscribe(result => {
+        if (result === 'agenceCreated') {
+          this.getAgences(); // Manually refresh the user data
+        }
+      }
+      );
     }
-    Suppr(idAgence: number): void {
-      // Effectuer une requête DELETE à votre API en utilisant l'ID passé en argument
-      this.agenceService.deleteAgence(idAgence).subscribe(
-          () => {
-            // L'agence a été supprimée avec succès
-            alert('Agence supprimée avec succès');
-            window.location.reload();
-
-            // Vous pouvez également effectuer d'autres actions ici si nécessaire, par exemple, mettre à jour votre liste d'agences après la suppression.
-          },
-          (error) => {
-            // Gérer les erreurs ici
-            console.error('Erreur:', error);
+    opendelGrDialog(id:number): void {
+      const dialogRef = this.dialog.open(DeletingDialogComponent, {
+         width: '500px',
+         height:'325px',
+         data: {"agenceId":id}
+         
+       });
+        dialogRef.afterClosed().subscribe(result => {
+          if (result === 'agenceDeleted') {
+            this.getAgences(); // Manually refresh the user data
           }
-        );
-    }
+        });
+    
+     }
     
   
     Modif():void {

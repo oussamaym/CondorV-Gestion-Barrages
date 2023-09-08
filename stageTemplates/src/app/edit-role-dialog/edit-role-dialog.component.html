@@ -1,0 +1,51 @@
+<section class="container">
+    
+    <header>
+        <h4><b>Modifier Role</b></h4>
+    </header>
+    <form action="#" class="form">
+      <div class="input-box">
+        <label><b>Designation</b></label>
+        <div class="column">
+            <input type="text" required [(ngModel)]="role.designation" name="designation" >
+          </div>
+      </div>
+      <div class="gender-box">
+        
+        <div class="gender-option">
+          <div class="gender">
+        
+          <div class="gender">
+            <input type="checkbox"  value="creer" [(ngModel)]="role.creer" name="creer"/>
+            <a>&nbsp;</a><a>&nbsp;</a>
+            <label for="check-female">Creer</label>
+          </div>
+          <div class="gender">
+            <input type="checkbox" value="modifier" [(ngModel)]="role.modifier" name="modifier" />
+            <a>&nbsp;</a><a>&nbsp;</a>
+            <label for="check-other">Modifier</label>
+          </div>
+          <div class="gender">
+            <input type="checkbox"  value="supprimer" [(ngModel)]="role.supprimer" name="supprimer" />
+            <a>&nbsp;</a><a>&nbsp;</a>
+            <label for="check-other">Supprimer</label>
+          </div>
+          <div class="gender">
+            <input type="checkbox" value="lecture" [(ngModel)]="role.lecture" name="lecture"/>
+            <a>&nbsp;</a><a>&nbsp;</a>
+            <label for="check-other">Lecture</label>
+          </div>
+        </div>
+      </div>
+      </div>
+
+      <div class="column">
+        <div class="input-box">
+            <button class="btn btn-outline-success " (click)="modifier(role)">Submit</button>
+      </div>
+      <div class="input-box">
+        <button class="btn btn-outline-danger" (click)="closeDialog()">Annuler</button>
+      </div>
+      </div>
+    </form>
+  </section>

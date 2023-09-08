@@ -3,6 +3,8 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { SiteService } from '../services/site.service';
 import { SiteIdService } from '../services/site-id.service';
 import { Site } from '../models/site';
+import { MatDialog } from '@angular/material/dialog';
+import { DeletingDialogComponent } from '../deleting-dialog/deleting-dialog.component';
 
 @Component({
   selector: 'app-list-barrage',
@@ -12,7 +14,7 @@ import { Site } from '../models/site';
 export class ListSiteComponent implements OnInit {
   sites: Site[] = [];
   utilisateurconnecte: any | null = null;
-  constructor(private siteService: SiteService, private siteIdService: SiteIdService,private router: Router,private route:ActivatedRoute) {}
+  constructor(private dialog: MatDialog, private siteService: SiteService, private siteIdService: SiteIdService,private router: Router,private route:ActivatedRoute) {}
 
   
   ngOnInit(): void {
@@ -20,6 +22,21 @@ export class ListSiteComponent implements OnInit {
     this.loadBarrages(agenceId);
     this.getUtilisateur();
   }
+  opendelGrDialog(id:number): void {
+    const dialogRef = this.dialog.open(DeletingDialogComponent, {
+       width: '500px',
+       height:'325px',
+       data: {"roleId":id}
+       
+     });
+      dialogRef.afterClosed().subscribe(result => {
+        if (result === 'roleDeleted') {
+          this.loadBarrages(+this.route.snapshot.paramMap.get('agenceId')!);
+        }
+      });
+  
+   }
+
   
 
   loadBarrages(agenceId: number): void {

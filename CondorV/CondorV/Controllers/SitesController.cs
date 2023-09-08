@@ -50,7 +50,6 @@ namespace CondorV.Controllers
         public IActionResult Create()
         {
             ViewData["AgenceId"] = new SelectList(_context.Agence, "Id", "Nom");
-            ViewData["LocalisationBarrId"] = new SelectList(_context.LocalisationBarr, "Id", "Designation");
             ViewData["Type"] = new List<SelectListItem>
         {
             new SelectListItem { Text = "Barrage", Value = "Barrage" },
@@ -73,7 +72,6 @@ namespace CondorV.Controllers
                 return RedirectToAction(nameof(Index));
             }
             ViewData["AgenceId"] = new SelectList(_context.Agence, "Id", "Id", site.AgenceId);
-            ViewData["LocalisationBarrId"] = new SelectList(_context.LocalisationBarr, "Id", "Designation", site.LocalisationBarrId);
             return View(site);
         }
 
@@ -91,7 +89,7 @@ namespace CondorV.Controllers
                 return NotFound();
             }
             ViewData["AgenceId"] = new SelectList(_context.Agence, "Id", "Id", site.AgenceId);
-            ViewData["LocalisationBarrId"] = new SelectList(_context.LocalisationBarr, "Id", "Id", site.LocalisationBarrId);
+           
             return View(site);
         }
 
@@ -128,7 +126,6 @@ namespace CondorV.Controllers
                 return RedirectToAction(nameof(Index));
             }
             ViewData["AgenceId"] = new SelectList(_context.Agence, "Id", "Id", site.AgenceId);
-            ViewData["LocalisationBarrId"] = new SelectList(_context.LocalisationBarr, "Id", "Id", site.LocalisationBarrId);
             return View(site);
         }
 

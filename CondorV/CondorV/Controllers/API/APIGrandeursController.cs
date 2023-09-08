@@ -29,7 +29,7 @@ namespace CondorV.Controllers.API
             {
                 return NotFound();
             }
-            return await _context.Grandeur.Include(t => t.TypeGrandeur).Include(l => l.LocalisationBarr).ToListAsync();
+            return await _context.Grandeur.Include(t => t.TypeGrandeur).ToListAsync();
         }
 
         // GET: api/APIGrandeurs/5

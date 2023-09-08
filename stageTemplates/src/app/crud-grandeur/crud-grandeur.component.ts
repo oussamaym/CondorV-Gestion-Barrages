@@ -1,11 +1,13 @@
 import { Component, OnInit } from '@angular/core';
 import { Grandeur } from '../models/grandeur';
 import { GrandeurService } from '../services/grandeur.service';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { MatDialog } from '@angular/material/dialog';
+import { DeletingDialogComponent } from '../deleting-dialog/deleting-dialog.component';
 import { EditPropGrandeurDialogComponent } from '../edit-prop-grandeur-dialog/edit-prop-grandeur-dialog.component';
 import { AddPropGrandeurDialogComponent } from '../add-prop-grandeur-dialog/add-prop-grandeur-dialog.component';
 import { EditParamGrandeurDialogComponent } from '../edit-param-grandeur-dialog/edit-param-grandeur-dialog.component';
+
 interface SideNavToggle {
   screenWidth: number;
   collapsed : boolean;
@@ -17,14 +19,17 @@ interface SideNavToggle {
 })
 export class CrudGrandeurComponent implements OnInit {
   grandeurs: Grandeur[] = [];
+  grandeursCopy: Grandeur[] = [];
   typegrandeur: any | null = null;
   isSideNavCollapsed = false;
   screenWidth = 0;
+  itemsPerPage: number=5;
+  p:number=1;
   onToggleSideNav(data:SideNavToggle): void{
     this.screenWidth = data.screenWidth;
     this.isSideNavCollapsed = data.collapsed;
   }
-  constructor(private grandeurService: GrandeurService,private route: ActivatedRoute,public dialog: MatDialog) { }
+  constructor(private grandeurService: GrandeurService,private route: ActivatedRoute,public dialog: MatDialog,private router: Router) { }
   ngOnInit(): void {
     this.route.params.subscribe(params => {
       this.typegrandeur = params['typeId'];
@@ -58,8 +63,8 @@ export class CrudGrandeurComponent implements OnInit {
     });
 
   }
-  EditerMesures(id: number):void{
-    
+  EditerMesures(grandeurId: number):void{
+    this.router.navigate(['/grandeurMesure', grandeurId]);
   }
 
   getAllGrandeurs(): void {
@@ -67,6 +72,7 @@ export class CrudGrandeurComponent implements OnInit {
     this.grandeurService.getAllGrandeurs().subscribe(
       grandeurs => {
         this.grandeurs = grandeurs.filter(grandeur => grandeur.typeGrandeurId == this.typegrandeur && grandeur.siteId==siteId);
+        this.grandeursCopy=this.grandeurs;
       },  
       error => {
         console.error('Error fetching Grandeurs:', error);
@@ -74,16 +80,19 @@ export class CrudGrandeurComponent implements OnInit {
     );
 }
 performSearch(searchTerm: string): void {
+  this.grandeurs=this.grandeursCopy;
   if (!searchTerm) {
-    // If the search term is empty, reset the displayed grandeurs to the full list
+    // If the search term is empty, reset the displayed utilisateurs to the full list
     this.getAllGrandeurs();
   } else {
-    // Filter the grandeurs based on the search term
+    searchTerm = searchTerm.toLowerCase();
     this.grandeurs = this.grandeurs.filter((grandeur) =>
-      grandeur.modeAcquisition?.includes(searchTerm) ||
-      grandeur.localisationBarr.designation.includes(searchTerm) ||
-      grandeur.nomAbrege?.includes(searchTerm)
-    );
+    (grandeur.nomAbrege?.toLowerCase().includes(searchTerm) ||
+     grandeur.localisationBarr?.toLowerCase().includes(searchTerm)||
+     grandeur.modeAcquisition?.toLowerCase().includes(searchTerm)||
+     grandeur.nomGrandeur?.toLowerCase().includes(searchTerm)
+     )
+  );
   }
 }
   EditParamGrandeurDialog(id:number):void{
@@ -99,4 +108,20 @@ performSearch(searchTerm: string): void {
       }
     });
 }
-}
+opendelGrDialog(id:number): void {
+  const dialogRef = this.dialog.open(DeletingDialogComponent, {
+     width: '500px',
+     height:'325px',
+     data: {"grandeurId":id}
+     
+   });
+    dialogRef.afterClosed().subscribe(result => {
+      if (result === 'grandeurDeleted') {
+        this.getAllGrandeurs(); // Manually refresh the user data
+      }
+    });
+
+ }
+  }
+  
+  

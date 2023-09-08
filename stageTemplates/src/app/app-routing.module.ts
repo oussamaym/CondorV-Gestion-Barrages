@@ -13,6 +13,9 @@ import { CrudGrandeurComponent } from './crud-grandeur/crud-grandeur.component';
 import { CrudAgenceComponent } from './crud-agence/crud-agence.component';
 import { CrudTypeGrandeurComponent } from './crud-type-grandeur/crud-type-grandeur.component';
 import { CrudUserAdminComponent } from './crud-user-admin/crud-user-admin.component';
+import { ExecuteMesureComponent } from './execute-mesure/execute-mesure.component';
+import { CrudRoleComponent } from './crud-role/crud-role.component';
+import { CrudSiteComponent } from './crud-site/crud-site.component';
 
 const routes: Routes = [
   {path:'', component:LoginComponent},
@@ -29,8 +32,10 @@ const routes: Routes = [
   {path:'detailAgence/:agenceId', component:DetailAgenceComponent},
   {path:'crudAgence' ,component:CrudAgenceComponent},
   {path:'crudGrandeur/:typeId',component:CrudGrandeurComponent},
-  {path:'crudTypeGrandeur',component:CrudTypeGrandeurComponent}
-  
+  {path:'crudTypeGrandeur',component:CrudTypeGrandeurComponent},
+  {path:'grandeurMesure/:grandeurId' ,component:ExecuteMesureComponent},
+  {path:'crudRole' ,component:CrudRoleComponent},
+  {path:'crudSites' ,component:CrudSiteComponent},
 ];
 
 @NgModule({

@@ -30,12 +30,62 @@ export class SidenavComponent implements OnInit {
   screenWidth = 0;
   navData = navbarData;
   multiple : boolean =false;
+  dynamicNavData: INavbarData[] = [];
   constructor(private router: Router,private siteGrandeurService: SiteGrandeurService) { }
 
   ngOnInit(): void {
     const siteId=Number(localStorage.getItem('siteId'));
     this.getUtilisateur();
     this.getAllTypeGrandeur(siteId); 
+    this.dynamicNavData = [];
+    if (this.utilisateurconnecte?.role.designation === 'Admin') {
+      this.dynamicNavData.push({
+        routelink: 'detailsAgence',
+        icon : 'fal fa-building',
+        label: 'Agence',
+      });
+      this.dynamicNavData.push({
+        routelink: '',
+        icon : 'fal fa-user',
+        label: 'Utilisateur',
+        items:[
+            {
+                routelink:'/crudUser/BAR',
+                label:'Barrage'
+            },
+            {
+                routelink:'/crudUser/AG',
+                label:'Agence'
+            }
+          ]
+      });
+      this.dynamicNavData.push({
+        routelink: 'settings',
+        icon: 'fal fa-cog',
+        label: 'Parametres'
+      });
+      
+    }
+    else if(this.utilisateurconnecte?.role.designation === 'AdminAG'){
+      this.dynamicNavData.push({
+        routelink: 'detailsAgence',
+        icon : 'fal fa-building',
+        label: 'Agence',
+      });
+
+    this.dynamicNavData.push({
+      routelink: '',
+      icon : 'fal fa-user',
+      label: 'Utilisateur',
+      items:[
+          {
+              routelink:'/crudUser/BAR',
+              label:'Barrage'
+          }
+        ]
+    });
+  }
+  this.navData = this.navData.concat(this.dynamicNavData);
   }
 
   toggleCollapse(): void {

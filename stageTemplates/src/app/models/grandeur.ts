@@ -9,8 +9,7 @@ export class Grandeur {
     typeGrandeurId: number;
     typeGrandeur?: TypeGrandeur | null;
     unite?: string | null;
-    localisationBarrId?: number | null;
-    localisationBarr?: any; 
+    localisationBarr?: string | null;
     modeAcquisition?: string | null;
     frequenceMesure?: string | null;
     precisionMesure?: number | null;
@@ -44,7 +43,7 @@ export class Grandeur {
         nomAbrege: string | null = null,
         nomComplet: string | null = null,
         typeGrandeurId: number = 0,
-        localisationBarrId: number | null = null,
+        localisationBarr: string | null = null,
         modeAcquisition: string | null = null,
         frequenceMesure: string | null = null,
         precisionMesure: number | null = null,
@@ -76,7 +75,7 @@ export class Grandeur {
         this.nomAbrege = nomAbrege;
         this.nomComplet = nomComplet;
         this.typeGrandeurId = typeGrandeurId;
-        this.localisationBarrId = localisationBarrId;
+        this.localisationBarr = localisationBarr;
         this.modeAcquisition = modeAcquisition;
         this.frequenceMesure = frequenceMesure;
         this.precisionMesure = precisionMesure;

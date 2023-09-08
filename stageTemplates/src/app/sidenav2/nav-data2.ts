@@ -3,7 +3,7 @@ import { INavbarData } from "./helper2";
 
 export const navbarDataII:INavbarData[]  = [
     {
-        routelink: 'detailBarrage',
+        routelink: 'crudSites',
         icon : 'fal fa-home',
         label: 'Site'
     },
@@ -23,9 +23,13 @@ export const navbarDataII:INavbarData[]  = [
         label: 'Utilisateur',
     },
     {
+        routelink: 'crudRole',
+        icon : 'fal fa-user-shield',
+        label: 'Roles'
+    },
+    {
         routelink: 'detailBarrage',
         icon : 'fal fa-arrow-left',
         label: 'Retour Au Site'
     },
-
 ];

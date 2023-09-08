@@ -19,7 +19,6 @@ import { SearchComponent } from './search/search.component';
 import { BodyComponent } from './body/body.component';
 import { SidenavComponent } from './sidenav/sidenav.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
-import { ProductsComponent } from './products/products.component';
 import { StatisticsComponent } from './statistics/statistics.component';
 import { SettingsComponent } from './settings/settings.component';
 import { DetailBarrageComponent } from './detail-barrage/detail-barrage.component';
@@ -45,6 +44,15 @@ import { AddPropGrandeurDialogComponent } from './add-prop-grandeur-dialog/add-p
 import { EditParamGrandeurDialogComponent } from './edit-param-grandeur-dialog/edit-param-grandeur-dialog.component';
 import { AddTypeGrandeurDialogComponent } from './add-type-grandeur-dialog/add-type-grandeur-dialog.component';
 import { CrudUserAdminComponent } from './crud-user-admin/crud-user-admin.component';
+import { DeletingDialogComponent } from './deleting-dialog/deleting-dialog.component';
+import { ExecuteMesureComponent } from './execute-mesure/execute-mesure.component';
+import { AddMesureGrandeurDialogComponent } from './add-mesure-grandeur-dialog/add-mesure-grandeur-dialog.component';
+import { EditMesureGrandeurDialogComponent } from './edit-mesure-grandeur-dialog/edit-mesure-grandeur-dialog.component';
+import { CrudRoleComponent } from './crud-role/crud-role.component';
+import {NgxPaginationModule} from 'ngx-pagination';
+import { EditRoleDialogComponent } from './edit-role-dialog/edit-role-dialog.component';
+import { CrudSiteComponent } from './crud-site/crud-site.component';
+import { AddSiteDialogComponent } from './add-site-dialog/add-site-dialog.component';
 
 @NgModule({
   declarations: [
@@ -57,7 +65,6 @@ import { CrudUserAdminComponent } from './crud-user-admin/crud-user-admin.compon
     BodyComponent,
     SidenavComponent,
     DashboardComponent,
-    ProductsComponent,
     StatisticsComponent,
     SettingsComponent,
     DetailBarrageComponent,
@@ -80,6 +87,15 @@ import { CrudUserAdminComponent } from './crud-user-admin/crud-user-admin.compon
     EditParamGrandeurDialogComponent,
     AddTypeGrandeurDialogComponent,
     CrudUserAdminComponent,
+    DeletingDialogComponent,
+    ExecuteMesureComponent,
+    AddMesureGrandeurDialogComponent,
+    EditMesureGrandeurDialogComponent,
+    CrudRoleComponent,
+    EditRoleDialogComponent,
+    CrudSiteComponent,
+    AddSiteDialogComponent,
+    
   ],
   imports: [
     BrowserModule,
@@ -96,7 +112,9 @@ import { CrudUserAdminComponent } from './crud-user-admin/crud-user-admin.compon
     MatDialogModule,
     MatListModule,
     MatMenuModule,
-    CommonModule
+    CommonModule,
+    BrowserModule,
+    NgxPaginationModule,
   ],
   providers: [],
   bootstrap: [AppComponent]

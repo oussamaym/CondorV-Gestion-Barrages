@@ -1,0 +1,33 @@
+<section class="container">
+    
+    <header>
+        <h4><b>Nouvelle Mesure</b></h4>
+
+        
+    </header>
+    <form action="#" class="form">
+      <div class="column">
+      <div class="input-box">
+        <label><b>Date</b></label>
+        <input type="date" placeholder="Entrer la Date" required [(ngModel)]="mesure.date" name="date"/>
+      </div>
+      <div class="input-box">
+        <label><b>Mesure</b></label>
+        <input type="text" placeholder="Entrer la Mesure" required [(ngModel)]="mesure.valeur" name="valeur"/>
+      </div>
+      </div>
+
+
+          <div class="column">
+            <div class="input-box">
+                <button class="btn btn-outline-success" (click)="ajouter(mesure)">Submit</button>
+          </div>
+          <div class="input-box">
+            <button class="btn btn-outline-danger" (click)="closeDialog()">Annuler</button>
+          </div>
+          </div>
+
+ 
+     
+    </form>
+  </section>

@@ -60,10 +60,6 @@ namespace CondorV.Controllers
                 {
                     var role = connectedUtilisateur.Role;
 
-                    if (role.ControleTotal)
-                    {
-                        claims.Add(new Claim("ControleTotalPermission", "ControleTotal"));
-                    }
 
                     if (role.Creer)
                     {

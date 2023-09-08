@@ -40,15 +40,21 @@
             border-radius: 50%;
             background-color: transparent;
             border: none;
+            color:#fff !important;
 
             .fa-times{
-                color:#fff;
+                color:#fff !important;
                 font-size: 24;
             }
 
         }
+        
     }
 }
+.sidenav .btn-close .fa-times {
+    color: white !important;
+  }
+  
 .sidenav-collapsed{
     width: 16.5625rem;
 }

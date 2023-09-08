@@ -1,52 +1,50 @@
 <section class="container">
-    
-    <header>
-        <h4><b>Nouveau Role</b></h4>
-    </header>
-    <form action="#" class="form">
-      <div class="input-box">
-        <label><b>Designation</b></label>
-        <div class="column">
-            <div class="select-box">
-              <select>
-                <option hidden>--- Choisir le role d'utilisateur</option>
-                <option>Admin Agence</option>
-                <option>Admin Barrage</option>
-              </select>
-            </div>
-          </div>
+  <header>
+    <h4><b>Nouveau Role</b></h4>
+  </header>
+  <form action="#" class="form">
+    <div class="input-box">
+      <label><b>Designation</b></label>
+      <div class="column">
+        <input type="text" required [(ngModel)]="role.designation" name="designation">
       </div>
-      <div class="gender-box">
-        
-        <div class="gender-option">
-          <div class="gender">
-            <input type="checkbox" value="Conrol Total"  checked />
-            <a>&nbsp;</a><a>&nbsp;</a>
-            <label for="check-male">Conrol Total</label>
-          </div>
-          <div class="gender">
-            <input type="checkbox"  value="creer"/>
-            <a>&nbsp;</a><a>&nbsp;</a>
-            <label for="check-female">Creer</label>
-          </div>
-          <div class="gender">
-            <input type="checkbox" value="modifier" />
-            <a>&nbsp;</a><a>&nbsp;</a>
-            <label for="check-other">Modifier</label>
-          </div>
-          <div class="gender">
-            <input type="checkbox"  value="supprimer"/>
-            <a>&nbsp;</a><a>&nbsp;</a>
-            <label for="check-other">Supprimer</label>
-          </div>
-          <div class="gender">
-            <input type="checkbox" value="lecture" />
-            <a>&nbsp;</a><a>&nbsp;</a>
-            <label for="check-other">Lecture</label>
-          </div>
+    </div>
+    <div class="gender-box">
+      <div class="gender-option">
+        <div class="gender">
+          <input type="checkbox" value="creer" [(ngModel)]="role.creer" name="creer" />
+          <a>&nbsp;</a><a>&nbsp;</a>
+          <label for="check-female">Creer</label>
+        </div>
+        <div class="gender">
+          <input type="checkbox" value="modifier" [(ngModel)]="role.modifier" name="modifier" />
+          <a>&nbsp;</a><a>&nbsp;</a>
+          <label for="check-other">Modifier</label>
+        </div>
+        <div class="gender">
+          <input type="checkbox" value="supprimer" [(ngModel)]="role.supprimer" name="supprimer" />
+          <a>&nbsp;</a><a>&nbsp;</a>
+          <label for="check-other">Supprimer</label>
+        </div>
+        <div class="gender">
+          <input type="checkbox" value="lecture" [(ngModel)]="role.lecture" name="lecture" />
+          <a>&nbsp;</a><a>&nbsp;</a>
+          <label for="check-other">Lecture</label>
+        </div>
+        <div class="gender">
+          <input type="checkbox" [(ngModel)]="role.controlTotal" name="controlTotal" (change)="checkAllRoles()" />
+          <a>&nbsp;</a><a>&nbsp;</a>
+          <label for="check-other">Control Total</label>
         </div>
       </div>
-
-      <button class="btn btn-outline-success">Submit</button>
-    </form>
-  </section>
+    </div>
+    <div class="column">
+      <div class="input-box">
+        <button class="btn btn-outline-success" (click)="ajouter(role)">Submit</button>
+      </div>
+      <div class="input-box">
+        <button class="btn btn-outline-danger" (click)="closeDialog()">Annuler</button>
+      </div>
+    </div>
+  </form>
+</section>

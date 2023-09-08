@@ -19,13 +19,13 @@
                                 <th>Action</th>
                             </tr>  
                         </thead>
-                        <tbody class="table-group-divider" *ngFor="let sitesgrandeur of sitesGrandeurs" >
+                        <tbody class="table-group-divider" *ngFor="let sitesgrandeur of sitesGrandeurs |  paginate: { itemsPerPage: itemsPerPage, currentPage: p }" >
                             <tr>
                                 <td><b>{{sitesgrandeur.site?.nom}}</b></td>
                                 <td><b>{{sitesgrandeur.typeGrandeur?.nom}}</b></td>
                                 
                                 <td>
-                                    <button class="btn btn-outline-success">
+                                    <button class="btn btn-outline-success" (click)="opendelGrDialog(sitesgrandeur.siteId,sitesgrandeur.typeGrandeurId)">
                                       Supprimer
                                     </button>
                                     <a>&nbsp;</a>
@@ -41,5 +41,8 @@
     
                         </tbody>
             </table>
+            <div style="display: flex; justify-content: center;">
+              <pagination-controls (pageChange)="p = $event"></pagination-controls>
+            </div>
     </div>
   </div>

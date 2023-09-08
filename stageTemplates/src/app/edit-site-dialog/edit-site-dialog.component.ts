@@ -1,12 +1,10 @@
-import { Component ,  OnInit} from '@angular/core';
+import { Component ,  OnInit,Inject} from '@angular/core';
 import { Site } from '../models/site';
 import { Agence } from '../models/agence';
-import { LocalisationBarr } from '../models/localisationbarr';
-import { LocalisationBarrService } from '../services/localisationbarr.service';
 import { SiteService } from '../services/site.service';
 import { AgenceService } from '../services/agence.service';
 import { Router } from '@angular/router';
-import { MatDialogRef } from '@angular/material/dialog';
+import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
 
 @Component({
   selector: 'app-edit-site-dialog',
@@ -14,16 +12,21 @@ import { MatDialogRef } from '@angular/material/dialog';
   styleUrls: ['./edit-site-dialog.component.css']
 })
 export class EditSiteDialogComponent implements OnInit {
-  site: Site = new Site(0,'',0,0,'','',0,0,'','','',0);
+  site: Site = new Site(0,'','',0,'','',0,0,'',new Date(),'',0);
   agences: Agence[] = [];
-  localisations: LocalisationBarr[] = [];
- constructor(private localisationService: LocalisationBarrService,private siteService: SiteService,private agenceService: AgenceService,private router: Router, private dialogRef: MatDialogRef<EditSiteDialogComponent>) {
+ constructor(private siteService: SiteService,private agenceService: AgenceService,private router: Router, private dialogRef: MatDialogRef<EditSiteDialogComponent>,@Inject(MAT_DIALOG_DATA) public data: any) {
   }
  ngOnInit(): void {
-  const siteId = Number(localStorage.getItem('siteId'));
+  var siteId: any;
+  if(this.data.siteId===null)
+  {
+    siteId = Number(localStorage.getItem('siteId'));
+  }
+  else{
+    siteId = this.data.siteId;
+  }
   this.getSiteById(siteId);
    this.loadAgences();
-   this.loadLocalisationBarrs();
   
  }
  modifier(site: Site):void{
@@ -38,17 +41,6 @@ export class EditSiteDialogComponent implements OnInit {
     }
   );
 }
- loadLocalisationBarrs(): void {
-   this.localisationService.getAllLocalisations().subscribe(
-    localisations => {
-       this.localisations = localisations;
-     
-     },
-     error => {
-       console.error('Error fetching Localisations', error);
-     }
-   );
- }
  loadAgences(): void {
    this.agenceService.getAllAgences().subscribe(
      agences => {
@@ -71,7 +63,8 @@ export class EditSiteDialogComponent implements OnInit {
       }
     );
   }
-
-
+}
+closeDialog():void{
+  this.dialogRef.close();
 }
 }

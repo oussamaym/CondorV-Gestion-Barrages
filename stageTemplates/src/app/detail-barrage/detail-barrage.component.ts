@@ -31,6 +31,7 @@ export class DetailBarrageComponent implements OnInit {
     const dialogRef = this.dialog.open(EditSiteDialogComponent, {
       width: '700px',
       height:'700px',
+      data: { siteId: null }
       
     });
 

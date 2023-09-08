@@ -33,7 +33,7 @@ export class SiteGrandeurService {
     return this.http.put<any>(`${this.baseUrl}/${siteGrandeur.siteId}`, siteGrandeur);
   }
 
-  deleteSiteGrandeur(id: number): Observable<any> {
-    return this.http.delete<any>(`${this.baseUrl}/${id}`);
+  deleteSiteGrandeur(siteId: number, typeGrandeurId: number): Observable<any> {
+    return this.http.delete<any>(`${this.baseUrl}/${siteId}/${typeGrandeurId}`);
   }
 }

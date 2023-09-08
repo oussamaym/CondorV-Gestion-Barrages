@@ -23,18 +23,18 @@
                             </tr>
                             
                         </thead>
-                        <tbody class="table-group-divider" *ngFor="let grandeur of grandeurs">
+                        <tbody class="table-group-divider" *ngFor="let grandeur of grandeurs  |  paginate: { itemsPerPage: itemsPerPage, currentPage: p }">
                            
                             <tr>
                                 <td><b>{{grandeur.nomAbrege}}</b></td>
                                 <td><b>{{grandeur.typeGrandeur?.nom}}</b></td>
-                                <td><b>{{grandeur.localisationBarr.designation}}</b></td>
+                                <td><b>{{grandeur.localisationBarr}}</b></td>
                                 <td><b>{{grandeur.modeAcquisition}}</b></td>
                                 <td><b>{{grandeur.unite}}</b></td>
                                 
                                 
                                 <td>
-                                    <button class="btn btn-outline-success">
+                                    <button class="btn btn-outline-success" (click)="opendelGrDialog(grandeur.id)">
                                       Supprimer
                                     </button>
                                     <a>&nbsp;</a>
@@ -46,15 +46,19 @@
                                     Parametrage
                                 </button>
                                 <a>&nbsp;</a>
-                                <button class="btn btn-outline-success" (click)="EditerMesures(grandeur.id)">
-                                  Executer
-                              </button>
-                              
+                                
+                              <button class="btn btn-outline-success" (click)="EditerMesures(grandeur.id)">
+                                Executer
+                            </button>
                                 </td>
                             </tr>
-                            
+
+                          
     
                         </tbody>
             </table>
+            <div style="display: flex; justify-content: center;">
+              <pagination-controls (pageChange)="p = $event"></pagination-controls>
+            </div>
     </div>
   </div>

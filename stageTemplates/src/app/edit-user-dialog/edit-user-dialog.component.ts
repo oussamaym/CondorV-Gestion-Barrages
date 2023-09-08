@@ -39,7 +39,7 @@ export class EditUserDialogComponent implements OnInit{
   else if(this.data.isSite==false &&this.data.isAdmin==true)
   {
     this.roles= this.data.role;
-    this.sites.push(new Site(0,'Tous les sites',0,0,'','',0,0,'','','',0));
+    this.sites.push(new Site(0,'Tous les sites','',0,'','',0,0,'',null,'',0));
     this.loadAgences();
   }
   else if(this.data.isAdmin==true)

@@ -57,7 +57,7 @@ namespace CondorV.Controllers
         // PUT: api/APIRoles/5
         // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
         [HttpPut("{id}")]
-        [Authorize(Roles = "Admin", Policy = "ModifierPermission")]
+        //[Authorize(Roles = "Admin", Policy = "ModifierPermission")]
         public async Task<IActionResult> PutRole(long id, Role role)
         {
             if (id != role.Id)
@@ -89,7 +89,7 @@ namespace CondorV.Controllers
         // POST: api/APIRoles
         // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
         [HttpPost]
-        [Authorize(Roles = "Admin", Policy = "AjouterPermission")]
+        //[Authorize(Roles = "Admin", Policy = "AjouterPermission")]
         public async Task<ActionResult<Role>> PostRole(Role role)
         {
           if (_context.Role == null)
@@ -104,7 +104,7 @@ namespace CondorV.Controllers
 
         // DELETE: api/APIRoles/5
         [HttpDelete("{id}")]
-        [Authorize(Roles = "Admin", Policy = "SupprimerPermission")]
+        //[Authorize(Roles = "Admin", Policy = "SupprimerPermission")]
         public async Task<IActionResult> DeleteRole(long id)
         {
             if (_context.Role == null)

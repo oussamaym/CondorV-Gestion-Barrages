@@ -25,9 +25,6 @@ namespace CondorV.Data
         public DbSet<CondorV.Models.BD.Site>? Site { get; set; }
 
 
-        public DbSet<CondorV.Models.BD.LocalisationBarr>? LocalisationBarr { get; set; }
-
-
         public DbSet<CondorV.Models.BD.Grandeur>? Grandeur { get; set; }
 
 

@@ -13,6 +13,7 @@ import { Site } from '../models/site';
 import { RoleService } from '../services/role.service';
 import { Role } from '../models/role';
 import { Agence } from '../models/agence';
+import { DeletingDialogComponent } from '../deleting-dialog/deleting-dialog.component';
 
 interface SideNavToggle {
   screenWidth: number;
@@ -34,6 +35,9 @@ export class CrudUserComponent  implements OnInit{
   role: Role[] = [];
   site: undefined | Site = undefined;
    agence: undefined | Agence = undefined;
+    itemsPerPage: number=5;
+    p:number=1;
+    totalNumber: any;
   onToggleSideNav(data:SideNavToggle): void{
     this.screenWidth = data.screenWidth;
     this.isSideNavCollapsed = data.collapsed;
@@ -191,6 +195,7 @@ export class CrudUserComponent  implements OnInit{
         utilisateurs=> {
           
           this.utilisateurs = utilisateurs.filter(utilisateur => utilisateur.siteId === siteId && utilisateur.role?.designation === 'AdminBAR');
+          this.totalNumber=this.utilisateurs.length;
         },
         error => {
           console.error('Error fetching Utilisateurs BAR', error);
@@ -203,6 +208,7 @@ export class CrudUserComponent  implements OnInit{
         utilisateurs=> {
           
           this.utilisateurs = utilisateurs.filter(utilisateur => utilisateur.agenceId === agenceId && utilisateur.role?.designation === 'AdminAG');
+          this.totalNumber=this.utilisateurs.length;
         },
         error => {
           console.error('Error fetching Utilisateurs AG', error);
@@ -257,6 +263,19 @@ export class CrudUserComponent  implements OnInit{
       
     }
   }
+  opendelGrDialog(id:string): void {
+    const dialogRef = this.dialog.open(DeletingDialogComponent, {
+       width: '500px',
+       height:'325px',
+       data: {"utilisateurId":id}
+       
+     });
+      dialogRef.afterClosed().subscribe(result => {
+        if (result === 'utilisateurDeleted') {
+          this.loadUtilisateurs(); 
+        }
+      });
+   }
   
 }
 

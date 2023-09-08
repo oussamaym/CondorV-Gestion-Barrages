@@ -37,7 +37,7 @@ export class AddUserDialogComponent implements OnInit{
     else if(this.data.isSite==false&&this.data.isAdmin==true)
     {
       this.roles= this.data.role;
-      this.sites.push(new Site(0,'Tous les sites',0,0,'','',0,0,'','','',0));
+      this.sites.push(new Site(0,'Tous les sites','',0,'','',0,0,'',null,'',0));
       this.agences.push(new Agence(this.data.agence.id,this.data.agence.nom,this.data));
       this.user.siteId=this.sites[0].id;
       this.user.agenceId=this.data.agence.id;

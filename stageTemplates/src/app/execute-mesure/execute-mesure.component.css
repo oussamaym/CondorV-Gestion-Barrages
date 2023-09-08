@@ -1,0 +1,49 @@
+
+
+
+.hidden-column td:nth-child(2) {
+    display: none;
+  }
+  .login-container{
+    margin-top: 90px;
+    margin: auto;
+    width: 50%;
+    padding: 2vh;
+    background-color: #d1f4c2;;
+    border-radius: 20px;
+    display: block;
+    justify-content: center;
+    align-items: center;
+    height: 50vh;
+
+}
+.crud-spacer{
+    height: 30vh;
+}
+.crud-container{
+    margin: auto;
+    width: 100%;
+    padding: 2vh;
+    background-color: #d1f4c2;;
+    border-radius: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 2vh;
+}
+.crud-page{
+    height: 100vh;
+    width: 100%;
+    background-color: #d1f4c2;
+}
+.inline-div {
+    display: inline; /* or display: inline-block; */
+  }
+.parent{
+    display: flex;
+    flex-wrap: wrap;
+  }
+.child{
+    flex-grow: 1;
+
+}

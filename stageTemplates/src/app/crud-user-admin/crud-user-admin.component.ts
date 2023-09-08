@@ -10,6 +10,7 @@ import { RoleService } from '../services/role.service';
 import { Role } from '../models/role';
 import { Agence } from '../models/agence';
 import { EditUserDialogComponent } from '../edit-user-dialog/edit-user-dialog.component';
+import { DeletingDialogComponent } from '../deleting-dialog/deleting-dialog.component';
 
 interface AdminSideNavToggle {
   screenWidth: number;
@@ -22,11 +23,14 @@ interface AdminSideNavToggle {
 })
 export class CrudUserAdminComponent  implements OnInit{
   utilisateurs: Utilisateur[] = [];
+  utilisateursCopy : Utilisateur[] = [];
   roles: Role[] = [];
   sites: Site[] = [];
   agences: Agence[] = [];
    isSideNavCollapsed = false;
   screenWidth = 0;
+  itemsPerPage: number=5;
+  p:number=1;
   onToggleSideNav(data:AdminSideNavToggle): void{
     this.screenWidth = data.screenWidth;
     this.isSideNavCollapsed = data.collapsed;
@@ -54,7 +58,7 @@ export class CrudUserAdminComponent  implements OnInit{
         const dialogRef = this.dialog.open(EditUserDialogComponent, {
           width: '700px',
           height:'700px',
-          data: { userId: id }
+          data: { "userId": id,"isAdmin":true }
           
         });
         dialogRef.afterClosed().subscribe(result => {
@@ -65,41 +69,46 @@ export class CrudUserAdminComponent  implements OnInit{
       }
   
   performSearch(searchTerm: string): void {
+    this.utilisateurs=this.utilisateursCopy;
     if (!searchTerm) {
-      console.log("dkhel if");
       // If the search term is empty, reset the displayed utilisateurs to the full list
       this.loadUtilisateurs();
     } else {
-      console.log("dkhel else");
-      // Filter the utilisateurs based on partial matches of the search term
-      searchTerm = searchTerm.toLowerCase(); // Convert the search term to lowercase for case-insensitive search
+      searchTerm = searchTerm.toLowerCase();
       this.utilisateurs = this.utilisateurs.filter((utilisateur) =>
-        (utilisateur.nom.toLowerCase().includes(searchTerm) ||
-        utilisateur.prenom.toLowerCase().includes(searchTerm))
-      );
+      (utilisateur.nom.toLowerCase().includes(searchTerm) ||
+       utilisateur.prenom.toLowerCase().includes(searchTerm)||
+       utilisateur.userName.toLowerCase().includes(searchTerm)||
+       utilisateur.role?.designation.toLowerCase().includes(searchTerm)
+       )
+    );
     }
   }
   loadUtilisateurs(): void {
     this.userService.getAllUtilisateurs().subscribe(
       utilisateurs => {
         this.utilisateurs = utilisateurs;
+        this.utilisateursCopy = utilisateurs;
       },
       error => {
         console.error('Error fetching utilisateurs:', error);
       }
     );
   }
-  supprimer(id: string):void
-  {
-    this.userService.deleteUtilisateur(id).subscribe(
-      (response: any) => {
-        this.loadUtilisateurs();
-      }, 
-      (error) => {
-        console.error('Delete error:', error);
-      }
-    );
-  }
+  opendelGrDialog(id:string): void {
+    const dialogRef = this.dialog.open(DeletingDialogComponent, {
+       width: '500px',
+       height:'325px',
+       data: {"utilisateurId":id}
+       
+     });
+      dialogRef.afterClosed().subscribe(result => {
+        if (result === 'utilisateurDeleted') {
+          this.loadUtilisateurs();
+        }
+      });
+  
+   }
   
 }
 

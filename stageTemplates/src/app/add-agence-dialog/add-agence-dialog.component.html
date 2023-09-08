@@ -11,6 +11,14 @@
       <label><b>Ville</b></label>
       <input type="text" placeholder="Entrer la ville" required name="ville" [(ngModel)]="ville" />
     </div>
-    <button class="btn btn-outline-success" (click)="onSubmit()">Submit</button>
+    <div class="column">
+      <div class="input-box">
+        <button class="btn btn-outline-success" (click)="onSubmit()">Submit</button>
+      </div>
+      <div class="input-box">
+        <button class="btn btn-outline-danger" (click)="closeDialog()">Annuler</button>
+      </div>
+    </div>
+   
   </form>
 </section>

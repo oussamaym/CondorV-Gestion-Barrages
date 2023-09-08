@@ -1,0 +1,90 @@
+<section class="container">
+    
+    <header>
+        <h4><b>Modifier le Site</b></h4>
+    </header>
+    <form action="#" class="form" #loginForm="ngForm">
+      <div class="column">
+      <div class="input-box">
+        <label><b>Nom du site</b></label>
+        <input type="text" placeholder="Entrer le nouveau nom" required [(ngModel)]="site.nom" name="nom" />
+      </div>
+      <div class="input-box">
+        <label><b>Localisation</b></label>
+        <select  class="select-box" [(ngModel)]="site.localisationBarr" name=" localisationBarr">
+          <option hidden>--- Choisir la localisation</option>
+        <option>Aval</option>
+        <option>Fondation</option>
+        <option>Aval</option>
+        <option>Mensuel</option>
+        <option>Semestrielle</option>
+        <option>Trimestrielle</option>
+        </select>
+      </div>
+    </div>
+
+      <div class="column">
+        <div class="input-box">
+          <label><b>Type du site</b></label>
+          <input type="text" placeholder="Entrer le type" required [(ngModel)]="site.type" name="type" />
+        </div>
+        <div class="input-box">
+          <label><b>Capacite</b></label>
+          <input type="text" placeholder="Entrer Capacite" required [(ngModel)]="site.capacite" name="capacite" />
+        </div>
+      </div>
+
+      <div class="column">
+      <div class="input-box">
+        <label><b>Ville Plus Proche</b></label>
+        <input type="text" placeholder="Entrer la ville " required [(ngModel)]="site.villePlusProche" name="villePlusProche" />
+      </div>
+
+      <div class="input-box">
+        <label><b>Distance Ville Plus Proche</b></label>
+        <input type="text" placeholder="Entrer la distance " required [(ngModel)]="site.distVillePlusProche" name="distVillePlusProche" />
+      </div>
+      </div>
+      <div class="column">
+      <div class="input-box">
+        <label><b>Hauteur du barrage</b></label>
+        <input type="text" placeholder="Entrer la hauteur du barrage" required [(ngModel)]="site.hauteurBarr" name="hauteurBarr" />
+      </div>
+
+      <div class="input-box">
+        <label><b>Code Retenue Normal</b></label>
+        <input type="text" placeholder="Entrer le code retenue" required [(ngModel)]="site.codeRetNormal" name="codeRetNormal" />
+      </div>
+      </div>
+
+      <div class="column">
+
+      <div class="input-box">
+        <label><b>La Retenue </b></label>
+        <input type="text" placeholder="Entrer le retenue" required [(ngModel)]="site.laRetenue" name="laRetenue" />
+      </div>
+      <div class="input-box">
+        <label><b>Agence</b></label>
+      <div class="select-box">
+          <select [(ngModel)]="site.agenceId" name="agenceId">
+            <option *ngFor="let agence of agences" [value]="agence.id">{{ agence.nom }}</option>
+          </select>
+        </div>
+      </div>
+      </div>
+      <div class="input-box">
+        <label><b>Date Mise en Service</b></label>
+        <input type="date" placeholder="Entrer la Date de mise en Service" required [(ngModel)]="site.dateMiseEnServ" name="date"/>
+      </div>
+      <div class="column">
+        <div class="input-box">
+            <button class="btn btn-outline-success" (click)="ajouter(site)">Submit</button>
+      </div>
+      <div class="input-box">
+        <button class="btn btn-outline-danger" (click)="closeDialog()">Annuler</button>
+      </div>
+      </div>
+    
+    </form>
+  </section>
+  

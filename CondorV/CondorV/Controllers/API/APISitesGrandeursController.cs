@@ -159,14 +159,13 @@ namespace CondorV.Controllers.API
         }
 
         // DELETE: api/APISitesGrandeurs/5
-        [HttpDelete("{id}")]
-        public async Task<IActionResult> DeleteSitesGrandeurs(long id)
+        [HttpDelete("{siteId}/{typeGrandeurId}")]
+        public async Task<IActionResult> DeleteSitesGrandeurs(long siteId, long typeGrandeurId)
         {
-            if (_context.SitesGrandeurs == null)
-            {
-                return NotFound();
-            }
-            var sitesGrandeurs = await _context.SitesGrandeurs.FindAsync(id);
+            var sitesGrandeurs = await _context.SitesGrandeurs
+                .Where(sg => sg.SiteId == siteId && sg.TypeGrandeurId == typeGrandeurId)
+                .FirstOrDefaultAsync();
+
             if (sitesGrandeurs == null)
             {
                 return NotFound();
@@ -177,6 +176,7 @@ namespace CondorV.Controllers.API
 
             return NoContent();
         }
+
 
         private bool SitesGrandeursExists(long id)
         {

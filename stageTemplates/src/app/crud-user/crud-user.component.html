@@ -18,11 +18,11 @@
         </tr>
       </thead>
       <tbody class="table-group-divider">
-        <tr *ngFor="let utilisateur of utilisateurs" >
+        <tr *ngFor="let utilisateur of utilisateurs |  paginate: { itemsPerPage: itemsPerPage, currentPage: p }" >
           <td><b>{{ utilisateur.nom }} {{ utilisateur.prenom }}</b></td>
           <td><b>{{ utilisateur.role?.designation }}</b></td>
           <td>
-            <button class="btn btn-outline-success" (click)="showConfirm(utilisateur.id)">Supprimer</button>
+            <button class="btn btn-outline-success" (click)="opendelGrDialog(utilisateur.id)">Supprimer</button>
             <a>&nbsp;</a>
             <button class="btn btn-outline-success" (click)="openEditUserDialog(utilisateur.id)">
               Modifier
@@ -35,5 +35,9 @@
         </tr>
       </tbody>
     </table>
+    <div style="display: flex; justify-content: center;">
+      <pagination-controls (pageChange)="p = $event"></pagination-controls>
+    </div>
   </div>
+  
 </div>

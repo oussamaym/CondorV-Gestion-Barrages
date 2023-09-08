@@ -8,7 +8,8 @@ namespace CondorV.Models.BD
         [Key]
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public long Id { get; set; }    
-        public DateTime date { get; set; }
+        public DateTime Date { get; set; }
+        public double Valeur { get; set; }
         public long GrandeurId { get; set; }
       
         public Grandeur? Grandeur { get; set; }

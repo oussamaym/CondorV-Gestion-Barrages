@@ -29,7 +29,7 @@ namespace CondorV.Controllers.API
           {
               return NotFound();
           }
-            return await _context.Mesure.ToListAsync();
+            return await _context.Mesure.Include(g => g.Grandeur).ToListAsync();
         }
 
         // GET: api/APIMesures/5

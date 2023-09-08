@@ -1,0 +1,48 @@
+<app-sidenav2 (onToggleSideNav)="onToggleSideNav($event)"></app-sidenav2>
+<div class="crud-page">
+  
+    <div class="crud-spacer"></div>
+    <div class="login-container" >
+      <div class="crud-container">
+        
+        <button class="btn btn-outline-success" (click)="openAddSiteDialog()" ><b>Creer un site</b></button>
+         <app-search></app-search> 
+      </div>  
+      <br>
+            <table class="table table-bordered " id="tabback">
+                    <thead>
+                            <tr>
+                                <th>Sites</th>
+                                <th>Type de site</th>
+                                <th>Localisation</th>
+                                <th>Agence</th>
+                                <th>Action</th>
+                            </tr>
+                            
+                        </thead>
+                        <tbody class="table-group-divider" *ngFor="let site of sites  |  paginate: { itemsPerPage: itemsPerPage, currentPage: p }">
+                           
+                            <tr >
+                                <td><b>{{ site.nom }}</b></td>
+                                <td><b>{{site.type}}</b></td>
+                                <td><b>{{ site.localisationBarr }}</b></td>
+                                <td><b>{{ site.agence?.nom }}</b></td>
+                                <td>
+                                    <button class="btn btn-outline-success" (click)="opendelGrDialog(site.id)" >
+                                      Supprimer
+                                    </button>
+                                    <a>&nbsp;</a>
+                                    <button class="btn btn-outline-success" (click)="openEditSiteDialog(site.id)">
+                                      Modifier
+                                  </button>
+                                </td>
+                            </tr>
+                            
+    
+                        </tbody>
+            </table>
+            <div style="display: flex; justify-content: center;">
+              <pagination-controls (pageChange)="p = $event"></pagination-controls>
+            </div>
+    </div>
+  </div>
