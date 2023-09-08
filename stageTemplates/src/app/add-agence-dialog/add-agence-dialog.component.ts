@@ -28,7 +28,6 @@ export class AddAgenceDialogComponent {
         // La nouvelle agence a été créée avec succès
         console.log('Agence créée avec succès :', agenceCreee);
         this.dialogRef.close('agenceCreated'); 
-
       },
       (erreur) => {
         // Gérer les erreurs ici

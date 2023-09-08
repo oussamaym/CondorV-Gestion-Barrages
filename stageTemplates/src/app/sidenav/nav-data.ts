@@ -9,8 +9,7 @@ export const navbarData:INavbarData[] = [
     {
         routelink: '',
         icon : 'fal fa-box',
-        label: 'Grandeur',
+        label: 'Grandeur',   
     },
-
 
 ];

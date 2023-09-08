@@ -40,7 +40,7 @@ export class SidenavComponent implements OnInit {
     this.dynamicNavData = [];
     if (this.utilisateurconnecte?.role.designation === 'Admin') {
       this.dynamicNavData.push({
-        routelink: 'detailsAgence',
+        routelink: 'detailAgence',
         icon : 'fal fa-building',
         label: 'Agence',
       });

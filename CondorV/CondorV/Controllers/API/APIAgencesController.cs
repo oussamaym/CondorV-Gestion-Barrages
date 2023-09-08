@@ -59,6 +59,7 @@ namespace CondorV.Controllers.API
         // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
         [HttpPut("{id}")]
         //[Authorize(Roles = "AdminAG,Admin", Policy = "ModifierPermission")]
+
         public async Task<IActionResult> PutAgence(long id, Agence agence)
         {
             if (id != agence.Id)
@@ -90,6 +91,7 @@ namespace CondorV.Controllers.API
         // POST: api/APIAgences
         // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
         [HttpPost]
+
         //[Authorize(Roles = "AdminAG,Admin", Policy = "AjouterPermission")]
         public async Task<ActionResult<Agence>> PostAgence(Agence agence)
         {
@@ -105,8 +107,10 @@ namespace CondorV.Controllers.API
 
         // DELETE: api/APIAgences/5
        
-        // [Authorize(Roles = "AdminAG,Admin", Policy = "SupprimerPermission")]
+       
         [HttpDelete("{id}")]
+
+       //[Authorize(Roles = "AdminAG,Admin", Policy = "SupprimerPermission")]
         public async Task<IActionResult> DeleteAgence(long id)
         {
             var agence = await _context.Agence.FindAsync(id);
